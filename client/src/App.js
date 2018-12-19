@@ -5,7 +5,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>StartPIM</h1>
+        <h1>
+          Start<u>PIM</u>
+        </h1>
       </div>
     );
   }

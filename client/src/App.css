@@ -5,3 +5,21 @@
   justify-content: center;
   text-align: center;
 }
+
+* {
+  box-sizing: border-box;
+  background: #000022;
+}
+
+u {
+  color: yellow;
+}
+
+h1 {
+  color: burlywood;
+  font-family: 'Lato', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 700;
+  font-size: 50px;
+  letter-spacing: 7px;
+  padding-top: 10%;
+}
