@@ -43,3 +43,8 @@ app.use('/api/start', start);
 const port = process.env.PORT || 5002;
 
 app.listen(port, () => console.log(`StartPIM server port:${port}`));
+
+console.log(
+  'WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWww',
+  process.env.SECRET_OR_KEY
+);
