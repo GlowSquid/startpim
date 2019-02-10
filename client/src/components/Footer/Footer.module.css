@@ -1,0 +1,14 @@
+.footer {
+  padding-top: 50%;
+  color: burlywood;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+/* .footer {
+  margin-top: 20px;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
