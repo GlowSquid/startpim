@@ -2,6 +2,6 @@
 .eslintrc.js
 node_modules/
 *package-lock.json
-config/keys_dev.js
+server/config/keys_dev.js
 *.env
 *.env.*

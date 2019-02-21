@@ -1,15 +1,11 @@
-* {
+/* * {
   box-sizing: border-box;
   background: #10101b;
-}
-
-.u {
-  color: #fca429;
-}
+} */
 
 .h1 {
   color: burlywood;
-  font-family: 'Lato', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Lato", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 700;
   font-size: 50px;
   letter-spacing: 7px;
@@ -18,8 +14,12 @@
 
 .p {
   color: burlywood;
-  font-family: 'Lato', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Lato", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 20px;
   font-weight: 400;
   letter-spacing: 4px;
+}
+
+.u {
+  color: #fca429;
 }

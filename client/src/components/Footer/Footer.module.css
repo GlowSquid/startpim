@@ -1,14 +1,19 @@
 .footer {
-  padding-top: 50%;
+  display: block;
+  width: 100%;
+  /* position: fixed; */
+  /* top: 50vh; */
+  font-family: "Lato", Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 3px;
+  /* padding: 0.5rem 1rem; */
+  background: #272734;
   color: burlywood;
   font-size: 16px;
-  letter-spacing: 1px;
-}
+  letter-spacing: 2px;
 
-/* .footer {
-  margin-top: 20px;
-  background: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: [footer-height];
+}

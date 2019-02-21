@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-// import styles from './Register.module.css';
+import styles from "./Register.module.css";
 
 class Register extends Component {
   constructor() {
     super();
     this.state = {
-      name: '',
-      email: '',
-      password: '',
-      password2: '',
+      name: "",
+      email: "",
+      password: "",
+      password2: "",
       errors: {}
     };
 
@@ -35,57 +35,53 @@ class Register extends Component {
 
   render() {
     return (
-      <div className="register">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Sign Up</h1>
-              <p className="lead text-center">Create your StartPIM account</p>
-              <form onSubmit={this.onSubmit}>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    className="form-control form-control-lg"
-                    placeholder="Name"
-                    name="name"
-                    value={this.state.name}
-                    onChange={this.onChange}
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="email"
-                    className="form-control form-control-lg"
-                    placeholder="Email Address"
-                    name="email"
-                    value={this.state.email}
-                    onChange={this.onChange}
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="password"
-                    className="form-control form-control-lg"
-                    placeholder="Password"
-                    name="password"
-                    value={this.state.password}
-                    onChange={this.onChange}
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="password"
-                    className="form-control form-control-lg"
-                    placeholder="Confirm Password"
-                    name="password2"
-                    value={this.state.password2}
-                    onChange={this.onChange}
-                  />
-                </div>
-                <input type="submit" className="btn btn-info btn-block mt-4" />
-              </form>
+      <div>
+        <h1 className={styles.head}>Sign Up</h1>
+        <p>Create your StartPIM account</p>
+        <div className="row">
+          <form onSubmit={this.onSubmit} className={styles.auth__form}>
+            <div>
+              <input
+                className={styles.input}
+                type="text"
+                placeholder="Name"
+                name="name"
+                value={this.state.name}
+                onChange={this.onChange}
+              />
             </div>
-          </div>
+            <div>
+              <input
+                className={styles.input}
+                type="email"
+                placeholder="Email Address"
+                name="email"
+                value={this.state.email}
+                onChange={this.onChange}
+              />
+            </div>
+            <div>
+              <input
+                className={styles.input}
+                type="password"
+                placeholder="Password"
+                name="password"
+                value={this.state.password}
+                onChange={this.onChange}
+              />
+            </div>
+            <div>
+              <input
+                className={styles.input}
+                type="password"
+                placeholder="Confirm Password"
+                name="password2"
+                value={this.state.password2}
+                onChange={this.onChange}
+              />
+            </div>
+            <input type="submit" className={styles.btn} id="btn" />
+          </form>
         </div>
       </div>
     );

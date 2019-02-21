@@ -1,7 +1,7 @@
 .App {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
   text-align: center;
 }
@@ -22,8 +22,10 @@
 
 .card-form {
   opacity: 0.9;
-} */
+}
 
 .form-control::placeholder {
   color: #bbb !important;
 }
+
+ */
