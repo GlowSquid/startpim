@@ -1,12 +1,16 @@
 import React, { Component } from "react";
+import axios from "axios";
+import { connect } from "react-redux";
 
-import styles from "./Register.module.css";
+import { registerUser } from "../../actions/authActions";
+
+import styles from "./Auth.module.css";
 
 class Register extends Component {
   constructor() {
     super();
     this.state = {
-      name: "",
+      username: "",
       email: "",
       password: "",
       password2: "",
@@ -21,64 +25,89 @@ class Register extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  onSubmit = event => {
-    event.preventDefault();
+  onSubmit = e => {
+    e.preventDefault();
     const newUser = {
-      name: this.state.name,
+      username: this.state.username,
       email: this.state.email,
       password: this.state.password,
       password2: this.state.password2
     };
-    // console.log(newUser);
-    this.setState({ newUser });
+
+    this.props.registerUser(newUser);
+
+    // axios
+    //   .post("/api/users/register", newUser)
+    //   .then(res => console.log(res.data))
+    //   .catch(err => this.setState({ errors: err.response.data }));
   };
 
   render() {
+    const { errors } = this.state;
+
     return (
       <div>
         <h1 className={styles.head}>Sign Up</h1>
         <p>Create your StartPIM account</p>
         <div className="row">
           <form onSubmit={this.onSubmit} className={styles.auth__form}>
-            <div>
+            <div className={styles.input__space}>
               <input
-                className={styles.input}
+                className={
+                  errors.username ? styles.input__warning : styles.input
+                }
                 type="text"
-                placeholder="Name"
-                name="name"
-                value={this.state.name}
+                placeholder="Username"
+                name="username"
+                value={this.state.username}
                 onChange={this.onChange}
               />
+              {errors.username && (
+                <div className={styles.input__error}>* {errors.username}</div>
+              )}
             </div>
-            <div>
+            <div className={styles.input__space}>
               <input
-                className={styles.input}
+                className={errors.email ? styles.input__warning : styles.input}
                 type="email"
                 placeholder="Email Address"
                 name="email"
                 value={this.state.email}
                 onChange={this.onChange}
               />
+              {errors.email && (
+                <div className={styles.input__error}>* {errors.email}</div>
+              )}
             </div>
-            <div>
+            <div className={styles.input__space}>
               <input
-                className={styles.input}
+                className={
+                  errors.password ? styles.input__warning : styles.input
+                }
                 type="password"
                 placeholder="Password"
                 name="password"
                 value={this.state.password}
                 onChange={this.onChange}
               />
+              {errors.password && (
+                <div className={styles.input__error}>* {errors.password}</div>
+              )}
             </div>
-            <div>
+            <div className={styles.input__space}>
               <input
-                className={styles.input}
+                className={
+                  errors.password2 ? styles.input__warning : styles.input
+                }
                 type="password"
                 placeholder="Confirm Password"
                 name="password2"
                 value={this.state.password2}
                 onChange={this.onChange}
               />
+              {errors.password2 && (
+                <div className={styles.input__error}>* {errors.password2}</div>
+              )}
             </div>
             <input type="submit" className={styles.btn} id="btn" />
           </form>
@@ -88,4 +117,7 @@ class Register extends Component {
   }
 }
 
-export default Register;
+export default connect(
+  null,
+  { registerUser }
+)(Register);

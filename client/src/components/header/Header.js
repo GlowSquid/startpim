@@ -7,9 +7,11 @@ class Header extends Component {
   render() {
     return (
       <header className={styles.navbar}>
-        <div className={styles.navbar__logo}>
-          Start<span>PIM</span>
-        </div>
+        <nav>
+          <NavLink className={styles.navbar__logo} to="/">
+            Start<span>PIM</span>
+          </NavLink>
+        </nav>
         <nav className={styles.navbar__items}>
           <ul>
             <NavLink to="/login">Login</NavLink>

@@ -1,34 +1,34 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const mongoose = require('mongoose');
-const passport = require('passport');
+const mongoose = require("mongoose");
+const passport = require("passport");
 
 // Load Validation
-const validateStartInput = require('../../validation/start');
-const validateBookmarksInput = require('../../validation/bookmarks');
+const validateStartInput = require("../../validation/start");
+const validateBookmarksInput = require("../../validation/bookmarks");
 
 // Load Profile Model
-const Start = require('../../models/Start');
-const User = require('../../models/User');
+const Start = require("../../models/Start");
+const User = require("../../models/User");
 
 // @route   GET api/start/test
 // @desc    Tests Start Route
 // @access  Public
-router.get('/test', (req, res) => res.json({ msg: 'Start Works' }));
+router.get("/test", (req, res) => res.json({ msg: "Start Works" }));
 
 // @route   GET api/start
 // @desc    Access Current users Startpage
 // @access  Private
 router.get(
-  '/',
-  passport.authenticate('jwt', { session: false }),
+  "/",
+  passport.authenticate("jwt", { session: false }),
   (req, res) => {
     const errors = {};
     Start.findOne({ user: req.user.id })
-      .populate('user', name)
+      .populate("user", username)
       .then(start => {
         if (!start) {
-          errors.nostart = 'There is no startpage for this user';
+          errors.nostart = "There is no startpage for this user";
           return res.status(404).json(errors);
         }
         res.json(start);
@@ -41,8 +41,8 @@ router.get(
 // @desc    Create &/ Edit Current users Startpage
 // @access  Private
 router.post(
-  '/',
-  passport.authenticate('jwt', { session: false }),
+  "/",
+  passport.authenticate("jwt", { session: false }),
   (req, res) => {
     const { errors, isValid } = validateStartInput(req.body);
 
@@ -57,8 +57,8 @@ router.post(
     startFields.user = req.user.id;
     if (req.body.handle) startFields.handle = req.body.handle;
 
-    if (typeof req.body.tags !== 'undefined') {
-      startFields.tags = req.body.tags.split(',');
+    if (typeof req.body.tags !== "undefined") {
+      startFields.tags = req.body.tags.split(",");
     }
 
     Start.findOne({ user: req.user.id }).then(start => {
@@ -75,7 +75,7 @@ router.post(
         // Check if handle exist
         Start.findOne({ handle: startFields.handle }).then(start => {
           if (start) {
-            errors.handle = 'That handle already exist';
+            errors.handle = "That handle already exist";
             res.status(400).json(errors);
           }
           // Save startpage
@@ -90,8 +90,8 @@ router.post(
 // @desc    Add Bookmarks
 // @access  Private
 router.post(
-  '/bookmarks',
-  passport.authenticate('jwt', { session: false }),
+  "/bookmarks",
+  passport.authenticate("jwt", { session: false }),
   (req, res) => {
     const { errors, isValid } = validateBookmarksInput(req.body);
 
@@ -124,8 +124,8 @@ router.post(
 // @desc    Delete Bookmark from start
 // @access  Private
 router.delete(
-  '/bookmarks/:bm_id',
-  passport.authenticate('jwt', { session: false }),
+  "/bookmarks/:bm_id",
+  passport.authenticate("jwt", { session: false }),
   (req, res) => {
     const { errors, isValid } = validateBookmarksInput(req.body);
 
@@ -150,8 +150,8 @@ router.delete(
 // @desc    Delete User and Bookmarks
 // @access  Private
 router.delete(
-  '/',
-  passport.authenticate('jwt', { session: false }),
+  "/",
+  passport.authenticate("jwt", { session: false }),
   (req, res) => {
     Start.findOneAndRemove({ user: req.user.id }).then(() => {
       User.findOneAndRemove({ _id: req.user.id }).then(() =>

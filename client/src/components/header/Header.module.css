@@ -12,12 +12,16 @@
 }
 
 .navbar__logo {
+  text-decoration: none;
+  border: none;
   margin: 0;
   font-size: 1.5rem;
-  color: burlywood;
   font-family: "Lato", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 700;
   letter-spacing: 3px;
+  cursor: pointer;
+  color: #deb887;
+  outline: none;
 }
 
 .navbar__logo span {
