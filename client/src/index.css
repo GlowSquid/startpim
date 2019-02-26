@@ -16,6 +16,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.head {
+  margin-top: 5rem;
+}
+
+.btn {
+  font: inherit;
+  background: #deb887;
+  color: #fff;
+  width: 50%;
+  padding: 5px;
+  border: 1px solid #fca429;
+  box-shadow: 1px 2px 1px rgba(0, 64, 0, 0.5);
+  margin-top: 1rem;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

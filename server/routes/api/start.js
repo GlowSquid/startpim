@@ -7,8 +7,9 @@ const passport = require("passport");
 const validateStartInput = require("../../validation/start");
 const validateBookmarksInput = require("../../validation/bookmarks");
 
-// Load Profile Model
+// Load Start Model
 const Start = require("../../models/Start");
+// Load User Model
 const User = require("../../models/User");
 
 // @route   GET api/start/test
@@ -25,7 +26,7 @@ router.get(
   (req, res) => {
     const errors = {};
     Start.findOne({ user: req.user.id })
-      .populate("user", username)
+      .populate("user", ["name"])
       .then(start => {
         if (!start) {
           errors.nostart = "There is no startpage for this user";

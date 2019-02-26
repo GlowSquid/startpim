@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import TextFieldGroup from "../common/TextFieldGroup";
 
 import { registerUser } from "../../actions/authActions";
 
@@ -59,65 +60,43 @@ class Register extends Component {
         <p>Create your StartPIM account</p>
         <div className="row">
           <form onSubmit={this.onSubmit} className={styles.auth__form}>
-            <div className={styles.input__space}>
-              <input
-                className={
-                  errors.username ? styles.input__warning : styles.input
-                }
-                type="text"
-                placeholder="Username"
-                name="username"
-                value={this.state.username}
-                onChange={this.onChange}
-              />
-              {errors.username && (
-                <div className={styles.input__error}>* {errors.username}</div>
-              )}
-            </div>
-            <div className={styles.input__space}>
-              <input
-                className={errors.email ? styles.input__warning : styles.input}
-                type="email"
-                placeholder="Email Address"
-                name="email"
-                value={this.state.email}
-                onChange={this.onChange}
-              />
-              {errors.email && (
-                <div className={styles.input__error}>* {errors.email}</div>
-              )}
-            </div>
-            <div className={styles.input__space}>
-              <input
-                className={
-                  errors.password ? styles.input__warning : styles.input
-                }
-                type="password"
-                placeholder="Password"
-                name="password"
-                value={this.state.password}
-                onChange={this.onChange}
-              />
-              {errors.password && (
-                <div className={styles.input__error}>* {errors.password}</div>
-              )}
-            </div>
-            <div className={styles.input__space}>
-              <input
-                className={
-                  errors.password2 ? styles.input__warning : styles.input
-                }
-                type="password"
-                placeholder="Confirm Password"
-                name="password2"
-                value={this.state.password2}
-                onChange={this.onChange}
-              />
-              {errors.password2 && (
-                <div className={styles.input__error}>* {errors.password2}</div>
-              )}
-            </div>
-            <input type="submit" className={styles.btn} id="btn" />
+            <TextFieldGroup
+              placeholder="Username"
+              name="username"
+              type="text"
+              value={this.state.username}
+              onChange={this.onChange}
+              error={errors.username}
+            />
+
+            <TextFieldGroup
+              placeholder="Email Address"
+              name="email"
+              type="email"
+              value={this.state.email}
+              onChange={this.onChange}
+              error={errors.email}
+            />
+
+            <TextFieldGroup
+              placeholder="Password"
+              name="password"
+              type="password"
+              value={this.state.password}
+              onChange={this.onChange}
+              error={errors.password}
+            />
+
+            <TextFieldGroup
+              placeholder="Confirm Password"
+              name="password2"
+              type="password"
+              value={this.state.password2}
+              onChange={this.onChange}
+              error={errors.password2}
+            />
+
+            <input type="submit" className="btn" />
           </form>
         </div>
       </div>

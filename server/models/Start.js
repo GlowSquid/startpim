@@ -1,11 +1,11 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 // Create Schema
 const StartSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
-    ref: 'users'
+    ref: "users"
   },
   handle: {
     type: String,
@@ -58,4 +58,4 @@ const StartSchema = new Schema({
 //   default: false
 // }
 
-module.exports = Start = mongoose.model('start', StartSchema);
+module.exports = Start = mongoose.model("start", StartSchema);

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
+import TextFieldGroup from "../common/TextFieldGroup";
 
 import styles from "./Auth.module.css";
 
@@ -57,35 +58,25 @@ class Login extends Component {
         <h1 className={styles.head}>Login</h1>
         <div className="row">
           <form className={styles.auth__form} onSubmit={this.onSubmit}>
-            <div className={styles.input__space}>
-              <input
-                className={errors.email ? styles.input__warning : styles.input}
-                type="email"
-                placeholder="Email Address"
-                name="email"
-                value={this.state.email}
-                onChange={this.onChange}
-              />
-              {errors.email && (
-                <div className={styles.input__error}>* {errors.email}</div>
-              )}
-            </div>
-            <div>
-              <input
-                className={
-                  errors.password ? styles.input__warning : styles.input
-                }
-                type="password"
-                placeholder="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.onChange}
-              />
-              {errors.password && (
-                <div className={styles.input__error}>* {errors.password}</div>
-              )}
-            </div>
-            <input type="submit" className={styles.btn} />
+            <TextFieldGroup
+              placeholder="Email Address"
+              name="email"
+              type="email"
+              value={this.state.email}
+              onChange={this.onChange}
+              error={errors.email}
+            />
+
+            <TextFieldGroup
+              placeholder="Password"
+              name="password"
+              type="password"
+              value={this.state.password}
+              onChange={this.onChange}
+              error={errors.password}
+            />
+
+            <input type="submit" className="btn" />
           </form>
         </div>
       </div>
