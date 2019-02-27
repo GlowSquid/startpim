@@ -16,7 +16,9 @@ import Landing from "./components/landing/Landing";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Dashboard from "./components/dashboard/Dashboard";
-import CreateBookmark from "./components/create-bookmark/CreateBookmark";
+import CreateHandle from "./components/create-handle/CreateHandle";
+import EditHandle from "./components/edit-handle/EditHandle";
+import AddBookmark from "./components/bookmarks/AddBookmark";
 
 import "./App.css";
 
@@ -52,8 +54,22 @@ class App extends Component {
               <Switch>
                 <PrivateRoute
                   exact
-                  path="/create-bookmark"
-                  component={CreateBookmark}
+                  path="/create-handle"
+                  component={CreateHandle}
+                />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/edit-handle"
+                  component={EditHandle}
+                />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/add-bookmark"
+                  component={AddBookmark}
                 />
               </Switch>
             </div>

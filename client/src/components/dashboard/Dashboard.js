@@ -2,15 +2,22 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { getCurrentStart } from "../../actions/startActions";
+import { getCurrentStart, deleteAccount } from "../../actions/startActions";
 // import { logoutUser } from "../../actions/authActions";
 import Spinner from "../common/Spinner";
+import DashboardActions from "./DashboardActions";
+import Bookmarks from "./Bookmarks";
 
 import styles from "./Dashboard.module.css";
 
 class Dashboard extends Component {
   componentDidMount() {
     this.props.getCurrentStart();
+  }
+
+  // move deletion to settings
+  onDeleteClick(e) {
+    this.props.deleteAccount();
   }
 
   render() {
@@ -22,15 +29,32 @@ class Dashboard extends Component {
       dashboardContent = <Spinner />;
     } else {
       if (Object.keys(start).length > 0) {
-        dashboardContent = <h4 className="head">Have Profile</h4>;
+        dashboardContent = (
+          <div>
+            <h4 className="head">
+              Welcome {user.username} {start.handle}!
+            </h4>
+            <DashboardActions />
+            {/* bookmark display here */}
+            <Bookmarks bms={start.bookmarks} />
+            <div style={{ marginBottom: "60px" }}>
+              <button
+                className="mini__btn_danger"
+                onClick={this.onDeleteClick.bind(this)}
+              >
+                Delete Account
+              </button>
+            </div>
+          </div>
+        );
       } else {
         // dashboardContent = <h1 className="head">No profile</h1>;
         dashboardContent = (
           <div>
             <p>Welcome {user.username}!</p>
-            <p>Create your first bookmark</p>
+            <p>Create your handle, not that it matters</p>
             <div className={styles.bm__add}>+</div>
-            <Link to="/create-bookmark">
+            <Link to="/create-handle">
               <button className="btn">Get Started</button>
             </Link>
           </div>
@@ -51,6 +75,7 @@ class Dashboard extends Component {
 
 Dashboard.propTypes = {
   getCurrentStart: PropTypes.func.isRequired,
+  deleteAccount: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   start: PropTypes.object.isRequired
 };
@@ -62,5 +87,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getCurrentStart }
+  { getCurrentStart, deleteAccount }
 )(Dashboard);

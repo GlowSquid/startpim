@@ -12,10 +12,10 @@ const StartSchema = new Schema({
     required: true,
     max: 40
   },
-  tags: {
-    type: [String],
-    required: true
-  },
+  // tags: {
+  //   type: [String],
+  //   required: true
+  // },
   bookmarks: [
     {
       title: {
@@ -36,8 +36,8 @@ const StartSchema = new Schema({
         type: String
       },
       added: {
-        type: Date
-        // required: true
+        type: Date,
+        default: Date.now
       },
       updated: {
         type: Date
@@ -45,6 +45,10 @@ const StartSchema = new Schema({
       description: {
         type: String
       }
+      // date: {
+      //   type: Date,
+      //   default: Date.now
+      // }
     }
   ],
   date: {
