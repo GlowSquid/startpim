@@ -8,8 +8,6 @@ import Spinner from "../common/Spinner";
 import DashboardActions from "./DashboardActions";
 import Bookmarks from "./Bookmarks";
 
-import styles from "./Dashboard.module.css";
-
 class Dashboard extends Component {
   componentDidMount() {
     this.props.getCurrentStart();
@@ -56,7 +54,7 @@ class Dashboard extends Component {
           <div>
             <p>Welcome {user.username}!</p>
             <p>Create your handle, not that it matters</p>
-            <div className={styles.bm__add}>+</div>
+            <div className="bm__add">+</div>
             <Link to="/create-handle">
               <button className="btn">Get Started</button>
             </Link>

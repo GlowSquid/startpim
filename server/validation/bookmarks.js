@@ -1,6 +1,5 @@
 const Validator = require("validator");
 const isEmpty = require("./is-empty");
-const isURL = require("./is-url");
 
 module.exports = function validateBookmarksInput(data) {
   let errors = {};
@@ -13,8 +12,13 @@ module.exports = function validateBookmarksInput(data) {
   data.color = !isEmpty(data.color) ? data.color : "";
   data.description = !isEmpty(data.description) ? data.description : "";
 
-  if (!Validator.isURL(data.url)) {
-    errors.url = "Enter a valid URL";
+  if (
+    !Validator.isURL(data.url, {
+      protocols: ["http", "https", "ftp"],
+      require_protocol: true
+    })
+  ) {
+    errors.url = "Enter a valid URL. Example:  https://example.com";
   }
 
   if (Validator.isEmpty(data.url)) {

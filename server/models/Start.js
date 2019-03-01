@@ -26,6 +26,10 @@ const StartSchema = new Schema({
         type: String,
         required: true
       },
+      root: {
+        type: String
+        // required: true
+      },
       icon: {
         type: String
       },

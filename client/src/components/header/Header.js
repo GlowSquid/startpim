@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import { clearCurrentStart } from "../../actions/startActions";
 
-import styles from "./Header.module.css";
+import "./Header.css";
 
 class Header extends Component {
   onLogoutClick(e) {
@@ -40,13 +40,13 @@ class Header extends Component {
     );
 
     return (
-      <header className={styles.navbar}>
+      <header className="navbar">
         <nav>
-          <Link className={styles.navbar__logo} to="/">
+          <Link className="navbar__logo" to="/">
             Start<span>PIM</span>
           </Link>
         </nav>
-        <nav className={styles.navbar__items}>
+        <nav className="navbar__items">
           {isAuthenticated ? authLinks : guestLinks}
         </nav>
       </header>

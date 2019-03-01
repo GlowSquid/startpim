@@ -128,3 +128,18 @@ tr:nth-child(odd) {
   color: #f00;
   padding: 5px;
 }
+
+.bm__add {
+  display: block;
+  /* background: grey; */
+  /* padding: 0px 0px; */
+  width: 9%;
+  /* height: 3%; */
+  justify-content: center;
+  /* margin: 5px; */
+  font-size: 56px;
+  color: #fca429;
+  text-align: center;
+  margin: 0 auto;
+  border: 3px solid #fca429;
+}

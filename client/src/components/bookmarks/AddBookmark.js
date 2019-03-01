@@ -12,6 +12,7 @@ class AddBookmark extends Component {
     this.state = {
       title: "", // if no title, fetch it from link
       url: "", // should be only required field
+      // root: "", // Get the root, then get the icon
       description: "", // text area field
       // icon: "", // autofetch favicon
       // folder: "", // complicated folder structure. do later

@@ -105,10 +105,11 @@ router.post(
     Start.findOne({ user: req.user.id }).then(start => {
       const newBM = {
         title: req.body.title,
-        url: req.body.url, // must be url field
+        url: req.body.url,
+        root: req.body.root,
         folder: req.body.folder, // select from menu or create new
-        icon: req.body.icon, // select an img or auto-scrape favicon
-        color: req.body.color, // hexcode for now
+        icon: req.body.icon,
+        color: req.body.color,
         added: req.body.added,
         updated: req.body.updated,
         description: req.body.description

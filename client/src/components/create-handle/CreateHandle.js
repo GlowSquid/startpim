@@ -11,13 +11,14 @@ class CreateHandle extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      handle: "", // switch this or delete
-      title: "", // if no title, fetch it from link
-      url: "", // should be only required field
-      icon: "", // autofetch favicon
-      folder: "", // complicated folder structure. do later
-      color: "", // maybe useless
-      description: "", // text area field
+      handle: "",
+      title: "",
+      url: "",
+      root: "",
+      icon: "",
+      folder: "",
+      color: "",
+      description: "",
       errors: {}
     };
 
@@ -36,12 +37,7 @@ class CreateHandle extends Component {
 
     const startData = {
       handle: this.state.handle
-      // title: this.state.title,
-      // url: this.state.url,
-      // icon: this.state.icon,
-      // folder: this.state.folder,
-      // color: this.state.color,
-      // description: this.state.description
+      // folders: this.state.folders,
     };
 
     // console.log("submit");

@@ -1,9 +1,10 @@
-body {
-  /* box-sizing: border-box; */
-  /* background: #272734; */
+.landing {
+  box-sizing: border-box;
+  background: #272734;
+  padding-bottom: 110%;
 }
 
-.h1 {
+.landing h1 {
   margin-top: 20%;
   color: burlywood;
   font-family: "Lato", Tahoma, Geneva, Verdana, sans-serif;
@@ -13,7 +14,7 @@ body {
   padding-top: 10%;
 }
 
-.p {
+.landing p {
   color: burlywood;
   font-family: "Lato", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 20px;
@@ -21,6 +22,6 @@ body {
   letter-spacing: 4px;
 }
 
-.u {
+.landing span {
   color: #fca429;
 }

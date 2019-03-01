@@ -1,10 +1,10 @@
 import React from "react";
 
-import styles from "./Footer.module.css";
+import "./Footer.css";
 
 function Footer() {
   return (
-    <div className={styles.footer}>
+    <div className="footer">
       <p>
         &copy; Start<span>PIM</span> {new Date().getFullYear()}
       </p>

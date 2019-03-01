@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 // import Login from "../auth/Login";
 // import Register from "../auth/Register";
 
-import styles from "./Landing.module.css";
+import "./Landing.css";
 
 class Landing extends Component {
   componentDidMount() {
@@ -16,11 +16,11 @@ class Landing extends Component {
 
   render() {
     return (
-      <div className={styles.landing}>
-        <h1 className={styles.h1}>
-          Start<u className={styles.u}>PIM</u>
+      <div className="landing">
+        <h1>
+          Start<span>PIM</span>
         </h1>
-        <p className={styles.p}>Coming Soon...</p>
+        <p>Coming Soon...</p>
         {/* <Login />
         <Register /> */}
       </div>
