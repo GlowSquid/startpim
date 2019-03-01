@@ -58,8 +58,8 @@ router.post(
     startFields.user = req.user.id;
     if (req.body.handle) startFields.handle = req.body.handle;
 
-    if (typeof req.body.tags !== "undefined") {
-      startFields.tags = req.body.tags.split(",");
+    if (typeof req.body.folders !== "undefined") {
+      startFields.folders = req.body.folders.split(",");
     }
 
     Start.findOne({ user: req.user.id }).then(start => {
@@ -106,7 +106,7 @@ router.post(
       const newBM = {
         title: req.body.title,
         url: req.body.url, // must be url field
-        tag: req.body.tag, // select from menu or create new
+        folder: req.body.folder, // select from menu or create new
         icon: req.body.icon, // select an img or auto-scrape favicon
         color: req.body.color, // hexcode for now
         added: req.body.added,
@@ -154,8 +154,8 @@ router.delete(
   "/",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    Start.findOneAndRemove({ user: req.user.id }).then(() => {
-      User.findOneAndRemove({ _id: req.user.id }).then(() =>
+    Start.findOneAndDelete({ user: req.user.id }).then(() => {
+      User.findOneAndDelete({ _id: req.user.id }).then(() =>
         res.json({ success: true })
       );
     });

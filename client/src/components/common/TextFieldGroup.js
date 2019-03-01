@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styles from "../auth/Auth.module.css";
 
 function TextFieldGroup({
   name,
@@ -15,9 +14,9 @@ function TextFieldGroup({
   // classname
 }) {
   return (
-    <div className={styles.input__space}>
+    <div className="input__space">
       <input
-        className={error ? styles.input__warning : styles.input}
+        className={error ? "input__warning" : "input"}
         type={type}
         placeholder={placeholder}
         name={name}
@@ -26,7 +25,7 @@ function TextFieldGroup({
         disabled={disabled}
       />
       {info && <small className="form-text text-muted">{info}</small>}
-      {error && <div className={styles.input__error}>* {error}</div>}
+      {error && <div className="input__error">* {error}</div>}
     </div>
   );
 }

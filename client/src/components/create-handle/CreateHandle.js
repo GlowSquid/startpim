@@ -15,7 +15,7 @@ class CreateHandle extends Component {
       title: "", // if no title, fetch it from link
       url: "", // should be only required field
       icon: "", // autofetch favicon
-      tag: "", // complicated folder structure. do later
+      folder: "", // complicated folder structure. do later
       color: "", // maybe useless
       description: "", // text area field
       errors: {}
@@ -39,7 +39,7 @@ class CreateHandle extends Component {
       // title: this.state.title,
       // url: this.state.url,
       // icon: this.state.icon,
-      // tag: this.state.tag,
+      // folder: this.state.folder,
       // color: this.state.color,
       // description: this.state.description
     };
@@ -56,7 +56,7 @@ class CreateHandle extends Component {
     const { errors } = this.state;
 
     // const options = [
-    //   { label: "Select Tag", value: 0 },
+    //   { label: "Select Folder", value: 0 },
     //   { label: "Chopsticks", value: "Chopsticks" },
     //   { label: "Bubblegum", value: "Bubblegum" }
     // ];
@@ -67,12 +67,12 @@ class CreateHandle extends Component {
         <p>I like to move it move it</p>
         <form onSubmit={this.onSubmit}>
           {/* <SelectListGroup
-            placeholder="Tags/Folder"
-            name="tags"
-            value={this.state.tags}
+            placeholder="Folder"
+            name="folders"
+            value={this.state.folders}
             onChange={this.onChange}
             options={options}
-            error={errors.tags}
+            error={errors.folders}
           /> */}
 
           {/* <TextFieldGroup

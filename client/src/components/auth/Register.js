@@ -6,8 +6,6 @@ import TextFieldGroup from "../common/TextFieldGroup";
 
 import { registerUser } from "../../actions/authActions";
 
-import styles from "./Auth.module.css";
-
 class Register extends Component {
   constructor() {
     super();
@@ -56,10 +54,10 @@ class Register extends Component {
 
     return (
       <div>
-        <h1 className={styles.head}>Sign Up</h1>
+        <h1 className="head">Sign Up</h1>
         <p>Create your StartPIM account</p>
         <div className="row">
-          <form onSubmit={this.onSubmit} className={styles.auth__form}>
+          <form onSubmit={this.onSubmit} className="auth__form">
             <TextFieldGroup
               placeholder="Username"
               name="username"

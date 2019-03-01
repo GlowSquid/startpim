@@ -14,7 +14,7 @@ class AddBookmark extends Component {
       url: "", // should be only required field
       description: "", // text area field
       // icon: "", // autofetch favicon
-      // tag: "", // complicated folder structure. do later
+      // folder: "", // complicated folder structure. do later
       // color: "", // maybe useless
       errors: {}
     };
@@ -60,7 +60,7 @@ class AddBookmark extends Component {
             <TextFieldGroup
               placeholder="* Paste full URL"
               name="url"
-              type="url"
+              type="text"
               value={this.state.url}
               onChange={this.onChange}
               error={errors.url}

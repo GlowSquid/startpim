@@ -4,8 +4,6 @@ import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
 import TextFieldGroup from "../common/TextFieldGroup";
 
-import styles from "./Auth.module.css";
-
 class Login extends Component {
   constructor() {
     super();
@@ -55,9 +53,9 @@ class Login extends Component {
 
     return (
       <div>
-        <h1 className={styles.head}>Login</h1>
+        <h1 className="head">Login</h1>
         <div className="row">
-          <form className={styles.auth__form} onSubmit={this.onSubmit}>
+          <form className="auth__form" onSubmit={this.onSubmit}>
             <TextFieldGroup
               placeholder="Email Address"
               name="email"

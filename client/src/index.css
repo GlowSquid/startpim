@@ -31,7 +31,100 @@ body {
   margin-top: 1rem;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.btn__delete {
+  font: inherit;
+  background: rgb(255, 90, 90);
+  color: #fff;
+  width: 8rem;
+  padding: 5px;
+  border: 1px solid #464646;
+  box-shadow: 1px 2px 1px rgba(64, 0, 0, 0.5);
+}
+
+.btn__mini {
+  font: inherit;
+  background: #deb887;
+  color: #fff;
+  width: 8rem;
+  padding: 5px;
+  border: 1px solid #fca429;
+  box-shadow: 1px 2px 1px rgba(0, 64, 0, 0.5);
+}
+
+.btn__delete-mini {
+  font: inherit;
+  background: rgb(255, 90, 90);
+  color: #fff;
+  font-size: 14px;
+  padding: 3px;
+  border: 1px solid #464646;
+  box-shadow: 1px 2px 1px rgba(64, 0, 0, 0.5);
+}
+
+.settings {
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: 60%;
+  margin-top: 3rem;
+}
+
+.table {
+  width: 60%;
+  padding-top: 2rem;
+  margin: 0 auto;
+}
+
+.td__left {
+  text-align: left;
+  /* margin-top: 1rem; */
+}
+
+tr:nth-child(odd) {
+  background-color: #f0e0cb;
+}
+
+.auth__form {
+  display: block;
+}
+
+.head {
+  margin-top: 5rem;
+}
+
+.input {
+  font: inherit;
+  box-sizing: border-box;
+  width: 50%;
+  background: #fff;
+  color: #464646;
+  border: 1px solid #deb887;
+  box-shadow: 1px 2px 1px rgba(0, 64, 0, 0.5);
+  padding: 5px;
+  /* margin-top: 1rem; */
+}
+
+.input__space {
+  margin-bottom: 1rem;
+}
+
+.input__warning {
+  font: inherit;
+  box-sizing: border-box;
+  width: 50%;
+  background: #ffc8c8;
+  color: #464646;
+  border: 1px solid #f00;
+  box-shadow: 2px 2px 2px rgba(64, 0, 0, 0.5);
+  padding: 5px;
+  /* margin-bottom: 1rem; */
+}
+
+.input__error {
+  /* box-sizing: border-box; */
+  width: 80%;
+  /* text-align: start; */
+  color: #f00;
+  padding: 5px;
 }

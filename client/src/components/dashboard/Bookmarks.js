@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { deleteBookmark } from "../../actions/startActions";
 
 class Bookmarks extends Component {
@@ -12,25 +12,24 @@ class Bookmarks extends Component {
   render() {
     const bms = this.props.bms.map(bm => (
       <tr key={bm._id}>
-        <td>
-          <img src="{bm.url}/favicon.ico" alt="" />
-        </td>
-        <td>
-          <Link to={bm.url}>{bm.title}</Link>
+        <td>{<img src={bm.url + "/favicon.ico"} height="32px" alt="" />}</td>
+        <td className="td__left">
+          <a href={bm.url}>{bm.title}</a>
         </td>
         {/* <td>{bm.added}</td> */}
         <td>
-          <button onClick={this.onDeleteClick.bind(this, bm._id)}>
+          <button
+            onClick={this.onDeleteClick.bind(this, bm._id)}
+            className="btn__delete-mini"
+          >
             Delete
           </button>
         </td>
       </tr>
     ));
-
     return (
       <div>
-        <h4>Bookmarks</h4>
-        <table>
+        <table className="table">
           <thead>{bms}</thead>
         </table>
       </div>

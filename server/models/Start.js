@@ -12,10 +12,10 @@ const StartSchema = new Schema({
     required: true,
     max: 40
   },
-  // tags: {
-  //   type: [String],
-  //   required: true
-  // },
+  folders: {
+    type: [String],
+    required: true
+  },
   bookmarks: [
     {
       title: {
@@ -29,7 +29,7 @@ const StartSchema = new Schema({
       icon: {
         type: String
       },
-      tag: {
+      folder: {
         type: String
       },
       color: {

@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styles from "../auth/Auth.module.css";
 
 const TextAreaFieldGroup = ({
   name,
@@ -11,15 +10,15 @@ const TextAreaFieldGroup = ({
   onChange
 }) => {
   return (
-    <div className={styles.input__space}>
+    <div className="input__space">
       <textarea
-        className={error ? styles.input__warning : styles.input}
+        className={error ? "input__warning" : "input"}
         placeholder={placeholder}
         name={name}
         value={value}
         onChange={onChange}
       />
-      {error && <div className={styles.input__error}>* {error}</div>}
+      {error && <div className="input__error">* {error}</div>}
     </div>
   );
 };

@@ -20,23 +20,21 @@ class Header extends Component {
 
     const authLinks = (
       <ul>
-        <Link to="#" onClick={this.onLogoutClick.bind(this)}>
-          Log Out
-        </Link>
+        <li>
+          <Link to="#" onClick={this.onLogoutClick.bind(this)}>
+            Log Out
+          </Link>
+        </li>
       </ul>
     );
 
     const guestLinks = (
       <ul>
         <li>
-          <NavLink to="/login" activeClassName="selected">
-            Login
-          </NavLink>
+          <NavLink to="/login">Login</NavLink>
         </li>
         <li>
-          <NavLink to="/register" activeClassName="selected">
-            Sign Up
-          </NavLink>
+          <NavLink to="/register">Sign Up</NavLink>
         </li>
       </ul>
     );

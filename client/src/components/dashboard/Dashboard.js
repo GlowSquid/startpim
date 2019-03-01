@@ -31,15 +31,18 @@ class Dashboard extends Component {
       if (Object.keys(start).length > 0) {
         dashboardContent = (
           <div>
-            <h4 className="head">
+            <h4>
               Welcome {user.username} {start.handle}!
             </h4>
             <DashboardActions />
             {/* bookmark display here */}
             <Bookmarks bms={start.bookmarks} />
-            <div style={{ marginBottom: "60px" }}>
+            <div className="settings">
+              <Link to="/edit-handle">
+                <button className="btn__mini">Edit Handle</button>
+              </Link>
               <button
-                className="mini__btn_danger"
+                className="btn__delete"
                 onClick={this.onDeleteClick.bind(this)}
               >
                 Delete Account
@@ -64,10 +67,8 @@ class Dashboard extends Component {
 
     return (
       <div className="dashboard">
-        <div className="row">
-          <h1 className="head">Dashboard</h1>
-          {dashboardContent}
-        </div>
+        <h1 className="head">Bookmarks</h1>
+        {dashboardContent}
       </div>
     );
   }

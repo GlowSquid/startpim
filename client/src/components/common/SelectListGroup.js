@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styles from "../auth/Auth.module.css";
 
 const SelectListGroup = ({ name, value, error, onChange, options }) => {
   const selectOptions = options.map(option => (
@@ -9,16 +8,16 @@ const SelectListGroup = ({ name, value, error, onChange, options }) => {
     </option>
   ));
   return (
-    <div className={styles.input__space}>
+    <div className="input__space">
       <select
-        className={error ? styles.input__warning : styles.input}
+        className={error ? "input__warning" : "input"}
         name={name}
         value={value}
         onChange={onChange}
       >
         {selectOptions}
       </select>
-      {error && <div className={styles.input__error}>* {error}</div>}
+      {error && <div className="input__error">* {error}</div>}
     </div>
   );
 };
