@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 function TextFieldGroup({
   name,
@@ -11,12 +11,11 @@ function TextFieldGroup({
   type,
   onChange,
   disabled
-  // classname
 }) {
   return (
     <div className="input__space">
       <input
-        className={error ? "input__warning" : "input"}
+        className={error ? 'input__warning' : 'input'}
         type={type}
         placeholder={placeholder}
         name={name}
@@ -42,7 +41,7 @@ TextFieldGroup.propTypes = {
 };
 
 TextFieldGroup.defaultProps = {
-  type: "text"
+  type: 'text'
 };
 
 export default TextFieldGroup;

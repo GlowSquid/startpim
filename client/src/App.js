@@ -1,26 +1,26 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Provider } from "react-redux";
-import jwt_decode from "jwt-decode";
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import jwt_decode from 'jwt-decode';
 
-import setAuthToken from "./utils/setAuthToken";
-import { setCurrentUser, logoutUser } from "./actions/authActions";
-import { clearCurrentStart } from "./actions/startActions";
-import store from "./store";
+import setAuthToken from './utils/setAuthToken';
+import { setCurrentUser, logoutUser } from './actions/authActions';
+import { clearCurrentStart } from './actions/startActions';
+import store from './store';
 
-import PrivateRoute from "./components/common/PrivateRoute";
+import PrivateRoute from './components/common/PrivateRoute';
 
-import Header from "./components/header/Header";
-import Footer from "./components/Footer/Footer";
-import Landing from "./components/landing/Landing";
-import Login from "./components/auth/Login";
-import Register from "./components/auth/Register";
-import Dashboard from "./components/dashboard/Dashboard";
-import CreateHandle from "./components/create-handle/CreateHandle";
-import EditHandle from "./components/edit-handle/EditHandle";
-import AddBookmark from "./components/bookmarks/AddBookmark";
+import Header from './components/header/Header';
+import Footer from './components/Footer/Footer';
+import Landing from './components/landing/Landing';
+import Login from './components/auth/Login';
+import Register from './components/auth/Register';
+import Dashboard from './components/dashboard/Dashboard';
+import CreateHandle from './components/create-handle/CreateHandle';
+import EditHandle from './components/edit-handle/EditHandle';
+import AddBookmark from './components/bookmarks/AddBookmark';
 
-import "./App.css";
+import './App.css';
 
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
@@ -33,7 +33,7 @@ if (localStorage.jwtToken) {
     store.dispatch(logoutUser());
     // clear current profile
     store.dispatch(clearCurrentStart());
-    window.location.href = "/login";
+    window.location.href = '/login';
   }
 }
 
