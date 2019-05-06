@@ -1,0 +1,27 @@
+.section {
+  /* display: block; */
+  margin: 0% 20%;
+  padding: 5% 10%;
+  background: #cecece;
+  border: 3px solid #a8a8a8;
+  border-radius: 20px;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 3px 3px 6px #00000080;
+}
+
+.section h1 {
+  padding-bottom: 4%;
+}
+
+.menu {
+  display: -webkit-flex;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.menu p {
+  padding: 3px;
+}
