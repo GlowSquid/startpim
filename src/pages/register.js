@@ -1,54 +1,54 @@
 import { Fragment, useState } from "react";
-import fetch from "isomorphic-unfetch";
 import Router from "next/router";
-import Layout from "../components/Layout";
+import Link from "next/link";
+import { connect } from "react-redux";
+import { register } from "../actions/account";
+// import fetchStates from "../reducers/fetchStates";
 
+import Layout from "../components/Layout";
 import "../styles/Auth.css";
 
-const Register = () => {
+let clicked = false;
+
+const Register = ({ register, account }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
     password2: ""
   });
 
+  const [showData, setShowData] = useState();
+
   const { email, password, password2 } = formData;
 
-  const onChange = e =>
+  const onChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    setShowData("");
+  };
 
-  const [showData, setShowData] = useState("");
-
-  const onSubmit = e => {
+  const onSubmit = async e => {
     e.preventDefault();
     if (password !== password2) {
       setShowData("Passwords doesn't match");
     } else {
-      console.log(formData);
-
-      const options = {
-        method: "POST",
-        headers: { "Content-Type": "Application/json" },
-        body: JSON.stringify({ email, password }),
-        credentials: "include"
-      };
-
-      fetch("/api/register", options)
-        .then(async res => await res.json())
-        .then(data => {
-          if (data.type === "error") {
-            setShowData("Email already exist");
-          } else {
-            setShowData("");
-            console.log(data.message);
-            Router.push("/login");
-          }
-        })
-        .catch(Error => {
-          console.log("Error: ", Error);
-        });
+      register(formData);
+      // console.log(account.message); // "invalid session"
+      clicked = true;
     }
   };
+
+  if (
+    clicked === true &&
+    account.message !== null &&
+    account.status === "error"
+  ) {
+    setShowData(account.message);
+    clicked = false;
+  }
+
+  if (account.loggedIn === true) {
+    Router.push("/dashboard");
+  }
 
   return (
     <Layout>
@@ -81,12 +81,21 @@ const Register = () => {
             required
           />
           <p className="error">{showData}</p>
+          <br />
           <input type="submit" className="btn" value="Register" />
         </form>
-        <p>Already a registered user? Login</p>
+        <p>
+          Already a registered user?{" "}
+          <Link href="/login">
+            <a>Login</a>
+          </Link>
+        </p>
       </Fragment>
     </Layout>
   );
 };
 
-export default Register;
+export default connect(
+  ({ account }) => ({ account }),
+  { register }
+)(Register);

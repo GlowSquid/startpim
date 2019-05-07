@@ -9,7 +9,7 @@ function Index() {
     <Layout>
       <div className="bumper">
         <div className="section">
-          <h1>StartPage</h1>
+          <h1>Landing Page</h1>
           <div className="menu">
             <p>
               <Link href="/dashboard">

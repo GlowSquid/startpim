@@ -16,7 +16,7 @@ const Header = () => {
         <div className="nav-center">
           <h1>
             <Link href="/">
-              <a className="navbar-brand">Next.js</a>
+              <a className="navbar-brand">StartPIM</a>
             </Link>
           </h1>
 

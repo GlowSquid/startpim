@@ -1,12 +1,10 @@
 import { ACCOUNT } from "./types";
 import { BACKEND } from "../config";
 // import { useState, useEffect } from "react";
-// import fetch from "isomorphic-unfetch";
-
-// const BACKEND = "http://localhost:4000/api";
+import fetch from "isomorphic-unfetch";
 
 // register
-// login
+// V login
 // logout
 // delete account
 // check auth

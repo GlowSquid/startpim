@@ -1,13 +1,17 @@
 import { Fragment, useState } from "react";
 // import fetch from "isomorphic-unfetch";
-// import Router from "next/router";
+import Router from "next/router";
+import Link from "next/link";
 import { connect } from "react-redux";
 import { login } from "../actions/account";
+// import fetchStates from "../reducers/fetchStates";
 
 import Layout from "../components/Layout";
 import "../styles/Auth.css";
 
-const Login = ({ login }) => {
+let clicked = false;
+
+const Login = ({ login, account }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: ""
@@ -25,8 +29,23 @@ const Login = ({ login }) => {
   const onSubmit = async e => {
     e.preventDefault();
     login(formData);
-    // if error setShowData(error)
+    clicked = true;
+    // console.log(account.loggedIn);
   };
+
+  // execute this once per try
+  if (
+    clicked === true &&
+    account.message === "Incorrect email or password" &&
+    account.status === "error"
+  ) {
+    setShowData(account.message);
+    clicked = false;
+  }
+
+  if (account.loggedIn === true) {
+    Router.push("/dashboard");
+  }
 
   return (
     <Layout>
@@ -52,10 +71,14 @@ const Login = ({ login }) => {
           />
           <p className="error">{showData}</p>
           <br />
-          {/* {showData} */}
           <input type="submit" className="btn" value="Login" />
         </form>
-        <p>Not yet registered? Sign up</p>
+        <p>
+          Not yet registered?{" "}
+          <Link href="/register">
+            <a>Sign Up</a>
+          </Link>
+        </p>
       </Fragment>
     </Layout>
   );
