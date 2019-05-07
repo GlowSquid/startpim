@@ -1,6 +1,0 @@
-export const GET_ERRORS = "GET_ERRORS";
-export const SET_CURRENT_USER = "SET_CURRENT_USER";
-export const GET_START = "GET_START";
-export const START_LOADING = "START_LOADING";
-export const START_NOT_FOUND = "START_NOT_FOUND";
-export const CLEAR_CURRENT_START = "CLEAR_CURRENT_START";

@@ -1,0 +1,26 @@
+{
+  "extends": "react",
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "rules": {
+    "no-console": "off",
+    "react/react-in-jsx-scope": "off",
+    "indent": [
+      "error",
+      2
+    ],
+    "space-before-function-paren": 0,
+    "operator-linebreak": "off",
+    "react/prop-types": 0,
+    "no-unused-expressions": "off",
+    "new-cap": "off"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}
