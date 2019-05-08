@@ -3,11 +3,12 @@ import Link from "next/link";
 import { connect } from "react-redux";
 import Router from "next/router";
 import { logout } from "../actions/account";
+// import { fetchAccountInfo } from "../actions/accountInfo"; // fetch email to page
 
 function Start({ logout, account }) {
   const pushOut = e => {
     logout();
-    Router.push("/");
+    Router.push("/"); // æ Did this crash?
   };
 
   return (

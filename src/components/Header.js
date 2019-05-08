@@ -16,15 +16,17 @@ const Header = () => {
         <div className="nav-center">
           <h1>
             <Link href="/">
-              <a className="navbar-brand">StartPIM</a>
+              <a className="navbar-brand">
+                Start<span>PIM</span>
+              </a>
             </Link>
           </h1>
 
           <nav className="navbar-items">
             <ul>
               <li className="btn">
-                <Link href="/add-bm">
-                  <a>New Bookmark</a>
+                <Link href="/bookmarks">
+                  <a>Bookmarks</a>
                 </Link>
               </li>
               <li className="btn">

@@ -2,7 +2,7 @@ function Footer() {
   return (
     <div>
       <p className="footer">
-        &copy; Copyright startpim.com {new Date().getFullYear()}
+        &copy; Copyright StartPIM.com {new Date().getFullYear()}
       </p>
     </div>
   );

@@ -34,7 +34,7 @@ body {
 }
 
 .navbar {
-  background: #160b36b3;
+  background: #4d384b;
   position: fixed;
   top: 0;
   left: 0;
@@ -42,7 +42,7 @@ body {
   width: 100%;
   height: 80px;
   line-height: 80px;
-  border-bottom: 1px solid #160b3767;
+  border-bottom: 1px solid #2e222d67;
 }
 
 .nav-box {
@@ -66,9 +66,13 @@ body {
   text-decoration: none;
   height: inherit;
   line-height: inherit;
-  color: #eee;
+  color: #deb887;
   padding-left: 20%;
   font-size: 28px;
+}
+
+.navbar-brand span {
+  color: #fca429;
 }
 
 .navbar ul {
@@ -86,7 +90,7 @@ body {
 
 .navbar ul li a {
   text-decoration: none;
-  color: #f4f4f4;
+  color: #eee;
   cursor: pointer;
   /* text-shadow: 0px 0px 10px #d7d5f3; */
 }
@@ -183,7 +187,7 @@ body {
   .navbar .navbar-toggler span::after {
     display: block;
     content: "";
-    background-color: #eee;
+    background-color: #fca429;
     height: 3px;
     width: 28px;
     border-radius: 4px;
@@ -214,10 +218,11 @@ body {
 
 .footer {
   text-align: center;
-  background: #160b36b3;
-  border-top: 1px solid #160b3767;
-  color: #eee;
+  background: #4d384b;
+  border-top: 1px solid #2e222d67;
+  color: #deb887;
   position: absolute;
+  /* padding-right: 10px; */
   left: 0;
   right: 0;
   bottom: 0;

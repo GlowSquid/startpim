@@ -3,9 +3,9 @@ import { BACKEND } from "../config";
 // import { useState, useEffect } from "react";
 import fetch from "isomorphic-unfetch";
 
-// register
+// V register
 // V login
-// logout
+// V logout
 // delete account
 // check auth
 
