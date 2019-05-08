@@ -23,9 +23,17 @@ const Header = () => {
           <nav className="navbar-items">
             <ul>
               <li className="btn">
-                <Link href="/dashboard">
-                  <a>Dashboard</a>
+                <Link href="/add-bm">
+                  <a>New Bookmark</a>
                 </Link>
+              </li>
+              <li className="btn">
+                <Link href="/settings">
+                  <a>Settings</a>
+                </Link>
+              </li>
+              <li className="btn">
+                <a>Log Out</a>
               </li>
               <li className="btn">
                 <Link href="/login">
@@ -36,9 +44,6 @@ const Header = () => {
                 <Link href="/register">
                   <a>Sign Up</a>
                 </Link>
-              </li>
-              <li>
-                <a>☾☽☀️</a>
               </li>
             </ul>
             <button className={toggler} onClick={e => toggle(e)}>

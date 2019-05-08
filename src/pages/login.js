@@ -4,7 +4,6 @@ import Router from "next/router";
 import Link from "next/link";
 import { connect } from "react-redux";
 import { login } from "../actions/account";
-// import fetchStates from "../reducers/fetchStates";
 
 import Layout from "../components/Layout";
 import "../styles/Auth.css";
@@ -33,7 +32,7 @@ const Login = ({ login, account }) => {
     // console.log(account.loggedIn);
   };
 
-  // execute this once per try
+  // execute once per try
   if (
     clicked === true &&
     account.message === "Incorrect email or password" &&
@@ -44,7 +43,7 @@ const Login = ({ login, account }) => {
   }
 
   if (account.loggedIn === true) {
-    Router.push("/dashboard");
+    Router.push("/");
   }
 
   return (

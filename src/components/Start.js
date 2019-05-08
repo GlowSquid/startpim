@@ -1,16 +1,18 @@
 import Layout from "../components/Layout";
 import Link from "next/link";
 import { connect } from "react-redux";
+import Router from "next/router";
 import { logout } from "../actions/account";
 
-function Start({ logout }) {
-  // if (account.loggedIn === false) {
-  //   Router.push("/login");
-  // }
+function Start({ logout, account }) {
+  const pushOut = e => {
+    logout();
+    Router.push("/");
+  };
 
   return (
     <Layout>
-      <h1 className="bumper">Account Dashboard</h1>
+      <h1 className="bumper">Private Start</h1>
       <p>
         <Link href="/">
           <a>Landing</a>
@@ -26,14 +28,20 @@ function Start({ logout }) {
           <a>Login</a>
         </Link>
       </p>
-      <button className="btn" onClick={logout}>
+      <button className="btn" onClick={e => pushOut(e)}>
         Log Out
       </button>
+      {/* <span onClick={() => Router.push('/about')}>here</span> */}
     </Layout>
   );
 }
 
+// export default connect(
+//   null,
+//   { logout }
+// )(Start);
+
 export default connect(
-  null,
+  ({ account }) => ({ account }),
   { logout }
 )(Start);

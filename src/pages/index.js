@@ -1,36 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
-import Layout from "../components/Layout";
-import Link from "next/link";
-import "../styles/Start.css";
+import Start from "../components/Start";
+import Index from "../components/Landing";
 
-function Index() {
-  return (
-    <Layout>
-      <div className="bumper">
-        <div className="section">
-          <h1>Landing Page</h1>
-          <div className="menu">
-            <p>
-              <Link href="/dashboard">
-                <a>Dashboard</a>
-              </Link>
-            </p>
-            <p>
-              <Link href="/register">
-                <a>Register</a>
-              </Link>
-            </p>
-            <p>
-              <Link href="/login">
-                <a>Login</a>
-              </Link>
-            </p>
-          </div>
-        </div>
-      </div>
-    </Layout>
-  );
+function Root({ account }) {
+  return account.loggedIn ? <Start /> : <Index />;
 }
 
-export default connect()(Index);
+export default connect(
+  ({ account }) => ({ account }),
+  null
+)(Root);
