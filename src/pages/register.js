@@ -47,7 +47,7 @@ const Register = ({ register, account }) => {
   }
 
   if (account.loggedIn === true) {
-    Router.push("/dashboard");
+    Router.push("/");
   }
 
   return (

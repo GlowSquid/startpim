@@ -4,7 +4,6 @@
 // import { Provider } from "react-redux";
 
 // import { fetchAuthenticated } from "../actions/account";
-// import Root from "../components/Root";
 
 // class MyApp extends App {
 //   render() {
@@ -17,8 +16,6 @@
 //       <Container>
 //         <Provider store={reduxStore}>
 //           <Component {...pageProps} />
-//           {/* <Route exact path='/' component={Root} /> */}
-//           {/* <Root /> */}
 //         </Provider>
 //       </Container>
 //     );
@@ -35,8 +32,8 @@ import { Provider } from "react-redux";
 import { fetchAuthenticated } from "../actions/account";
 // import Root from "../components/Root";
 
-// const MyApp = (App) => {
-function MyApp({ Component, pageProps, reduxStore }) {
+const MyApp = ({ Component, pageProps, reduxStore }) => {
+  // function MyApp({ Component, pageProps, reduxStore }) {
   reduxStore.dispatch(fetchAuthenticated());
 
   return (
@@ -48,6 +45,6 @@ function MyApp({ Component, pageProps, reduxStore }) {
       </Provider>
     </Container>
   );
-}
+};
 
 export default withReduxStore(MyApp);
