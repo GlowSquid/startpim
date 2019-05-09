@@ -1,6 +1,6 @@
 // id              SERIAL PRIMARY KEY,
-// title           CHARACTER(128),
 // url             CHARACTER(255),
+// title           CHARACTER(128),
 // icon            CHARACTER(36),
 // folder          CHARACTER(36),
 // description     CHARACTER(255),
@@ -10,18 +10,25 @@
 const { Router } = require("express");
 // const { setSession, authenticatedAccount } = require("./helper");
 const BmTable = require("../bm/table");
+const bmValidate = require("../validation/bm");
 
 const router = new Router();
 
 router.post("/add-bm", (req, res, next) => {
-  const { title, url } = req.body;
+  const { url, title } = req.body;
+  const { error, isValid } = bmValidate(req.body);
 
-  BmTable.getBm({ title })
+  if (!isValid) {
+    error.statusCode = 400;
+    throw error;
+  }
+
+  BmTable.getBm({ url })
     .then(({ bm }) => {
       if (!bm) {
-        return BmTable.storeBm({ title, url });
+        return BmTable.storeBm({ url, title });
       } else {
-        const error = new Error("This bookmark is already stored");
+        const error = new Error("This URL is already stored");
 
         error.statusCode = 409;
 

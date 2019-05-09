@@ -1,7 +1,7 @@
 CREATE TABLE bm(
   id              SERIAL PRIMARY KEY,
-  title           CHARACTER(128),
   url             CHARACTER(255),
+  title           CHARACTER(128),
   icon            CHARACTER(36),
   folder          CHARACTER(36),
   description     CHARACTER(255)

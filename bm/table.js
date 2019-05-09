@@ -11,12 +11,12 @@ const pool = require("../dbPool");
 
 class BmTable {
   // saving bm
-  static storeBm({ title, url }) {
+  static storeBm({ url, title }) {
     return new Promise((resolve, reject) => {
       pool.query(
-        `INSERT INTO bm(title, url)
+        `INSERT INTO bm(url, title)
         VALUES($1, $2)`,
-        [title, url],
+        [url, title],
         (error, response) => {
           if (error) return reject(error);
 
@@ -26,13 +26,13 @@ class BmTable {
     });
   }
 
-  // reading bm
-  static getBm({ title }) {
+  // verify bm
+  static getBm({ url }) {
     return new Promise((resolve, reject) => {
       pool.query(
-        `SELECT id, title, url FROM bm
-        WHERE title = $1`,
-        [title],
+        `SELECT id, url, title FROM bm
+        WHERE url = $1`,
+        [url],
         (error, response) => {
           if (error) return reject(error);
 
@@ -41,6 +41,8 @@ class BmTable {
       );
     });
   }
+
+  // read bm
 
   // update bm
 

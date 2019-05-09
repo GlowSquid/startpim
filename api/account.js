@@ -3,11 +3,20 @@ const { hash } = require("../account/helper");
 const Session = require("../account/session");
 const { setSession, authenticatedAccount } = require("./helper");
 const AccountTable = require("../account/table");
+const registerValidate = require("../validation/register");
+const loginValidate = require("../validation/login");
 
 const router = new Router();
 
 router.post("/register", (req, res, next) => {
   const { email, password } = req.body;
+
+  const { error, isValid } = registerValidate(req.body);
+
+  if (!isValid) {
+    error.statusCode = 400;
+    throw error;
+  }
 
   const emailHash = hash(email);
   const passwordHash = hash(password);
@@ -33,6 +42,12 @@ router.post("/register", (req, res, next) => {
 
 router.post("/login", (req, res, next) => {
   const { email, password } = req.body;
+  const { error, isValid } = loginValidate(req.body);
+
+  if (!isValid) {
+    error.statusCode = 400;
+    throw error;
+  }
 
   AccountTable.getAccount({ emailHash: hash(email) })
     .then(({ account }) => {
