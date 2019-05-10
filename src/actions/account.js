@@ -7,7 +7,7 @@ import fetch from "isomorphic-unfetch";
 // V login
 // V logout
 // delete account
-// check auth
+// ~V check auth
 
 export const fetchFromAccount = ({
   endpoint,
@@ -65,6 +65,20 @@ export const logout = () =>
     FETCH_TYPE: ACCOUNT.FETCH,
     ERROR_TYPE: ACCOUNT.FETCH_ERROR,
     SUCCESS_TYPE: ACCOUNT.FETCH_LOGOUT_SUCCESS
+  });
+
+export const drop = ({ email, password }) =>
+  fetchFromAccount({
+    endpoint: "delete",
+    options: {
+      method: "DELETE",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password })
+    },
+    FETCH_TYPE: ACCOUNT.FETCH,
+    ERROR_TYPE: ACCOUNT.FETCH_ERROR,
+    SUCCESS_TYPE: ACCOUNT.FETCH_DELETE_SUCCESS
   });
 
 export const fetchAuthenticated = () =>

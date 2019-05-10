@@ -16,6 +16,41 @@ class AccountTable {
     });
   }
 
+  // delete account
+  static dropAccount({ emailHash }) {
+    return new Promise((resolve, reject) => {
+      pool.query(
+        // `DELETE FROM account WHERE "emailHash" = $1`, // works
+        `UPDATE account SET "emailHash" = NULL, "passwordHash" = NULL, "sessionId" = NULL
+        WHERE "emailHash" = $1`,
+
+        // `UPDATE "emailHash", "passwordHash", "sessionId" FROM account
+        // WHERE "emailHash" = $1`,
+        [emailHash],
+        (error, response) => {
+          if (error) return reject(error);
+
+          resolve();
+        }
+      );
+    });
+  }
+
+  // Drop account
+  // static updateSessionId({ sessionId, emailHash }) {
+  //   return new Promise((resolve, reject) => {
+  //     pool.query(
+  //       'UPDATE account SET "sessionId" = NULL WHERE "emailHash" = $2',
+  //       [sessionId, emailHash],
+  //       (error, response) => {
+  //         if (error) return reject(error);
+
+  //         resolve();
+  //       }
+  //     );
+  //   });
+  // }
+
   static getAccount({ emailHash }) {
     return new Promise((resolve, reject) => {
       pool.query(

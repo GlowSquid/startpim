@@ -16,8 +16,8 @@ function Index() {
           <h1>Landing Page</h1>
           <div className="menu">
             <p>
-              <Link href="/start">
-                <a>Account Start</a>
+              <Link href="/bookmarks">
+                <a>Bookmarks</a>
               </Link>
             </p>
             <p>

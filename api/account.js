@@ -10,26 +10,31 @@ const router = new Router();
 
 router.post("/register", (req, res, next) => {
   const { email, password } = req.body;
+  const { errors, isValid } = registerValidate(req.body);
 
-  const { error, isValid } = registerValidate(req.body);
-
-  if (!isValid) {
-    error.statusCode = 400;
-    throw error;
-  }
+  // if (!isValid) {
+  //   errors.statusCode = 400;
+  //   throw errors;
+  // }
 
   const emailHash = hash(email);
   const passwordHash = hash(password);
 
   AccountTable.getAccount({ emailHash })
+    // .then(() => {
+    //   if (!isValid) {
+    //     // const error = new Error(JSON.stringify(errors));
+    //     // const error = errors;
+    //     errors.statusCode = 400;
+    //     throw errors;
+    //   }
+    // })
     .then(({ account }) => {
       if (!account) {
         return AccountTable.storeAccount({ emailHash, passwordHash });
       } else {
         const error = new Error("This email has already been taken");
-
         error.statusCode = 409;
-
         throw error;
       }
     })
@@ -37,6 +42,27 @@ router.post("/register", (req, res, next) => {
       return setSession({ email, res });
     })
     .then(({ message }) => res.json({ message }))
+    .catch(error => next(error));
+});
+
+// delete account
+router.delete("/delete", (req, res, next) => {
+  const { email, password } = req.body;
+  const emailHash = hash(email);
+  AccountTable.getAccount({ emailHash: hash(email) })
+    .then(({ account }) => {
+      if (account && account.passwordHash === hash(password)) {
+        return AccountTable.dropAccount({ emailHash });
+      } else {
+        const error = new Error("Invalid account credentials");
+        error.statusCode = 409;
+        throw error;
+      }
+    })
+    .then(() => {
+      res.clearCookie("sessionString");
+      res.json({ message: "Account deleted" });
+    })
     .catch(error => next(error));
 });
 
@@ -75,9 +101,7 @@ router.get("/logout", (req, res, next) => {
     emailHash: hash(email)
   })
     .then(() => {
-      // removeSession({ res });
       res.clearCookie("sessionString");
-
       res.json({ message: "Logout Success" });
     })
     .catch(error => next(error));

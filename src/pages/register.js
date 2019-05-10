@@ -32,7 +32,7 @@ const Register = ({ register, account }) => {
       setShowData("Passwords doesn't match");
     } else {
       register(formData);
-      // console.log(account.message); // "invalid session"
+
       clicked = true;
     }
   };
@@ -43,6 +43,9 @@ const Register = ({ register, account }) => {
     account.status === "error"
   ) {
     setShowData(account.message);
+    console.log(account);
+    console.log(account.type);
+    console.log(account.status);
     clicked = false;
   }
 
