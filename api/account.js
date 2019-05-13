@@ -10,38 +10,35 @@ const router = new Router();
 
 router.post("/register", (req, res, next) => {
   const { email, password } = req.body;
-  const { errors, isValid } = registerValidate(req.body);
-
-  // if (!isValid) {
-  //   errors.statusCode = 400;
-  //   throw errors;
-  // }
 
   const emailHash = hash(email);
   const passwordHash = hash(password);
 
   AccountTable.getAccount({ emailHash })
-    // .then(() => {
-    //   if (!isValid) {
-    //     // const error = new Error(JSON.stringify(errors));
-    //     // const error = errors;
-    //     errors.statusCode = 400;
-    //     throw errors;
-    //   }
-    // })
+
     .then(({ account }) => {
       if (!account) {
+        const { errors, isValid } = registerValidate(req.body);
+        if (!isValid) {
+          // const error = new Error(JSON.stringify(errors));
+          let error = new Error(errors);
+          error.statusCode = 400;
+          throw error;
+        }
         return AccountTable.storeAccount({ emailHash, passwordHash });
       } else {
-        const error = new Error("This email has already been taken");
-        error.statusCode = 409;
-        throw error;
+        const err = new Error("This email has already been taken");
+        err.statusCode = 409;
+        throw err;
       }
     })
     .then(() => {
       return setSession({ email, res });
     })
     .then(({ message }) => res.json({ message }))
+    .then(() => {
+      // res.json({ message: error });
+    })
     .catch(error => next(error));
 });
 

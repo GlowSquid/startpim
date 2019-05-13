@@ -1,3 +1,27 @@
 .error {
   color: red;
 }
+
+.auth {
+  display: block;
+  margin: 0 auto;
+  width: 500px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form input {
+  font: inherit;
+  box-sizing: border-box;
+  /* width: 50%; */
+  background: #fff;
+  color: #464646;
+  border: 1px solid #fff;
+  border-bottom: 1px solid #deb887;
+  box-shadow: 1px 2px 1px rgba(0, 64, 0, 0.5);
+  padding: 5px;
+  /* margin-top: 1rem; */
+}
