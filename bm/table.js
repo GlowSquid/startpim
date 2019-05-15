@@ -11,16 +11,19 @@ const pool = require("../dbPool");
 
 class BmTable {
   // saving bm
-  static storeBm({ url, title }) {
+  static storeBm(bm) {
+    const { url, title } = bm;
     return new Promise((resolve, reject) => {
       pool.query(
         `INSERT INTO bm(url, title)
-        VALUES($1, $2)`,
+        VALUES($1, $2) RETURNING id`,
         [url, title],
         (error, response) => {
           if (error) return reject(error);
-
-          resolve();
+          // resolve();
+          const bmId = response.rows[0].id;
+          resolve({ bmId });
+          // resolve({ id: bmId });
         }
       );
     });

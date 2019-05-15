@@ -114,7 +114,7 @@ router.get("/authenticated", (req, res, next) => {
 
 router.get("/info", (req, res, next) => {
   authenticatedAccount({ sessionString: req.cookies.sessionString })
-    .then(({ account, email }) => {
+    .then(({ email }) => {
       res.json({ info: { email } });
     })
     .catch(error => next(error));

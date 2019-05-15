@@ -8,35 +8,48 @@
 // updated         TIMESTAMP NOT NULL
 
 const { Router } = require("express");
-// const { setSession, authenticatedAccount } = require("./helper");
 const BmTable = require("../bm/table");
-const bmValidate = require("../validation/bm");
+const AccountTable = require("../account/table");
+const AccountBMTable = require("../accountBM/table");
+const { authenticatedAccount } = require("./helper");
+// const bmValidate = require("../validation/bm");
 
 const router = new Router();
 
 router.post("/add-bm", (req, res, next) => {
+  let accountId, bm;
   const { url, title } = req.body;
-  const { error, isValid } = bmValidate(req.body);
 
-  if (!isValid) {
-    error.statusCode = 400;
-    throw error;
-  }
+  authenticatedAccount({ sessionString: req.cookies.sessionString })
+    .then(({ account }) => {
+      accountId = account.id;
 
-  BmTable.getBm({ url })
-    .then(({ bm }) => {
-      if (!bm) {
-        return BmTable.storeBm({ url, title });
-      } else {
-        const error = new Error("This URL is already stored");
-
-        error.statusCode = 409;
-
-        throw error;
-      }
+      bm = { url, title };
+      // return BmTable.getBm({ url, title});
+      return BmTable.storeBm(bm);
     })
+    // .then(({ bm }) => {
+    //   if (!bm) {
+    //     return BmTable.storeBm(bm);
+    //   } else {
+    //     const error = new Error("This URL is already stored");
+    //     error.statusCode = 409;
+    //     throw error;
+    //   }
+    // })
+    .then(({ bmId }) => {
+      // console.log("bm: ", bm); // url & title
+      // console.log("bm.id: ", bm.id); // undefined
+      // console.log("bmId: ", bmId); // undefined
+      // console.log("bm.bmId: ", bm.bmId); // undefined
+      bm.bmId = bmId;
 
-    .then(() => res.json({ message: "Bookmark successfully added" }))
+      return AccountBMTable.storeAccountBM({ accountId, bmId });
+    })
+    .then(() => {
+      // res.json({ bm });
+      res.json({ message: "Bookmark Added" });
+    })
     .catch(error => next(error));
 });
 

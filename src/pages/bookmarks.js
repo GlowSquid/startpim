@@ -42,7 +42,7 @@ const Bookmarks = ({ addBm, bm }) => {
   ) {
     setShowData(bm.message);
     clicked = false;
-  } else if (clicked === true && bm.message === "Bookmark successfully added") {
+  } else if (clicked === true && bm.message === "Bookmark Added") {
     setShowData(bm.message); // æ Should not be red color
     console.log("mess", bm.message);
     clicked = false;
