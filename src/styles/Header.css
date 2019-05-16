@@ -61,8 +61,9 @@
 }
 
 .navbar ul li a:hover {
-  color: #d7d5f3;
-  text-shadow: 0px 5px 10px #d7d5f3;
+  /* color: #fca429; */
+  color: #deb887;
+  text-shadow: 0px 5px 10px #fca429;
 }
 
 @media (max-width: 767px) {

@@ -9,7 +9,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 
 const accountRouter = require("../api/account");
-const bmRouter = require("../api/bm");
+const bookmarkRouter = require("../api/bookmark");
 
 const PORT = parseInt(process.env.PORT, 10) || 4000;
 
@@ -22,7 +22,7 @@ app
     server.use(cookieParser());
 
     server.use("/api", accountRouter);
-    server.use("/api/bm", bmRouter);
+    server.use("/api/bookmark", bookmarkRouter);
 
     // server.get("/p/:id", (req, res) => {
     //   const actualPage = "/post";

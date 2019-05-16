@@ -25,6 +25,12 @@ body {
   margin: 0 auto;
 }
 
+.page {
+  display: block;
+  margin: 0 auto;
+  width: 500px;
+}
+
 .bumper {
   padding-top: 110px;
 }

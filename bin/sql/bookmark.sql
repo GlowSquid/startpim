@@ -1,4 +1,4 @@
-CREATE TABLE bm(
+CREATE TABLE bookmark(
   id              SERIAL PRIMARY KEY,
   url             CHARACTER(255),
   title           CHARACTER(128),

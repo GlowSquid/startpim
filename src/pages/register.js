@@ -6,7 +6,7 @@ import { register } from "../actions/account";
 // import fetchStates from "../reducers/fetchStates";
 
 import Layout from "../components/Layout";
-import "../styles/Auth.css";
+import "../styles/Form.css";
 
 let clicked = false;
 
@@ -69,6 +69,7 @@ const Register = ({ register, account }) => {
               value={email}
               onChange={e => onChange(e)}
               // error={error.email}
+              className="input"
               required
             />
             <input
@@ -77,6 +78,7 @@ const Register = ({ register, account }) => {
               name="password"
               value={password}
               onChange={e => onChange(e)}
+              className="input"
               required
             />
             <input
@@ -85,6 +87,7 @@ const Register = ({ register, account }) => {
               name="password2"
               value={password2}
               onChange={e => onChange(e)}
+              className="input"
               required
             />
             <p className="error">{showData}</p>

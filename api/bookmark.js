@@ -8,43 +8,46 @@
 // updated         TIMESTAMP NOT NULL
 
 const { Router } = require("express");
-const BmTable = require("../bm/table");
+const BookmarkTable = require("../bookmark/table");
 const AccountTable = require("../account/table");
-const AccountBMTable = require("../accountBM/table");
+const AccountBookmarkTable = require("../accountBookmark/table");
 const { authenticatedAccount } = require("./helper");
-// const bmValidate = require("../validation/bm");
+// const bookmarkValidate = require("../validation/bookmark");
 
 const router = new Router();
 
-router.post("/add-bm", (req, res, next) => {
-  let accountId, bm;
+router.post("/add-bookmark", (req, res, next) => {
+  let accountId, bookmark;
   const { url, title } = req.body;
 
   authenticatedAccount({ sessionString: req.cookies.sessionString })
     .then(({ account }) => {
       accountId = account.id;
 
-      bm = { url, title };
-      // return BmTable.getBm({ url, title});
-      return BmTable.storeBm(bm);
+      bookmark = { url, title };
+      // return BookmarkTable.getBookmark({ url, title});
+      return BookmarkTable.storeBookmark(bookmark);
     })
-    // .then(({ bm }) => {
-    //   if (!bm) {
-    //     return BmTable.storeBm(bm);
+    // .then(({ bookmark }) => {
+    //   if (!bookmark) {
+    //     return BookmarkTable.storeBookmark(bookmark);
     //   } else {
     //     const error = new Error("This URL is already stored");
     //     error.statusCode = 409;
     //     throw error;
     //   }
     // })
-    .then(({ bmId }) => {
+    .then(({ bookmarkId }) => {
       // console.log("bm: ", bm); // url & title
       // console.log("bm.id: ", bm.id); // undefined
       // console.log("bmId: ", bmId); // undefined
       // console.log("bm.bmId: ", bm.bmId); // undefined
-      bm.bmId = bmId;
+      bookmark.bookmarkId = bookmarkId;
 
-      return AccountBMTable.storeAccountBM({ accountId, bmId });
+      return AccountBookmarkTable.storeAccountBookmark({
+        accountId,
+        bookmarkId
+      });
     })
     .then(() => {
       // res.json({ bm });

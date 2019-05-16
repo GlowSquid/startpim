@@ -3,6 +3,7 @@ const { hash } = require("../account/helper");
 const Session = require("../account/session");
 const { setSession, authenticatedAccount } = require("./helper");
 const AccountTable = require("../account/table");
+const AccountBookmarkTable = require("../accountBookmark/table");
 const registerValidate = require("../validation/register");
 const loginValidate = require("../validation/login");
 
@@ -109,6 +110,26 @@ router.get("/authenticated", (req, res, next) => {
     .then(({ authenticated }) => {
       res.json({ authenticated });
     })
+    .catch(error => next(error));
+});
+
+router.get("/bookmarks", (req, res, next) => {
+  authenticatedAccount({ sessionString: req.cookies.sessionString })
+    .then(({ account }) => {
+      return AccountBookmarkTable.getAccountBookmarks({
+        accountId: account.id
+      });
+    })
+    // .then(({ accountBookmarks }) => {
+    //   return Promise.all(
+    //     accountBookmarks.map(accountBookmark => {
+    //       bookmarkId = accountBookmark.bookmarkId
+    //     })
+    //   )
+    // })
+    // .then(bookmarks => {
+    //   res.json({ bookmarks });
+    // })
     .catch(error => next(error));
 });
 

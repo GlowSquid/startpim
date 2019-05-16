@@ -10,7 +10,7 @@
 - ~~loggedIn Checker~~
 - ~~logout functionality~~
 - ~~delete account~~
-- tie bookmarks to user
+- ~~tie bookmarks to user~~
 - ~~create bookmarks~~
 - read bookmarks
 - update bookmarks
@@ -18,7 +18,6 @@
 - ~~backend validation~~
 - frontend validation
 - spinner while authenticating
-- attach bookmarks to folder/tags
 - sorting bookmarks by date/alphabetically
 - autofetch favicon
 - autofetch title
@@ -30,6 +29,7 @@
 ## Phase 3+ - Possible features
 
 - Speed dial - favorite bookmarks
+- attach bookmarks to folder/tags
 - email/password change
 - email verification & password reset
 - admin page displaying server & user stats

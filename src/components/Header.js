@@ -1,33 +1,40 @@
 import Link from "next/link";
 import { connect } from "react-redux";
+import { logout } from "../actions/account";
+import Router from "next/router";
 
 import "../styles/Header.css";
 
-const Header = ({ account }) => {
+const Header = ({ logout, account }) => {
   let showLinks;
+
+  const pushOut = e => {
+    logout();
+    Router.push("/"); // æ Did this crash?
+  };
 
   if (account.loggedIn === true) {
     showLinks = (
       <>
-        <li className="btn">
+        <li>
           <Link href="/bookmarks">
             <a>Bookmarks</a>
           </Link>
         </li>
-        <li className="btn">
-          <a>Log Out</a>
+        <li>
+          <a onClick={e => pushOut(e)}>Log Out</a>
         </li>
       </>
     );
   } else {
     showLinks = (
       <>
-        <li className="btn">
+        <li>
           <Link href="/login">
             <a>Login</a>
           </Link>
         </li>
-        <li className="btn__sign-up">
+        <li>
           <Link href="/register">
             <a>Sign Up</a>
           </Link>
@@ -61,5 +68,5 @@ const Header = ({ account }) => {
 
 export default connect(
   ({ account }) => ({ account }),
-  null
+  { logout }
 )(Header);

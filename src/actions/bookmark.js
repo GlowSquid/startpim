@@ -1,4 +1,4 @@
-import { BM } from "./types";
+import { BOOKMARK } from "./types";
 import { BACKEND } from "../config";
 // import { useState, useEffect } from "react";
 import fetch from "isomorphic-unfetch";
@@ -12,7 +12,7 @@ import fetch from "isomorphic-unfetch";
 // added           TIMESTAMP NOT NULL,
 // updated         TIMESTAMP NOT NULL
 
-export const fetchFromBm = ({
+export const fetchFromBookmark = ({
   endpoint,
   options,
   FETCH_TYPE,
@@ -21,7 +21,7 @@ export const fetchFromBm = ({
 }) => async dispatch => {
   dispatch({ type: FETCH_TYPE });
 
-  return fetch(`${BACKEND.ADDRESS}/api/bm/${endpoint}`, options)
+  return fetch(`${BACKEND.ADDRESS}/api/bookmark/${endpoint}`, options)
     .then(response => response.json())
     .then(json => {
       if (json.type === "error") {
@@ -33,16 +33,16 @@ export const fetchFromBm = ({
     .catch(error => dispatch({ type: ERROR_TYPE, message: error.message }));
 };
 
-export const addBm = ({ title, url }) =>
-  fetchFromBm({
-    endpoint: "add-bm",
+export const addBookmark = ({ title, url }) =>
+  fetchFromBookmark({
+    endpoint: "add-bookmark",
     options: {
       method: "POST",
       credentials: "include", // æ
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ title, url })
     },
-    FETCH_TYPE: BM.FETCH,
-    ERROR_TYPE: BM.FETCH_ERROR,
-    SUCCESS_TYPE: BM.FETCH_SUCCESS
+    FETCH_TYPE: BOOKMARK.FETCH,
+    ERROR_TYPE: BOOKMARK.FETCH_ERROR,
+    SUCCESS_TYPE: BOOKMARK.FETCH_SUCCESS
   });

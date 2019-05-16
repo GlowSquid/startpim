@@ -9,37 +9,37 @@
 
 const pool = require("../dbPool");
 
-class BmTable {
+class BookmarkTable {
   // saving bm
-  static storeBm(bm) {
-    const { url, title } = bm;
+  static storeBookmark(bookmark) {
+    const { url, title } = bookmark;
     return new Promise((resolve, reject) => {
       pool.query(
-        `INSERT INTO bm(url, title)
+        `INSERT INTO bookmark(url, title)
         VALUES($1, $2) RETURNING id`,
         [url, title],
         (error, response) => {
           if (error) return reject(error);
           // resolve();
-          const bmId = response.rows[0].id;
-          resolve({ bmId });
-          // resolve({ id: bmId });
+          const bookmarkId = response.rows[0].id;
+          resolve({ bookmarkId });
+          // resolve({ id: bookmarkId });
         }
       );
     });
   }
 
   // verify bm
-  static getBm({ url }) {
+  static getBookmark({ url }) {
     return new Promise((resolve, reject) => {
       pool.query(
-        `SELECT id, url, title FROM bm
+        `SELECT id, url, title FROM bookmark
         WHERE url = $1`,
         [url],
         (error, response) => {
           if (error) return reject(error);
 
-          resolve({ bm: response.rows[0] });
+          resolve({ bookmark: response.rows[0] });
         }
       );
     });
@@ -52,4 +52,4 @@ class BmTable {
   // delete bm
 }
 
-module.exports = BmTable;
+module.exports = BookmarkTable;

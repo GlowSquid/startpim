@@ -2,11 +2,11 @@ import { Fragment, useState } from "react";
 import { connect } from "react-redux";
 import { drop } from "../actions/account";
 
-import "../styles/Auth.css";
+import "../styles/Form.css";
 
 let clicked = false;
 
-const DelAccount = ({ drop, account }) => {
+const AccountDelete = ({ drop, account }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: ""
@@ -42,7 +42,7 @@ const DelAccount = ({ drop, account }) => {
       <h1 className="bumper">Danger Zone</h1>
       <p>Confirm deleting your account</p>
       <p>
-        <strong>This action is irreversible!</strong>
+        <strong className="error">This action is irreversible!</strong>
       </p>
       <form className="form" onSubmit={e => onSubmit(e)}>
         <input
@@ -51,6 +51,7 @@ const DelAccount = ({ drop, account }) => {
           placeholder="Email"
           value={email}
           onChange={e => onChange(e)}
+          className="input"
           required
         />
         <input
@@ -59,14 +60,17 @@ const DelAccount = ({ drop, account }) => {
           name="password"
           value={password}
           onChange={e => onChange(e)}
+          className="input"
           required
         />
         <p className="error">{showData}</p>
-        <br />
-        <input type="submit" className="btn" value="Confirm Delete" />
-        <br />
+        <input
+          type="submit"
+          className="btn btn-danger"
+          value="Confirm Delete"
+        />
+        <div className="bumper" />
       </form>
-      <br />
     </Fragment>
   );
 };
@@ -74,4 +78,4 @@ const DelAccount = ({ drop, account }) => {
 export default connect(
   ({ account }) => ({ account }),
   { drop }
-)(DelAccount);
+)(AccountDelete);

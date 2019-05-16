@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { login } from "../actions/account";
 
 import Layout from "../components/Layout";
-import "../styles/Auth.css";
+import "../styles/Form.css";
 
 let clicked = false;
 
@@ -49,35 +49,39 @@ const Login = ({ login, account }) => {
   return (
     <Layout>
       <Fragment>
-        <h1 className="bumper">Login</h1>
-        <p>Sign in to your account</p>
-        <form className="form" onSubmit={e => onSubmit(e)}>
-          <input
-            type="text"
-            name="email"
-            placeholder="Email"
-            value={email}
-            onChange={e => onChange(e)}
-            required
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            name="password"
-            value={password}
-            onChange={e => onChange(e)}
-            required
-          />
-          <p className="error">{showData}</p>
-          <br />
-          <input type="submit" className="btn" value="Login" />
-        </form>
-        <p>
-          Not yet registered?{" "}
-          <Link href="/register">
-            <a>Sign Up</a>
-          </Link>
-        </p>
+        <div className="auth">
+          <h1 className="bumper">Login</h1>
+          <p>Sign in to your account</p>
+          <form className="form" onSubmit={e => onSubmit(e)}>
+            <input
+              type="text"
+              name="email"
+              placeholder="Email"
+              value={email}
+              onChange={e => onChange(e)}
+              className="input"
+              required
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              name="password"
+              value={password}
+              onChange={e => onChange(e)}
+              className="input"
+              required
+            />
+            <p className="error">{showData}</p>
+            <br />
+            <input type="submit" className="btn" value="Login" />
+          </form>
+          <p>
+            Not yet registered?{" "}
+            <Link href="/register">
+              <a>Sign Up</a>
+            </Link>
+          </p>
+        </div>
       </Fragment>
     </Layout>
   );

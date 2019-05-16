@@ -1,11 +1,11 @@
 const pool = require("../dbPool");
 
-class AccountBMTable {
-  static storeAccountBM({ accountId, bmId }) {
+class AccountBookmarkTable {
+  static storeAccountBookmark({ accountId, bookmarkId }) {
     return new Promise((resolve, reject) => {
       pool.query(
-        'INSERT INTO accountBM("accountId", "bmId") VALUES($1, $2)',
-        [accountId, bmId],
+        'INSERT INTO accountBookmark("accountId", "bookmarkId") VALUES($1, $2)',
+        [accountId, bookmarkId],
         (error, response) => {
           if (error) return reject(error);
 
@@ -15,25 +15,25 @@ class AccountBMTable {
     });
   }
 
-  static getAccountBM({ accountId }) {
+  static getAccountBookmarks({ accountId }) {
     return new Promise((resolve, reject) => {
       pool.query(
-        'SELECT "bmId" FROM accountBM WHERE "accountId" = $1',
+        'SELECT "bookmarkId" FROM accountBookmark WHERE "accountId" = $1',
         [accountId],
         (error, response) => {
           if (error) return reject(error);
 
-          resolve({ accountBM: response.rows });
+          resolve({ accountBookmark: response.rows });
         }
       );
     });
   }
 
-  static getBMAccount({ bmId }) {
+  static getBookmarkAccount({ bookmarkId }) {
     return new Promise((resolve, reject) => {
       pool.query(
-        'SELECT "accountId" FROM accountBM WHERE "bmId" = $1',
-        [bmId],
+        'SELECT "accountId" FROM accountBookmark WHERE "bookmarkId" = $1',
+        [bookmarkId],
         (error, response) => {
           if (error) return reject(error);
 
@@ -43,11 +43,11 @@ class AccountBMTable {
     });
   }
 
-  static updateBMAccount({ bmId, accountId }) {
+  static updateBookmarkAccount({ bookmarkId, accountId }) {
     return new Promise((resolve, reject) => {
       pool.query(
-        'UPDATE accountBM SET "accountId" = $1 WHERE "bmId" = $2',
-        [accountId, bmId],
+        'UPDATE accountBM SET "accountId" = $1 WHERE "bookmarkId" = $2',
+        [accountId, bookmarkId],
         (error, response) => {
           if (error) return reject(error);
 
@@ -58,11 +58,11 @@ class AccountBMTable {
   }
 }
 
-// AccountBMTable.storeAccountBM({
+// AccountBookmarkTable.storeAccountBookmark({
 //   accountId: 1,
-//   bmId: 1
+//   bookmarkId: 1
 // })
 //   .then(() => console.log("Success"))
 //   .catch(error => console.log(error));
 
-module.exports = AccountBMTable;
+module.exports = AccountBookmarkTable;

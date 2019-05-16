@@ -1,7 +1,7 @@
 const Validator = require("validator");
 const isEmpty = require("./is-empty");
 
-module.exports = function bmValidate(data) {
+module.exports = function bookmarkValidate(data) {
   let error = {};
 
   data.title = !isEmpty(data.title) ? data.title : "";

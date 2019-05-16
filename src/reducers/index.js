@@ -1,10 +1,12 @@
 import { combineReducers } from "redux";
 import account from "./account";
+import bookmark from "./bookmark";
+import accountBookmarks from "./accountBookmarks";
 import accountInfo from "./accountInfo";
-import bm from "./bm";
 
 export default combineReducers({
   account,
-  accountInfo,
-  bm
+  bookmark,
+  accountBookmarks,
+  accountInfo
 });
