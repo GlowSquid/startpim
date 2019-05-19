@@ -23,7 +23,7 @@ class AccountBookmarkTable {
         (error, response) => {
           if (error) return reject(error);
 
-          resolve({ accountBookmark: response.rows });
+          resolve({ accountBookmarks: response.rows });
         }
       );
     });

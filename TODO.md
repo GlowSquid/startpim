@@ -12,7 +12,7 @@
 - ~~delete account~~
 - ~~tie bookmarks to user~~
 - ~~create bookmarks~~
-- read bookmarks
+- ~~read bookmarks~~
 - update bookmarks
 - delete bookmarks
 - ~~backend validation~~
@@ -40,3 +40,4 @@
 ## Bugs
 
 trigger-happy authentication checker
+new bookmarks should appear instantly

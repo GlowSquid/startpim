@@ -1,5 +1,4 @@
 import { Fragment, useState } from "react";
-// import fetch from "isomorphic-unfetch";
 // import Router from "next/router";
 import Link from "next/link";
 import { connect } from "react-redux";
@@ -55,7 +54,7 @@ const Bookmarks = ({ addBookmark, bookmark }) => {
         <div className="auth">
           <h1 className="bumper">Bookmarks</h1>
           <i>- Display saved bms here</i>
-          {/* <AccountBookmarks /> */}
+          <AccountBookmarks />
           <h3>Add Bookmark</h3>
           <i>- Turn add-bookmark into modal</i>
           <form className="form" onSubmit={e => onSubmit(e)}>

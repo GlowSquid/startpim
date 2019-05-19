@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchAccountBookmarks } from "../actions/accountBookmarks";
+import Link from "next/link";
+import "../styles/Bookmarks.css";
 
 class AccountBookmarks extends Component {
   componentDidMount() {
@@ -9,23 +11,27 @@ class AccountBookmarks extends Component {
   }
 
   render() {
+    const bms = this.props.accountBookmarks.bookmarks.map(bookmark => (
+      <tr key={bookmark.bookmarkId}>
+        <td className="td__left">
+          <Link href={bookmark.url}>
+            <a>{bookmark.title}</a>
+          </Link>
+        </td>
+      </tr>
+    ));
+
     return (
       <div>
-        <h3>Account Bookmarks</h3>
-        {this.props.accountBookmarks.bookmarks.map(bookmark => {
-          return (
-            <div key={bookmark.bookmarkId}>
-              Test: {bookmark.url}
-              <hr />
-            </div>
-          );
-        })}
+        <table className="table">
+          <thead>{bms}</thead>
+        </table>
       </div>
     );
   }
 }
 
 export default connect(
-  ({ AccountBookmarks }) => ({ AccountBookmarks }),
+  ({ accountBookmarks }) => ({ accountBookmarks }),
   { fetchAccountBookmarks }
 )(AccountBookmarks);

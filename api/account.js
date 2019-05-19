@@ -6,6 +6,7 @@ const AccountTable = require("../account/table");
 const AccountBookmarkTable = require("../accountBookmark/table");
 const registerValidate = require("../validation/register");
 const loginValidate = require("../validation/login");
+const { readBookmark } = require("../bookmark/table");
 
 const router = new Router();
 
@@ -120,16 +121,18 @@ router.get("/bookmarks", (req, res, next) => {
         accountId: account.id
       });
     })
-    // .then(({ accountBookmarks }) => {
-    //   return Promise.all(
-    //     accountBookmarks.map(accountBookmark => {
-    //       bookmarkId = accountBookmark.bookmarkId
-    //     })
-    //   )
-    // })
-    // .then(bookmarks => {
-    //   res.json({ bookmarks });
-    // })
+    .then(({ accountBookmarks }) => {
+      return Promise.all(
+        accountBookmarks.map(accountBookmark => {
+          return readBookmark({
+            bookmarkId: accountBookmark.bookmarkId
+          });
+        })
+      );
+    })
+    .then(bookmarks => {
+      res.json({ bookmarks });
+    })
     .catch(error => next(error));
 });
 

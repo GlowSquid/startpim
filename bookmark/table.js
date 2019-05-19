@@ -45,6 +45,22 @@ class BookmarkTable {
     });
   }
 
+  static readBookmark({ bookmarkId }) {
+    return new Promise((resolve, reject) => {
+      pool.query(
+        "SELECT url, title FROM bookmark WHERE bookmark.id = $1",
+        [bookmarkId],
+        (error, response) => {
+          if (error) return reject(error);
+          if (response.rows.length === 0) {
+            return reject(new Error("no bookmarks here"));
+          }
+          resolve(response.rows[0]);
+        }
+      );
+    });
+  }
+
   // read bm
 
   // update bm
