@@ -16,6 +16,26 @@ const { authenticatedAccount } = require("./helper");
 
 const router = new Router();
 
+// Delete Bookmark
+router.delete("/drop-bookmark", (req, res, next) => {
+  let { id } = req.body;
+  authenticatedAccount({ sessionString: req.cookies.sessionString })
+    .then(({ bookmarkId }) => {
+      bookmarkId = id;
+      return AccountBookmarkTable.deleteAccountBookmark({
+        bookmarkId
+      });
+    })
+    .then(({ id }) => {
+      console.log(id);
+      return BookmarkTable.dropBookmark(id);
+    })
+    .then(() => {
+      res.json({ message: "Bookmark Deleted" });
+    })
+    .catch(error => next(error));
+});
+
 router.post("/add-bookmark", (req, res, next) => {
   let accountId, bookmark;
   const { url, title } = req.body;
@@ -52,21 +72,6 @@ router.post("/add-bookmark", (req, res, next) => {
     .then(() => {
       // res.json({ bm });
       res.json({ message: "Bookmark Added" });
-    })
-    .catch(error => next(error));
-});
-
-// Delete Bookmark
-router.delete("/drop-bookmark", (req, res, next) => {
-  let { fish } = req.body;
-  let { id } = req.body;
-  console.log(id); // 3
-  console.log(fish); // undefined
-  console.log(req.body); // { id: 3 }
-  console.log(req.body.id); // 3
-  BookmarkTable.dropBookmark(req.body.id)
-    .then(() => {
-      res.json({ message: "Bookmark Deleted" });
     })
     .catch(error => next(error));
 });

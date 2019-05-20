@@ -45,6 +45,7 @@ class BookmarkTable {
     });
   }
 
+  // read & display bookmark
   static readBookmark({ bookmarkId }) {
     return new Promise((resolve, reject) => {
       pool.query(
@@ -66,8 +67,9 @@ class BookmarkTable {
     console.log("Table says ", id);
     return new Promise((resolve, reject) => {
       pool.query(
-        `UPDATE bookmark SET title = NULL, url = NULL
-      WHERE "id" = $1`,
+        //   `UPDATE bookmark SET title = NULL, url = NULL
+        // WHERE "id" = $1`,
+        `DELETE FROM bookmark WHERE "id" = $1`, // works, but violates foreign key
         [id],
         (error, response) => {
           if (error) return reject(error);
@@ -76,6 +78,7 @@ class BookmarkTable {
       );
     });
   }
+
   // update bm
 
   // delete bm
