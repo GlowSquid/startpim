@@ -1,8 +1,5 @@
-.table {
-  padding-top: 2rem;
-}
-
-.td__left {
-  text-align: left;
-  margin-top: 1rem;
+.bm {
+  background: #deb887;
+  padding: 5px;
+  margin-top: 5px;
 }

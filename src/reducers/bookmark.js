@@ -28,6 +28,12 @@ const bookmark = (state = DEFAULT_BOOKMARK, action) => {
         status: fetchStates.success,
         message: action.message
       };
+    case BOOKMARK.FETCH_DELETE_SUCCESS:
+      return {
+        ...state,
+        status: fetchStates.success,
+        message: action.message
+      };
     default:
       return state;
   }

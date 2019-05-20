@@ -48,7 +48,7 @@ class BookmarkTable {
   static readBookmark({ bookmarkId }) {
     return new Promise((resolve, reject) => {
       pool.query(
-        "SELECT url, title FROM bookmark WHERE bookmark.id = $1",
+        "SELECT url, title, id FROM bookmark WHERE bookmark.id = $1",
         [bookmarkId],
         (error, response) => {
           if (error) return reject(error);
@@ -61,8 +61,21 @@ class BookmarkTable {
     });
   }
 
-  // read bm
-
+  // delete bookmark
+  static dropBookmark(id) {
+    console.log("Table says ", id);
+    return new Promise((resolve, reject) => {
+      pool.query(
+        `UPDATE bookmark SET title = NULL, url = NULL
+      WHERE "id" = $1`,
+        [id],
+        (error, response) => {
+          if (error) return reject(error);
+          resolve();
+        }
+      );
+    });
+  }
   // update bm
 
   // delete bm

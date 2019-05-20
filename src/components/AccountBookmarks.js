@@ -1,37 +1,33 @@
-import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchAccountBookmarks } from "../actions/accountBookmarks";
 import Link from "next/link";
+import { useEffect } from "react";
+import { dropBookmark } from "../actions/bookmark";
 import "../styles/Bookmarks.css";
 
-class AccountBookmarks extends Component {
-  componentDidMount() {
-    console.log("fetch account bookmarks in actions");
-    this.props.fetchAccountBookmarks();
-  }
+const AccountBookmarks = ({
+  fetchAccountBookmarks,
+  accountBookmarks,
+  dropBookmark
+}) => {
+  useEffect(() => {
+    fetchAccountBookmarks();
+  }, [fetchAccountBookmarks]);
 
-  render() {
-    const bms = this.props.accountBookmarks.bookmarks.map(bookmark => (
-      <tr key={bookmark.bookmarkId}>
-        <td className="td__left">
-          <Link href={bookmark.url}>
-            <a>{bookmark.title}</a>
-          </Link>
-        </td>
-      </tr>
-    ));
+  const bms = accountBookmarks.bookmarks.map(bookmark => (
+    <div className="bm" key={bookmark.bookmarkId}>
+      <Link href={bookmark.url}>
+        <a>{bookmark.title}</a>
+      </Link>
+      <div>ID: {bookmark.id}</div>
+      <button onClick={() => dropBookmark(bookmark.id)}>X</button>
+    </div>
+  ));
 
-    return (
-      <div>
-        <table className="table">
-          <thead>{bms}</thead>
-        </table>
-      </div>
-    );
-  }
-}
+  return <div>{bms}</div>;
+};
 
 export default connect(
   ({ accountBookmarks }) => ({ accountBookmarks }),
-  { fetchAccountBookmarks }
+  { fetchAccountBookmarks, dropBookmark }
 )(AccountBookmarks);

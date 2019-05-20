@@ -9,7 +9,7 @@
 
 const { Router } = require("express");
 const BookmarkTable = require("../bookmark/table");
-const AccountTable = require("../account/table");
+// const AccountTable = require("../account/table");
 const AccountBookmarkTable = require("../accountBookmark/table");
 const { authenticatedAccount } = require("./helper");
 // const bookmarkValidate = require("../validation/bookmark");
@@ -52,6 +52,21 @@ router.post("/add-bookmark", (req, res, next) => {
     .then(() => {
       // res.json({ bm });
       res.json({ message: "Bookmark Added" });
+    })
+    .catch(error => next(error));
+});
+
+// Delete Bookmark
+router.delete("/drop-bookmark", (req, res, next) => {
+  let { fish } = req.body;
+  let { id } = req.body;
+  console.log(id); // 3
+  console.log(fish); // undefined
+  console.log(req.body); // { id: 3 }
+  console.log(req.body.id); // 3
+  BookmarkTable.dropBookmark(req.body.id)
+    .then(() => {
+      res.json({ message: "Bookmark Deleted" });
     })
     .catch(error => next(error));
 });

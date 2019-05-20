@@ -46,3 +46,19 @@ export const addBookmark = ({ title, url }) =>
     ERROR_TYPE: BOOKMARK.FETCH_ERROR,
     SUCCESS_TYPE: BOOKMARK.FETCH_SUCCESS
   });
+
+export const dropBookmark = id =>
+  fetchFromBookmark({
+    endpoint: "drop-bookmark",
+    options: {
+      method: "DELETE",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id })
+      // body: JSON.stringify(id)
+      // body: id
+    },
+    FETCH_TYPE: BOOKMARK.FETCH,
+    ERROR_TYPE: BOOKMARK.FETCH_ERROR,
+    SUCCESS_TYPE: BOOKMARK.FETCH_DELETE_SUCCESS
+  });
