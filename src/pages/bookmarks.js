@@ -4,13 +4,19 @@ import Link from "next/link";
 import { connect } from "react-redux";
 import AccountBookmarks from "../components/AccountBookmarks";
 import { addBookmark } from "../actions/bookmark";
+import { fetchAccountBookmarks } from "../actions/accountBookmarks";
 
 import Layout from "../components/Layout";
 import "../styles/Form.css";
 
 let clicked = false;
 
-const Bookmarks = ({ addBookmark, bookmark }) => {
+const Bookmarks = ({
+  addBookmark,
+  bookmark,
+  fetchAccountBookmarks,
+  accountBookmarks
+}) => {
   const [formData, setFormData] = useState({
     title: "",
     url: ""
@@ -35,17 +41,23 @@ const Bookmarks = ({ addBookmark, bookmark }) => {
     // console.log(bookmark.type);
   };
 
-  if (
-    clicked === true &&
-    bookmark.message === "This bookmark is already stored" &&
-    bookmark.status === "error"
-  ) {
+  // if (
+  //   clicked === true &&
+  //   bookmark.message === "This bookmark is already stored" &&
+  //   bookmark.status === "error"
+  // ) {
+  //   setShowData(bookmark.message);
+  //   clicked = false;
+  // } else if (clicked === true && bookmark.message === "Bookmark Added") {
+  //   setShowData(bookmark.message); // æ Should not be red color
+  //   fetchAccountBookmarks(accountBookmarks);
+  //   clicked = false;
+  // }
+
+  if (clicked === true && bookmark.status !== "fetching") {
+    clicked = false;
     setShowData(bookmark.message);
-    clicked = false;
-  } else if (clicked === true && bookmark.message === "Bookmark Added") {
-    setShowData(bookmark.message); // æ Should not be red color
-    console.log("mess", bookmark.message);
-    clicked = false;
+    fetchAccountBookmarks(accountBookmarks);
   }
 
   return (
@@ -95,5 +107,5 @@ const Bookmarks = ({ addBookmark, bookmark }) => {
 
 export default connect(
   ({ bookmark }) => ({ bookmark }),
-  { addBookmark }
+  { addBookmark, fetchAccountBookmarks }
 )(Bookmarks);

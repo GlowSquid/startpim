@@ -14,7 +14,7 @@
 - ~~create bookmarks~~
 - ~~read bookmarks~~
 - update bookmarks
-- delete bookmarks
+- ~~delete bookmarks~~
 - ~~backend validation~~
 - frontend validation
 - spinner while authenticating

@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { fetchAccountBookmarks } from "../actions/accountBookmarks";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { dropBookmark } from "../actions/bookmark";
 import "../styles/Bookmarks.css";
 
@@ -11,20 +11,29 @@ const AccountBookmarks = ({
   dropBookmark
 }) => {
   useEffect(() => {
-    fetchAccountBookmarks();
+    fetchAccountBookmarks(accountBookmarks);
   }, [fetchAccountBookmarks]);
+
+  const delBm = id => {
+    dropBookmark(id);
+    fetchAccountBookmarks(accountBookmarks);
+  };
 
   const bms = accountBookmarks.bookmarks.map(bookmark => (
     <div className="bm" key={bookmark.bookmarkId}>
       <Link href={bookmark.url}>
         <a>{bookmark.title}</a>
       </Link>
-      <div>ID: {bookmark.id}</div>
-      <button onClick={() => dropBookmark(bookmark.id)}>X</button>
+      <div> ID: {bookmark.id} </div>
+      <button onClick={() => delBm(bookmark.id)}>X</button>
     </div>
   ));
 
-  return <div>{bms}</div>;
+  return (
+    <div>
+      <div>{bms}</div>
+    </div>
+  );
 };
 
 export default connect(

@@ -27,7 +27,7 @@ router.delete("/drop-bookmark", (req, res, next) => {
       });
     })
     .then(({ id }) => {
-      console.log(id);
+      // console.log(id);
       return BookmarkTable.dropBookmark(id);
     })
     .then(() => {

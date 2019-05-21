@@ -8,9 +8,15 @@ class AccountBookmarkTable {
         [bookmarkId],
         (error, response) => {
           if (error) return reject(error);
-          const id = response.rows[0].bookmarkId;
-          resolve({ id });
-          // resolve();
+          if (response.rows[0] === undefined) {
+            const error = new Error("This bookmark has already been deleted");
+            error.statusCode = 409;
+            return reject(error);
+            // throw error;
+          } else {
+            const id = response.rows[0].bookmarkId;
+            resolve({ id });
+          }
         }
       );
     });

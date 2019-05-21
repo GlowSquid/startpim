@@ -1,4 +1,5 @@
 .bm {
+  display: flex;
   background: #deb887;
   padding: 5px;
   margin-top: 5px;
