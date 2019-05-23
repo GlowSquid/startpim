@@ -31,6 +31,15 @@ body {
   width: 500px;
 }
 
+.dev-bar {
+  display: flex;
+  margin-top: 80px;
+  text-align: center;
+  justify-content: space-between;
+  padding: 5px;
+  background: #fca429;
+}
+
 .bumper {
   padding-top: 110px;
 }

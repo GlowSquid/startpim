@@ -4,3 +4,21 @@
   padding: 5px;
   margin-top: 5px;
 }
+
+.new-bm {
+  text-align: center;
+}
+
+.add-bm {
+  width: 100px;
+  height: 94px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  border: 4px dashed #fca429;
+  border-radius: 20%;
+  color: #fca429;
+  font-size: 48px;
+  text-align: center;
+  cursor: pointer;
+}

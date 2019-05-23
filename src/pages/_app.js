@@ -25,12 +25,11 @@
 // export default withReduxStore(MyApp);
 
 import { Container } from "next/app";
-import React from "react";
 import withReduxStore from "../lib/with-redux-store";
 import { Provider } from "react-redux";
 
 import { fetchAuthenticated } from "../actions/account";
-// import Root from "../components/Root";
+// import Root from "./index";
 
 const MyApp = ({ Component, pageProps, reduxStore }) => {
   // function MyApp({ Component, pageProps, reduxStore }) {

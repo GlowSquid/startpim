@@ -1,42 +1,53 @@
 import Layout from "../components/Layout";
-import Link from "next/link";
+import AlertBar from "../components/AlertBar";
+import { useEffect } from "react";
 import { connect } from "react-redux";
-import AccountDelete from "./AccountDelete";
-import AccountInfo from "../components/AccountInfo";
+import { fetchAccountBookmarks } from "../actions/accountBookmarks";
+import UseModal from "./UseModal";
+import AddBookmark from "./BookmarkAdd";
+import AccountBookmarks from "./AccountBookmarks";
 
-function Start() {
-  return (
-    <Layout>
-      <div className="page">
-        <h1 className="bumper">Private Start</h1>
-        <AccountInfo />
-        <p>
-          <Link href="/">
-            <a>Landing</a>
-          </Link>
-        </p>
-        <p>
-          <Link href="/bookmarks">
-            <a>Bookmarks</a>
-          </Link>
-        </p>
-        <p>
-          <Link href="/register">
-            <a>Register</a>
-          </Link>
-        </p>
-        <p>
-          <Link href="/login">
-            <a>Login</a>
-          </Link>
-        </p>
-        <AccountDelete />
-      </div>
-    </Layout>
-  );
-}
+import "../styles/Bookmarks.css";
+
+const Start = ({ fetchAccountBookmarks, accountBookmarks }) => {
+  useEffect(() => {
+    fetchAccountBookmarks();
+  }, [fetchAccountBookmarks]);
+
+  const { isShowing, toggle } = UseModal();
+
+  let session;
+  if (accountBookmarks.bookmarks.length === 0) {
+    session = (
+      <Layout>
+        <AlertBar />
+        <div className="page">
+          <h1 className="new-bm">Add your first bookmark</h1>
+          <div className="add-bm" onClick={toggle}>
+            +
+          </div>
+          <AddBookmark isShowing={isShowing} hide={toggle} />
+          {/* <AddBookmark /> */}
+        </div>
+      </Layout>
+    );
+  } else {
+    session = (
+      <Layout>
+        <AlertBar />
+        <div className="page">
+          <h1>Welcome back!</h1>
+          <AccountBookmarks />
+          <AddBookmark isShowing={isShowing} hide={toggle} />
+        </div>
+      </Layout>
+    );
+  }
+
+  return session;
+};
 
 export default connect(
-  ({ account }) => ({ account }),
-  null
+  ({ account, accountBookmarks }) => ({ account, accountBookmarks }),
+  { fetchAccountBookmarks }
 )(Start);

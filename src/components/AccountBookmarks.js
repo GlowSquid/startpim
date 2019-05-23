@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { fetchAccountBookmarks } from "../actions/accountBookmarks";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { dropBookmark } from "../actions/bookmark";
 import "../styles/Bookmarks.css";
 

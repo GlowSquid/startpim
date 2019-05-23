@@ -17,8 +17,8 @@ const Header = ({ logout, account }) => {
     showLinks = (
       <>
         <li>
-          <Link href="/bookmarks">
-            <a>Bookmarks</a>
+          <Link href="/account">
+            <a>Account</a>
           </Link>
         </li>
         <li>
