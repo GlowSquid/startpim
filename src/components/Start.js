@@ -6,7 +6,7 @@ import { fetchAccountBookmarks } from "../actions/accountBookmarks";
 import UseModal from "./UseModal";
 import AddBookmark from "./BookmarkAdd";
 import AccountBookmarks from "./AccountBookmarks";
-
+import Spinner from "./Spinner";
 import "../styles/Bookmarks.css";
 
 const Start = ({ fetchAccountBookmarks, accountBookmarks }) => {
@@ -19,12 +19,12 @@ const Start = ({ fetchAccountBookmarks, accountBookmarks }) => {
   let session;
   if (
     accountBookmarks.status === "fetching" ||
-    accountBookmarks.bookmarks.length === undefined
+    accountBookmarks.bookmarks.length === null
   ) {
     session = (
       <Layout>
         <div className="page">
-          <h1 className="bumper">SPINNER</h1>
+          <Spinner />
         </div>
       </Layout>
     );

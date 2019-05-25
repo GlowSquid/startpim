@@ -23,7 +23,7 @@
 - autofetch title
 - finish styling
 - cool landing page
-- 404 page
+- ~~404 page~~
 - SEO favicon sitemap ogp
 
 ## Phase 3+ - Possible features
@@ -39,5 +39,5 @@
 
 ## Bugs
 
-trigger-happy authentication checker
-new bookmarks should appear instantly
+- trigger-happy authentication checker
+- Bookmarks doesn't always sort by ID

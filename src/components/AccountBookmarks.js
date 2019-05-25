@@ -6,6 +6,7 @@ import { dropBookmark } from "../actions/bookmark";
 import "../styles/Bookmarks.css";
 
 let antiSpam = false;
+
 const AccountBookmarks = ({
   fetchAccountBookmarks,
   accountBookmarks,
@@ -27,7 +28,7 @@ const AccountBookmarks = ({
   }
 
   const bms = accountBookmarks.bookmarks.map(bookmark => (
-    <div className="bm" key={bookmark.bookmarkId}>
+    <div className="bm" key={bookmark.id}>
       <Link href={bookmark.url}>
         <a>{bookmark.title}</a>
       </Link>
@@ -37,18 +38,6 @@ const AccountBookmarks = ({
   ));
 
   return bms;
-
-  // accountBookmarks.bookmarks.map(bookmark => {
-  //   return (
-  //     <div className="bm" key={bookmark.bookmarkId}>
-  //       <Link href={bookmark.url}>
-  //         <a>{bookmark.title}</a>
-  //       </Link>
-  //       <div> ID: {bookmark.id} </div>
-  //       <button onClick={() => delBm(bookmark.id)}>X</button>
-  //     </div>
-  //   );
-  // });
 };
 
 export default connect(
