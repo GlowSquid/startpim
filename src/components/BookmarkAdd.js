@@ -7,25 +7,6 @@ import { fetchAccountBookmarks } from "../actions/accountBookmarks";
 import "../styles/Form.css";
 import "../styles/Modal.css";
 
-// let clicked = false;
-
-// const Modal = ({ isShowing, hide }) => {
-//   if (isShowing === true) {
-//     const cow = "wjwjw";
-//     return ReactDOM.createPortal(
-//       <Fragment>
-//         <div>
-//           <div onClick={hide}>Clöse</div>
-//           {cow}
-//         </div>
-//       </Fragment>,
-//       document.body
-//     );
-//   } else {
-//     return null;
-//   }
-// };
-
 const AddBookmark = ({ addBookmark, isShowing, hide }) => {
   if (isShowing === true) {
     const [formData, setFormData] = useState({
@@ -33,28 +14,18 @@ const AddBookmark = ({ addBookmark, isShowing, hide }) => {
       url: ""
     });
 
-    const [showData, setShowData] = useState();
-
     const { title, url } = formData;
 
     const onChange = e => {
       setFormData({ ...formData, [e.target.name]: e.target.value });
-      setShowData("");
     };
 
     const onSubmit = async e => {
       e.preventDefault();
-      addBookmark(formData);
-      hide();
-      // tell alert
-      // clicked = true;
+      addBookmark(formData).then(() => {
+        hide();
+      });
     };
-
-    // if (clicked === true && bookmark.status !== "fetching") {
-    //   clicked = false;
-    //   setShowData(bookmark.message);
-    //   fetchAccountBookmarks(accountBookmarks);
-    // }
 
     return ReactDOM.createPortal(
       <Fragment>
@@ -82,7 +53,6 @@ const AddBookmark = ({ addBookmark, isShowing, hide }) => {
                 className="input"
                 required
               />
-              <p className="error">{showData}</p>
               <br />
               <input type="submit" className="btn" value="Submit" />
             </form>

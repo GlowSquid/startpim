@@ -12,13 +12,10 @@ const AccountDelete = ({ drop, account }) => {
     password: ""
   });
 
-  const [showData, setShowData] = useState();
-
   const { email, password } = formData;
 
   const onChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    setShowData("");
   };
 
   const onSubmit = async e => {
@@ -33,7 +30,6 @@ const AccountDelete = ({ drop, account }) => {
     account.message === "Invalid account credentials" &&
     account.status === "error"
   ) {
-    setShowData(account.message);
     clicked = false;
   }
 
@@ -63,7 +59,6 @@ const AccountDelete = ({ drop, account }) => {
           className="input"
           required
         />
-        <p className="error">{showData}</p>
         <input
           type="submit"
           className="btn btn-danger"

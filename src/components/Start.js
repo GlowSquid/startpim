@@ -17,7 +17,22 @@ const Start = ({ fetchAccountBookmarks, accountBookmarks }) => {
   const { isShowing, toggle } = UseModal();
 
   let session;
-  if (accountBookmarks.bookmarks.length === 0) {
+  if (
+    accountBookmarks.status === "fetching" ||
+    accountBookmarks.bookmarks.length === undefined
+  ) {
+    session = (
+      <Layout>
+        <div className="page">
+          <h1 className="bumper">SPINNER</h1>
+        </div>
+      </Layout>
+    );
+  }
+  if (
+    accountBookmarks.status === "success" &&
+    accountBookmarks.bookmarks.length === 0
+  ) {
     session = (
       <Layout>
         <AlertBar />
@@ -27,7 +42,6 @@ const Start = ({ fetchAccountBookmarks, accountBookmarks }) => {
             +
           </div>
           <AddBookmark isShowing={isShowing} hide={toggle} />
-          {/* <AddBookmark /> */}
         </div>
       </Layout>
     );
@@ -37,8 +51,13 @@ const Start = ({ fetchAccountBookmarks, accountBookmarks }) => {
         <AlertBar />
         <div className="page">
           <h1>Welcome back!</h1>
-          <AccountBookmarks />
-          <AddBookmark isShowing={isShowing} hide={toggle} />
+          <div className="grid">
+            <AccountBookmarks />
+            <div className="add-bm" onClick={toggle}>
+              +
+            </div>
+            <AddBookmark isShowing={isShowing} hide={toggle} />
+          </div>
         </div>
       </Layout>
     );
@@ -48,6 +67,6 @@ const Start = ({ fetchAccountBookmarks, accountBookmarks }) => {
 };
 
 export default connect(
-  ({ account, accountBookmarks }) => ({ account, accountBookmarks }),
+  ({ accountBookmarks }) => ({ accountBookmarks }),
   { fetchAccountBookmarks }
 )(Start);

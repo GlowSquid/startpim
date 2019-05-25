@@ -1,8 +1,16 @@
-.bm {
+.grid {
+  display: -webkit-flex;
   display: flex;
-  background: #deb887;
-  padding: 5px;
-  margin-top: 5px;
+  flex-wrap: wrap;
+}
+
+.bm {
+  width: 100px;
+  height: 94px;
+  margin: 20px 10px;
+  border: 4px solid #fca429;
+  border-radius: 20%;
+  cursor: pinter;
 }
 
 .new-bm {
@@ -12,9 +20,7 @@
 .add-bm {
   width: 100px;
   height: 94px;
-  margin: 0 auto;
-  margin-bottom: 20px;
-  margin-top: 20px;
+  margin: 20px 10px;
   border: 4px dashed #fca429;
   border-radius: 20%;
   color: #fca429;
