@@ -20,7 +20,7 @@ class AccountTable {
   static dropAccount({ emailHash }) {
     return new Promise((resolve, reject) => {
       pool.query(
-        `UPDATE account SET "emailHash" = NULL, "passwordHash" = NULL
+        `UPDATE account SET "emailHash" = NULL, "passwordHash" = NULL, "sessionId" = NULL
         WHERE "emailHash" = $1`,
         [emailHash],
         (error, response) => {

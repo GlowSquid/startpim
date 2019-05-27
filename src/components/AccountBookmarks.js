@@ -3,6 +3,9 @@ import { fetchAccountBookmarks } from "../actions/accountBookmarks";
 import Link from "next/link";
 // import { useEffect } from "react";
 import { dropBookmark } from "../actions/bookmark";
+import UseModal from "./UseModal";
+import AddBookmark from "./BookmarkAdd";
+import Spinner from "./Spinner";
 import "../styles/Bookmarks.css";
 
 let antiSpam = false;
@@ -18,6 +21,8 @@ const AccountBookmarks = ({
       // fetchAccountBookmarks(accountBookmarks);
     });
   };
+
+  const { isShowing, toggle } = UseModal();
 
   if (antiSpam === true && bookmark.status === "fetching") {
     antiSpam = false;
@@ -37,7 +42,42 @@ const AccountBookmarks = ({
     </div>
   ));
 
-  return bms;
+  let session;
+
+  if (
+    accountBookmarks.bookmarks.length === 0 &&
+    accountBookmarks.status === "success"
+  ) {
+    session = (
+      <div className="page">
+        <h1 className="new-bm">Add your first bookmark</h1>
+        <div className="add-bm" onClick={toggle}>
+          +
+        </div>
+        <AddBookmark isShowing={isShowing} hide={toggle} />
+      </div>
+    );
+  } else if (
+    accountBookmarks.bookmarks !== 0 &&
+    accountBookmarks.status === "success"
+  ) {
+    session = (
+      <div className="page">
+        <h1>Welcome back!</h1>
+        <div className="grid">
+          {bms}
+          <div className="add-bm" onClick={toggle}>
+            +
+          </div>
+          <AddBookmark isShowing={isShowing} hide={toggle} />
+        </div>
+      </div>
+    );
+  } else {
+    session = <Spinner />;
+  }
+
+  return <div className="page">{session}</div>;
 };
 
 export default connect(

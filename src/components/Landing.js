@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import Layout from "../components/Layout";
+import Layout from "./Layout";
 import Link from "next/link";
 import "../styles/Start.css";
 

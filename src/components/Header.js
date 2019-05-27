@@ -13,7 +13,9 @@ const Header = ({ logout, account }) => {
     Router.push("/"); // æ Did this crash?
   };
 
-  if (account.loggedIn === true) {
+  if (account.status === "fetching") {
+    showLinks = null;
+  } else if (account.loggedIn === true) {
     showLinks = (
       <>
         <li>

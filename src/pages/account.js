@@ -2,6 +2,7 @@ import Layout from "../components/Layout";
 import { connect } from "react-redux";
 import AccountDelete from "../components/AccountDelete";
 import AccountInfo from "../components/AccountInfo";
+import Loader from "../components/Loader";
 import Login from "./login";
 
 function Account({ account }) {
@@ -14,7 +15,16 @@ function Account({ account }) {
       </div>
     </Layout>
   );
-  return account.loggedIn ? content : <Login />;
+
+  if (account.status === "fetching") {
+    return <Loader />;
+  } else if (account.loggedIn === true) {
+    return content;
+  } else {
+    return <Login />;
+  }
+
+  // return account.loggedIn ? content : <Login />;
 }
 
 export default connect(
