@@ -17,7 +17,7 @@
 - ~~delete bookmarks~~
 - ~~backend validation~~
 - frontend validation
-- spinner while authenticating
+- ~~spinner while authenticating~~
 - sorting bookmarks by date/alphabetically
 - autofetch favicon
 - autofetch title
