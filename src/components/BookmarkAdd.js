@@ -58,7 +58,7 @@ const AddBookmark = ({ addBookmark, isShowing, hide }) => {
             </form>
           </section>
           <section className="modal_actions">
-            <button className="btn" onClick={hide}>
+            <button className="btn btn-cancel" onClick={hide}>
               Cancel
             </button>
           </section>

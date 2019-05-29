@@ -44,8 +44,8 @@ const authenticatedAccount = ({ sessionString }) => {
     if (!sessionString || !Session.verify(sessionString)) {
       const error = new Error("Invalid session");
       error.statusCode = 400;
-      return reject(error);
-      // return reject; // less annoying
+      // return reject(error);
+      return reject; // less annoying
     }
 
     const { email, id } = Session.parse(sessionString);

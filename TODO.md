@@ -26,10 +26,11 @@
 - ~~404 page~~
 - SEO favicon sitemap ogp
 
-## Phase 3+ - Possible features
+## Phase 3+ - Possible Features
 
-- Speed dial - favorite bookmarks
 - attach bookmarks to folder/tags
+- Drag 'n Drop functionality
+- Grid/List view toggle
 - email/password change
 - email verification & password reset
 - admin page displaying server & user stats

@@ -3,7 +3,7 @@ import AlertBar from "./AlertBar";
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchAccountBookmarks } from "../actions/accountBookmarks";
-import AccountBookmarks from "./AccountBookmarks";
+import Bookmarks from "./Bookmarks";
 import "../styles/Bookmarks.css";
 
 const Start = ({ fetchAccountBookmarks, accountBookmarks }) => {
@@ -15,7 +15,7 @@ const Start = ({ fetchAccountBookmarks, accountBookmarks }) => {
     <Layout>
       <AlertBar />
       <div className="page">
-        <AccountBookmarks />
+        <Bookmarks />
       </div>
     </Layout>
   );

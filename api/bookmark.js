@@ -1,18 +1,10 @@
-// id              SERIAL PRIMARY KEY,
-// url             CHARACTER(255),
-// title           CHARACTER(128),
-// icon            CHARACTER(36),
-// folder          CHARACTER(36),
-// description     CHARACTER(255),
-// added           TIMESTAMP NOT NULL,
-// updated         TIMESTAMP NOT NULL
-
 const { Router } = require("express");
 const BookmarkTable = require("../bookmark/table");
 // const AccountTable = require("../account/table");
 const AccountBookmarkTable = require("../accountBookmark/table");
 const { authenticatedAccount } = require("./helper");
 // const bookmarkValidate = require("../validation/bookmark");
+// const metafetch = require("metafetch");
 
 const router = new Router();
 
@@ -43,8 +35,14 @@ router.post("/add-bookmark", (req, res, next) => {
   authenticatedAccount({ sessionString: req.cookies.sessionString })
     .then(({ account }) => {
       accountId = account.id;
+      let icon;
+      bookmark = { url, title, icon };
 
-      bookmark = { url, title };
+      // const findRoot = new URL(url);
+      // const root = findRoot.protocol + "//" + findRoot.hostname;
+
+      // const icon = `https://www.google.com/s2/favicons?domain=${url}`;
+
       // return BookmarkTable.getBookmark({ url, title});
       return BookmarkTable.storeBookmark(bookmark);
     })

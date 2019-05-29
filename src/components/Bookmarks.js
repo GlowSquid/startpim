@@ -2,10 +2,10 @@ import { connect } from "react-redux";
 import { fetchAccountBookmarks } from "../actions/accountBookmarks";
 import Link from "next/link";
 // import { useEffect } from "react";
+import Spinner from "./Spinner";
 import { dropBookmark } from "../actions/bookmark";
 import UseModal from "./UseModal";
 import AddBookmark from "./BookmarkAdd";
-import Spinner from "./Spinner";
 import "../styles/Bookmarks.css";
 
 let antiSpam = false;
@@ -38,6 +38,9 @@ const AccountBookmarks = ({
         <a>{bookmark.title}</a>
       </Link>
       <div> ID: {bookmark.id} </div>
+      <div>
+        <img src={bookmark.icon} height="32px" alt="" />
+      </div>
       <button onClick={() => delBm(bookmark.id)}>X</button>
     </div>
   ));
@@ -51,7 +54,7 @@ const AccountBookmarks = ({
     session = (
       <div className="page">
         <h1 className="new-bm">Add your first bookmark</h1>
-        <div className="add-bm" onClick={toggle}>
+        <div className="add-bm first-bm" onClick={toggle}>
           +
         </div>
         <AddBookmark isShowing={isShowing} hide={toggle} />
@@ -63,7 +66,8 @@ const AccountBookmarks = ({
   ) {
     session = (
       <div className="page">
-        <h1>Welcome back!</h1>
+        {/* <h1>Welcome back!</h1> */}
+        {/* <img src="https://www.google.com/s2/favicons?domain=https://isitdead.xyz/" /> */}
         <div className="grid">
           {bms}
           <div className="add-bm" onClick={toggle}>

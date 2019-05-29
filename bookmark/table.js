@@ -1,23 +1,14 @@
-// id              SERIAL PRIMARY KEY,
-// title           CHARACTER(128),
-// url             CHARACTER(255),
-// icon            CHARACTER(36),
-// folder          CHARACTER(36),
-// description     CHARACTER(255),
-// added           TIMESTAMP NOT NULL,
-// updated         TIMESTAMP NOT NULL
-
 const pool = require("../dbPool");
 
 class BookmarkTable {
   // saving bm
   static storeBookmark(bookmark) {
-    const { url, title } = bookmark;
+    const { url, title, icon } = bookmark;
     return new Promise((resolve, reject) => {
       pool.query(
-        `INSERT INTO bookmark(url, title)
-        VALUES($1, $2) RETURNING id`,
-        [url, title],
+        `INSERT INTO bookmark(url, title, icon)
+        VALUES($1, $2, $3) RETURNING id`,
+        [url, title, icon],
         (error, response) => {
           if (error) return reject(error);
           // resolve();
@@ -49,7 +40,7 @@ class BookmarkTable {
   static readBookmark({ bookmarkId }) {
     return new Promise((resolve, reject) => {
       pool.query(
-        "SELECT url, title, id FROM bookmark WHERE bookmark.id = $1",
+        "SELECT url, title, icon, id FROM bookmark WHERE bookmark.id = $1",
         [bookmarkId],
         (error, response) => {
           if (error) return reject(error);
