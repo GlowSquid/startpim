@@ -1,0 +1,4 @@
+key p
+key Select key
+key ^J
+exit
