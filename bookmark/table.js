@@ -20,6 +20,23 @@ class BookmarkTable {
     });
   }
 
+  static storeTitle(bookmark) {
+    const { title, bookmarkId } = bookmark;
+    return new Promise((resolve, reject) => {
+      pool.query(
+        `UPDATE bookmark SET title = $1 WHERE bookmark.id = $2`,
+        [title, bookmarkId],
+        (error, response) => {
+          if (error) return reject(error);
+          resolve();
+          // const bookmarkId = response.rows[0].id;
+          // resolve({ bookmarkId });
+          // resolve({ id: bookmarkId });
+        }
+      );
+    });
+  }
+
   // verify bm
   static getBookmark({ url }) {
     return new Promise((resolve, reject) => {

@@ -20,7 +20,7 @@
 - ~~spinner while authenticating~~
 - sorting bookmarks by date/alphabetically
 - autofetch favicon
-- autofetch title
+- ~~autofetch title~~
 - finish styling
 - cool landing page
 - ~~404 page~~
