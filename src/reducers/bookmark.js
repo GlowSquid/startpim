@@ -2,7 +2,7 @@
 import { BOOKMARK } from "../actions/types";
 import fetchStates from "./fetchStates";
 
-const DEFAULT_BOOKMARK = { title: "", url: "" };
+const DEFAULT_BOOKMARK = { title: "", url: "", id: "" };
 
 const bookmark = (state = DEFAULT_BOOKMARK, action) => {
   switch (action.type) {
@@ -23,6 +23,12 @@ const bookmark = (state = DEFAULT_BOOKMARK, action) => {
         message: action.message
       };
     case BOOKMARK.FETCH_AUTHENTICATED_SUCCESS:
+      return {
+        ...state,
+        status: fetchStates.success,
+        message: action.message
+      };
+    case BOOKMARK.FETCH_UPDATE_SUCCESS:
       return {
         ...state,
         status: fetchStates.success,

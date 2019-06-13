@@ -30,15 +30,46 @@ router.delete("/drop-bookmark", (req, res, next) => {
     .catch(error => next(error));
 });
 
+router.put("/update-bookmark", (req, res, next) => {
+  let bookmark;
+  const { url, title, id } = req.body;
+  console.log("Need the ID: ", id);
+
+  authenticatedAccount({ sessionString: req.cookies.sessionString })
+    .then(() => {
+      console.log("New title: ", title);
+      console.log("New URL: ", url);
+      console.log("Same ID: ", id);
+      bookmark = { url, title, id };
+      return BookmarkTable.updateBookmark(bookmark);
+    })
+    .then(() => {
+      res.json({ message: "Bookmark Updated" });
+      console.log("bookimarkee uptidated", title);
+    })
+    .catch(error => next(error));
+});
+
 router.post("/add-bookmark", (req, res, next) => {
   let accountId, bookmark;
   const { url } = req.body;
-  let titleFile = "api/bin/title.txt";
+  let titleFile = "bin/title/title.txt";
   let icon;
-  let title = url;
+  const findRoot = new URL(url);
+  let title = findRoot.hostname;
+
+  function fetchTitle(bookmarkId) {
+    fs.watchFile(titleFile, function() {
+      title = fs.readFileSync(titleFile, "utf8");
+      console.log("url is", url);
+      console.log("title is", title);
+      fs.unwatchFile(titleFile);
+      return BookmarkTable.storeTitle({ title, bookmarkId });
+    });
+  }
 
   fs.writeFileSync(titleFile, "");
-  exec(`api/bin/lynx.sh ${url}`, err => {
+  exec(`bin/title/lynx.sh ${url}`, err => {
     if (err) {
       console.log(err);
     }
@@ -61,20 +92,10 @@ router.post("/add-bookmark", (req, res, next) => {
     //   }
     // })
     .then(({ bookmarkId }) => {
-      // console.log("bm: ", bm); // url & title
-      // console.log("bm.id: ", bm.id); // undefined
-      // console.log("bmId: ", bmId); // undefined
-      // console.log("bm.bmId: ", bm.bmId); // undefined
       bookmark.bookmarkId = bookmarkId;
       console.log("bookmarkId is", bookmarkId);
 
-      fs.watchFile(titleFile, function() {
-        title = fs.readFileSync(titleFile, "utf8");
-        console.log("url is", url);
-        console.log("title is", title);
-        fs.unwatchFile(titleFile);
-        return BookmarkTable.storeTitle({ title, bookmarkId });
-      });
+      fetchTitle(bookmarkId);
       return AccountBookmarkTable.storeAccountBookmark({
         accountId,
         bookmarkId

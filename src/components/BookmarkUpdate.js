@@ -1,19 +1,37 @@
 import { Fragment, useState } from "react";
 import { connect } from "react-redux";
-import { addBookmark } from "../actions/bookmark";
+import { updateBookmark } from "../actions/bookmark";
 import ReactDOM from "react-dom";
 import { fetchAccountBookmarks } from "../actions/accountBookmarks";
 
 import "../styles/Form.css";
 import "../styles/Modal.css";
 
-const AddBookmark = ({ addBookmark, addBmShowing, hide }) => {
-  if (addBmShowing === true) {
+const UpdateBookmark = ({
+  updateBookmark,
+  updateBmShowing,
+  hide,
+  bookmark,
+  id
+}) => {
+  if (updateBmShowing === true) {
     const [formData, setFormData] = useState({
-      url: ""
+      // url: "https://vg.no",
+      // url: bookmark.url,
+      url: "",
+      // url: props.url,
+      title: "",
+      // title: props.title,
+      // id: 408
+      id: id
     });
+    // console.log(props);
+    console.log("id is ", id);
+    console.log("bookmark is ", bookmark);
+    // console.log(bookmark.id);
+    // console.log(bookmark);
 
-    const { url } = formData;
+    const { title, url } = formData;
 
     const onChange = e => {
       setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -21,7 +39,7 @@ const AddBookmark = ({ addBookmark, addBmShowing, hide }) => {
 
     const onSubmit = async e => {
       e.preventDefault();
-      addBookmark(formData).then(() => {
+      updateBookmark(formData).then(() => {
         hide();
       });
     };
@@ -30,7 +48,7 @@ const AddBookmark = ({ addBookmark, addBmShowing, hide }) => {
       <Fragment>
         <div className="modal auth">
           <header className="modal_header">
-            <h1>Add Bookmark</h1>
+            <h1>Update Bookmark</h1>
           </header>
           <section className="modal_content">
             <form className="form" onSubmit={e => onSubmit(e)}>
@@ -41,6 +59,18 @@ const AddBookmark = ({ addBookmark, addBmShowing, hide }) => {
                 value={url}
                 onChange={e => onChange(e)}
                 className="input"
+                // props={props.url}
+                required
+              />
+              <br />
+              <input
+                type="text"
+                placeholder="Title"
+                name="title"
+                value={title}
+                onChange={e => onChange(e)}
+                className="input"
+                // props={props.title}
                 required
               />
               <br />
@@ -51,6 +81,9 @@ const AddBookmark = ({ addBookmark, addBmShowing, hide }) => {
             <button className="btn btn-cancel" onClick={hide}>
               Cancel
             </button>
+            {/* {bookmark.id} */}
+            {/* {props.id} */}
+            {id}
           </section>
         </div>
       </Fragment>,
@@ -62,6 +95,7 @@ const AddBookmark = ({ addBookmark, addBmShowing, hide }) => {
 };
 
 export default connect(
-  ({ bookmark }) => ({ bookmark }),
-  { addBookmark, fetchAccountBookmarks }
-)(AddBookmark);
+  ({ accountBookmarks, bookmark }) => ({ accountBookmarks, bookmark }),
+  // ({ accountBookmarks }) => ({ accountBookmarks }),
+  { updateBookmark, fetchAccountBookmarks }
+)(UpdateBookmark);

@@ -29,6 +29,17 @@
   cursor: pointer;
 }
 
+.edit-bm {
+  width: 26px;
+  height: 26px;
+  border: 2px solid #fca429;
+  border-radius: 5px;
+  /* color: #fca429; */
+  /* font-size: 18px; */
+  text-align: center;
+  cursor: pointer;
+}
+
 .first-bm {
   margin: 0 auto;
 }

@@ -23,6 +23,20 @@ export const fetchFromBookmark = ({
     .catch(error => dispatch({ type: ERROR_TYPE, message: error.message }));
 };
 
+export const updateBookmark = ({ title, url, id }) =>
+  fetchFromBookmark({
+    endpoint: "update-bookmark",
+    options: {
+      method: "PUT",
+      credentials: "include",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify({ title, url, id })
+    },
+    FETCH_TYPE: BOOKMARK.FETCH,
+    ERROR_TYPE: BOOKMARK.FETCH_ERROR,
+    SUCCESS_TYPE: BOOKMARK.FETCH_UPDATE_SUCCESS
+  });
+
 export const addBookmark = ({ title, url }) =>
   fetchFromBookmark({
     endpoint: "add-bookmark",

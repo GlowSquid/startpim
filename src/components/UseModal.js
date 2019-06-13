@@ -1,15 +1,22 @@
 import { useState } from "react";
 
 const UseModal = () => {
-  const [isShowing, setIsShowing] = useState(false);
+  const [addBmShowing, setIsShowing] = useState(false);
+  const [updateBmShowing, setUpdateBmShowing] = useState(false);
 
   function toggle() {
-    setIsShowing(!isShowing);
+    setIsShowing(!addBmShowing);
+  }
+
+  function taggle() {
+    setUpdateBmShowing(!updateBmShowing);
   }
 
   return {
-    isShowing,
-    toggle
+    addBmShowing,
+    updateBmShowing,
+    toggle,
+    taggle
   };
 };
 

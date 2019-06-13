@@ -3,9 +3,10 @@ import { fetchAccountBookmarks } from "../actions/accountBookmarks";
 import Link from "next/link";
 // import { useEffect } from "react";
 import Spinner from "./Spinner";
-import { dropBookmark } from "../actions/bookmark";
+import { dropBookmark, updateBookmark } from "../actions/bookmark";
 import UseModal from "./UseModal";
 import AddBookmark from "./BookmarkAdd";
+import UpdateBookmark from "./BookmarkUpdate";
 import "../styles/Bookmarks.css";
 
 let antiSpam = false;
@@ -14,15 +15,49 @@ const AccountBookmarks = ({
   fetchAccountBookmarks,
   accountBookmarks,
   dropBookmark,
+  updateBookmark,
   bookmark
 }) => {
+  const { addBmShowing, toggle } = UseModal();
+
+  const { updateBmShowing, taggle } = UseModal();
+
   const delBm = id => {
     dropBookmark(id).then(() => {
       // fetchAccountBookmarks(accountBookmarks);
     });
   };
 
-  const { isShowing, toggle } = UseModal();
+  // const single = (id, title, url) => {
+  //   // console.log(id);
+  //   // console.log(title);
+  //   <UpdateBookmark
+  //     // key={bookmark.id}
+  //     updateBmShowing={updateBmShowing}
+  //     hide={taggle}
+  //     // props={(bookmark.title, bookmark.id)}
+  //     props={(id, title, url)}
+  //   />;
+  // };
+
+  // const single = id => {
+  //   console.log("Single ID", id);
+  // <UpdateBookmark
+  // {...bms}
+  // {...id}
+  // key={index}
+  // key={bookmark.id}
+  // {...bookmark.id}
+  // id={bookmark["id"]}
+
+  // key={(bookmark.id, bookmark.title, bookmark.url)}
+  // props={bookmark}
+  // updateBmShowing={updateBmShowing}
+  // hide={taggle}
+  // props={(bookmark.id, bookmark.title, bookmark.url)}
+  // props={[{ id: bookmark.id }]}
+  // />;
+  // };
 
   if (antiSpam === true && bookmark.status === "fetching") {
     antiSpam = false;
@@ -41,7 +76,30 @@ const AccountBookmarks = ({
       <div>
         <img src={bookmark.icon} height="32px" alt="" />
       </div>
+      <div className="edit-bm" onClick={taggle} id={bookmark.id}>
+        E
+      </div>
+      {/* <div className="edit-bm" onClick={taggle => bookmark.id}>
+        ?
+      </div> */}
+      {/* <button onClick={() => single(bookmark.id)}>?</button> */}
       <button onClick={() => delBm(bookmark.id)}>X</button>
+      <UpdateBookmark
+        // {...bms}
+        // {...bookmark}
+        // key
+        // key={index}
+        key={bookmark.id}
+        // id={bookmark["id"]}
+        id={bookmark.id}
+        title={bookmark.title}
+        // key={(bookmark.id, bookmark.title, bookmark.url)}
+        // props={bookmark}
+        updateBmShowing={updateBmShowing}
+        hide={taggle}
+        // props={(bookmark.id, bookmark.title, bookmark.url)}
+        // props={[{ id: bookmark.id }]}
+      />
     </div>
   ));
 
@@ -57,7 +115,7 @@ const AccountBookmarks = ({
         <div className="add-bm first-bm" onClick={toggle}>
           +
         </div>
-        <AddBookmark isShowing={isShowing} hide={toggle} />
+        <AddBookmark addBmShowing={addBmShowing} hide={toggle} />
       </div>
     );
   } else if (
@@ -66,14 +124,12 @@ const AccountBookmarks = ({
   ) {
     session = (
       <div className="page">
-        {/* <h1>Welcome back!</h1> */}
-        {/* <img src="https://www.google.com/s2/favicons?domain=https://isitdead.xyz/" /> */}
         <div className="grid">
           {bms}
           <div className="add-bm" onClick={toggle}>
             +
           </div>
-          <AddBookmark isShowing={isShowing} hide={toggle} />
+          <AddBookmark addBmShowing={addBmShowing} hide={toggle} />
         </div>
       </div>
     );
@@ -86,5 +142,5 @@ const AccountBookmarks = ({
 
 export default connect(
   ({ accountBookmarks, bookmark }) => ({ accountBookmarks, bookmark }),
-  { fetchAccountBookmarks, dropBookmark }
+  { fetchAccountBookmarks, dropBookmark, updateBookmark }
 )(AccountBookmarks);

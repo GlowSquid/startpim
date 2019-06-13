@@ -20,6 +20,22 @@ class BookmarkTable {
     });
   }
 
+  // update bookmark
+  static updateBookmark(bookmark) {
+    const { url, title, id } = bookmark;
+    return new Promise((resolve, reject) => {
+      pool.query(
+        `UPDATE bookmark SET url = $1, title = $2 WHERE bookmark.id = $3`,
+        [url, title, id],
+        (error, response) => {
+          if (error) return reject(error);
+          resolve();
+        }
+      );
+    });
+  }
+
+  // give title to existing bm
   static storeTitle(bookmark) {
     const { title, bookmarkId } = bookmark;
     return new Promise((resolve, reject) => {
@@ -46,7 +62,6 @@ class BookmarkTable {
         [url],
         (error, response) => {
           if (error) return reject(error);
-
           resolve({ bookmark: response.rows[0] });
         }
       );
