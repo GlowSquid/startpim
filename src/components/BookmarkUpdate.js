@@ -2,34 +2,18 @@ import { Fragment, useState } from "react";
 import { connect } from "react-redux";
 import { updateBookmark } from "../actions/bookmark";
 import ReactDOM from "react-dom";
-import { fetchAccountBookmarks } from "../actions/accountBookmarks";
 
 import "../styles/Form.css";
 import "../styles/Modal.css";
 
-const UpdateBookmark = ({
-  updateBookmark,
-  updateBmShowing,
-  hide,
-  bookmark,
-  id
-}) => {
+function UpdateBookmark({ updateBookmark, updateBmShowing, hide, props }) {
   if (updateBmShowing === true) {
     const [formData, setFormData] = useState({
-      // url: "https://vg.no",
-      // url: bookmark.url,
-      url: "",
-      // url: props.url,
-      title: "",
-      // title: props.title,
-      // id: 408
-      id: id
+      url: props.url,
+      title: props.title,
+      id: props.id
     });
-    // console.log(props);
-    console.log("id is ", id);
-    console.log("bookmark is ", bookmark);
-    // console.log(bookmark.id);
-    // console.log(bookmark);
+    // console.log("props is ", props);
 
     const { title, url } = formData;
 
@@ -59,7 +43,6 @@ const UpdateBookmark = ({
                 value={url}
                 onChange={e => onChange(e)}
                 className="input"
-                // props={props.url}
                 required
               />
               <br />
@@ -70,7 +53,6 @@ const UpdateBookmark = ({
                 value={title}
                 onChange={e => onChange(e)}
                 className="input"
-                // props={props.title}
                 required
               />
               <br />
@@ -81,9 +63,6 @@ const UpdateBookmark = ({
             <button className="btn btn-cancel" onClick={hide}>
               Cancel
             </button>
-            {/* {bookmark.id} */}
-            {/* {props.id} */}
-            {id}
           </section>
         </div>
       </Fragment>,
@@ -92,10 +71,9 @@ const UpdateBookmark = ({
   } else {
     return null;
   }
-};
+}
 
 export default connect(
-  ({ accountBookmarks, bookmark }) => ({ accountBookmarks, bookmark }),
-  // ({ accountBookmarks }) => ({ accountBookmarks }),
-  { updateBookmark, fetchAccountBookmarks }
+  ({ accountBookmarks }) => ({ accountBookmarks }),
+  { updateBookmark }
 )(UpdateBookmark);

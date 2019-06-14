@@ -3,7 +3,7 @@ import { fetchAccountBookmarks } from "../actions/accountBookmarks";
 import Link from "next/link";
 // import { useEffect } from "react";
 import Spinner from "./Spinner";
-import { dropBookmark, updateBookmark } from "../actions/bookmark";
+import { dropBookmark } from "../actions/bookmark";
 import UseModal from "./UseModal";
 import AddBookmark from "./BookmarkAdd";
 import UpdateBookmark from "./BookmarkUpdate";
@@ -15,7 +15,6 @@ const AccountBookmarks = ({
   fetchAccountBookmarks,
   accountBookmarks,
   dropBookmark,
-  updateBookmark,
   bookmark
 }) => {
   const { addBmShowing, toggle } = UseModal();
@@ -28,36 +27,13 @@ const AccountBookmarks = ({
     });
   };
 
-  // const single = (id, title, url) => {
-  //   // console.log(id);
-  //   // console.log(title);
-  //   <UpdateBookmark
-  //     // key={bookmark.id}
-  //     updateBmShowing={updateBmShowing}
-  //     hide={taggle}
-  //     // props={(bookmark.title, bookmark.id)}
-  //     props={(id, title, url)}
-  //   />;
-  // };
+  const editBm = (id, title, url) => {
+    bookmark.title = title;
+    bookmark.url = url;
+    bookmark.id = id;
 
-  // const single = id => {
-  //   console.log("Single ID", id);
-  // <UpdateBookmark
-  // {...bms}
-  // {...id}
-  // key={index}
-  // key={bookmark.id}
-  // {...bookmark.id}
-  // id={bookmark["id"]}
-
-  // key={(bookmark.id, bookmark.title, bookmark.url)}
-  // props={bookmark}
-  // updateBmShowing={updateBmShowing}
-  // hide={taggle}
-  // props={(bookmark.id, bookmark.title, bookmark.url)}
-  // props={[{ id: bookmark.id }]}
-  // />;
-  // };
+    taggle();
+  };
 
   if (antiSpam === true && bookmark.status === "fetching") {
     antiSpam = false;
@@ -76,30 +52,10 @@ const AccountBookmarks = ({
       <div>
         <img src={bookmark.icon} height="32px" alt="" />
       </div>
-      <div className="edit-bm" onClick={taggle} id={bookmark.id}>
+      <button onClick={() => editBm(bookmark.id, bookmark.title, bookmark.url)}>
         E
-      </div>
-      {/* <div className="edit-bm" onClick={taggle => bookmark.id}>
-        ?
-      </div> */}
-      {/* <button onClick={() => single(bookmark.id)}>?</button> */}
+      </button>
       <button onClick={() => delBm(bookmark.id)}>X</button>
-      <UpdateBookmark
-        // {...bms}
-        // {...bookmark}
-        // key
-        // key={index}
-        key={bookmark.id}
-        // id={bookmark["id"]}
-        id={bookmark.id}
-        title={bookmark.title}
-        // key={(bookmark.id, bookmark.title, bookmark.url)}
-        // props={bookmark}
-        updateBmShowing={updateBmShowing}
-        hide={taggle}
-        // props={(bookmark.id, bookmark.title, bookmark.url)}
-        // props={[{ id: bookmark.id }]}
-      />
     </div>
   ));
 
@@ -130,6 +86,13 @@ const AccountBookmarks = ({
             +
           </div>
           <AddBookmark addBmShowing={addBmShowing} hide={toggle} />
+          <UpdateBookmark
+            {...bookmark}
+            // key={bookmark}
+            props={bookmark}
+            updateBmShowing={updateBmShowing}
+            hide={taggle}
+          />
         </div>
       </div>
     );
@@ -142,5 +105,5 @@ const AccountBookmarks = ({
 
 export default connect(
   ({ accountBookmarks, bookmark }) => ({ accountBookmarks, bookmark }),
-  { fetchAccountBookmarks, dropBookmark, updateBookmark }
+  { fetchAccountBookmarks, dropBookmark }
 )(AccountBookmarks);
