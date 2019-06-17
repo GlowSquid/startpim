@@ -13,14 +13,15 @@
 - ~~tie bookmarks to user~~
 - ~~create bookmarks~~
 - ~~read bookmarks~~
-- update bookmarks
+- ~~update bookmarks~~
 - ~~delete bookmarks~~
 - ~~backend validation~~
 - frontend validation
 - ~~spinner while authenticating~~
-- sorting bookmarks by date/alphabetically
 - autofetch favicon
 - ~~autofetch title~~
+- ~~Grid/List view toggle~~
+- Dark/light theme ☾☽☀️
 - finish styling
 - cool landing page
 - ~~404 page~~
@@ -29,16 +30,17 @@
 ## Phase 3+ - Possible Features
 
 - attach bookmarks to folder/tags
+- Find & Display bigger favicons
 - Drag 'n Drop functionality
-- Grid/List view toggle
+- sorting bookmarks by date/alphabetically
 - email/password change
 - email verification & password reset
 - admin page displaying server & user stats
 - hash everything else in db
-- Dark/light theme ☾☽☀️
 - User handle for personalization
 
 ## Bugs
 
 - trigger-happy authentication checker
+- auto-refresh after title is found
 - Bookmarks doesn't always sort by ID

@@ -36,7 +36,7 @@ const AccountDelete = ({ drop, account }) => {
   return (
     <Fragment>
       <h1 className="bumper">Danger Zone</h1>
-      <p>Confirm deleting your account</p>
+      <p>Confirm deleting your account and all your bookmarks forever</p>
       <p>
         <strong className="error">This action is irreversible!</strong>
       </p>

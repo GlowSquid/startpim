@@ -1,7 +1,28 @@
+.sizing {
+  display: block;
+  margin: 0 auto;
+  width: vw;
+}
+
 .grid {
   display: -webkit-flex;
   display: flex;
   flex-wrap: wrap;
+}
+
+.list {
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.controls {
+  display: -webkit-flex;
+  display: flex;
+  text-align: end;
+  justify-content: end;
+  height: 30px;
+  margin-top: 5px;
 }
 
 .bm {
@@ -10,7 +31,26 @@
   margin: 20px 10px;
   border: 4px solid #fca429;
   border-radius: 20%;
-  cursor: pinter;
+  cursor: pointer;
+}
+
+.bm__list {
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  width: 400px;
+  height: 30px;
+  margin: 5px 10px;
+  border: 2px solid #fca429;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.title__list {
+  width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .new-bm {
@@ -29,13 +69,31 @@
   cursor: pointer;
 }
 
+.add-bm__list {
+  width: 400px;
+  height: 30px;
+  margin: 5px 10px;
+  border: 2px dashed #fca429;
+  border-radius: 5px;
+  color: #fca429;
+  /* font-size: 20px; */
+  cursor: pointer;
+}
+
 .edit-bm {
   width: 26px;
   height: 26px;
   border: 2px solid #fca429;
   border-radius: 5px;
-  /* color: #fca429; */
-  /* font-size: 18px; */
+  text-align: center;
+  cursor: pointer;
+}
+
+.del-bm {
+  width: 26px;
+  height: 26px;
+  border: 2px solid #fca429;
+  border-radius: 5px;
   text-align: center;
   cursor: pointer;
 }
