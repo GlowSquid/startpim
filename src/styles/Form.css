@@ -44,7 +44,7 @@
 }
 
 .btn-danger {
-  background: #b64b4b;
+  background-color: #b64b4b;
   border: 1px solid #692c2c;
   box-shadow: 1px 2px 1px rgba(64, 0, 0, 0.5);
 }

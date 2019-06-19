@@ -24,7 +24,7 @@ const AccountBookmarks = ({
     localStorage.setItem("list", JSON.stringify(listMode));
   }, [listMode]);
 
-  // const [showMenu, setShowMenu] = useState();
+  const [showMenu, setShowMenu] = useState(false);
 
   function getInitialMode() {
     const savedMode = JSON.parse(localStorage.getItem("list"));
@@ -57,27 +57,67 @@ const AccountBookmarks = ({
     fetchAccountBookmarks(accountBookmarks);
   }
 
-  const bms = accountBookmarks.bookmarks.map(bookmark => (
-    <div className={listMode ? "bm__list" : "bm"} key={bookmark.id}>
-      <div> {bookmark.id} </div>
-      <div className={listMode ? "title__list" : "title"}>
-        <Link href={bookmark.url}>
-          <a>{bookmark.title}</a>
-        </Link>
-      </div>
+  // const menu = bookmark(id => {
+  // });
 
-      <div>
-        <img src={bookmark.icon} height="32px" alt="" />
-      </div>
-      <div className="menu">
+  const menu = (id, title, url) => (
+    <div className="menu">
+      <button className="edit-bm" onClick={() => editBm(id, title, url)}>
+        Edit
+      </button>
+      <button className="del-bm" onClick={() => delBm(id)}>
+        Delete
+      </button>
+    </div>
+  );
+
+  // function menu(id) {
+  //   console.log("hello", id);
+  //   <div>Heya</div>;
+  // }
+
+  // function menu() {
+  //   <div className="menu">
+  //     <button
+  //       className="edit-bm"
+  //       onClick={() => editBm(bookmark.id, bookmark.title, bookmark.url)}
+  //     >
+  //       E
+  //     </button>
+  //     <button className="del-bm" onClick={() => delBm(bookmark.id)}>
+  //       X
+  //     </button>
+  //   </div>;
+  // }
+
+  const bms = accountBookmarks.bookmarks.map(bookmark => (
+    <div className={listMode ? "" : "grid-rules"} key={bookmark.id}>
+      <div className={listMode ? "bm__list" : "bm"}>
+        <div> {bookmark.id} </div>
+        <img src={bookmark.icon} height={listMode ? "16px" : "32px"} alt="" />
+
+        {/* <div className="menu">
+          <button
+            onClick={() => editBm(bookmark.id, bookmark.title, bookmark.url)}
+          >
+            E
+          </button>
+          <button onClick={() => delBm(bookmark.id)}>X</button>
+        </div> */}
+        {/* {title(bookmark.title, bookmark.url)} */}
+        <div className={listMode ? "title__list" : "title"}>
+          <Link href={bookmark.url}>
+            <a>{bookmark.title}</a>
+          </Link>
+        </div>
+        {showMenu ? menu(bookmark.id, bookmark.title, bookmark.url) : null}
         <button
-          className="edit-bm"
-          onClick={() => editBm(bookmark.id, bookmark.title, bookmark.url)}
+          className="menu-bar"
+          onClick={() => !setShowMenu(prevMode => !prevMode)}
         >
-          E
-        </button>
-        <button className="del-bm" onClick={() => delBm(bookmark.id)}>
-          X
+          <div className="bar" />
+          <div className="bar" />
+          <div className="bar" />
         </button>
       </div>
     </div>

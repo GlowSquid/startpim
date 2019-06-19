@@ -25,10 +25,15 @@
   margin-top: 5px;
 }
 
+.grid-rules {
+  width: 100px;
+  margin: 20px 10px;
+}
+
 .bm {
   width: 100px;
   height: 94px;
-  margin: 20px 10px;
+  /* margin: 20px 10px; */
   border: 4px solid #fca429;
   border-radius: 20%;
   cursor: pointer;
@@ -37,7 +42,8 @@
 .bm__list {
   display: -webkit-flex;
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  /* flex-wrap: wrap; */
   width: 400px;
   height: 30px;
   margin: 5px 10px;
@@ -46,11 +52,39 @@
   cursor: pointer;
 }
 
+.menu-bar {
+  background: none;
+  margin-right: 5px;
+  /* background-color: #fff; */
+  background: none;
+  border: none;
+}
+
+.bar {
+  width: 15px;
+  height: 2px;
+  /* color: #000; */
+  background-color: #000;
+  margin: 2px 0;
+}
+
 .title__list {
   width: 300px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.title:hover {
+  white-space: unset;
+  overflow: visible;
+  text-overflow: unset;
 }
 
 .new-bm {
@@ -81,19 +115,21 @@
 }
 
 .edit-bm {
-  width: 26px;
-  height: 26px;
-  border: 2px solid #fca429;
-  border-radius: 5px;
+  width: 40px;
+  height: 22px;
+  background-color: #9494ff;
+  border: 2px solid #7676cf;
+  border-radius: 2px;
   text-align: center;
   cursor: pointer;
 }
 
 .del-bm {
-  width: 26px;
-  height: 26px;
-  border: 2px solid #fca429;
-  border-radius: 5px;
+  width: 60px;
+  height: 22px;
+  background-color: #b64b4b;
+  border: 2px solid #692c2c;
+  border-radius: 2px;
   text-align: center;
   cursor: pointer;
 }
