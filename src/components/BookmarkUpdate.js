@@ -32,7 +32,7 @@ function UpdateBookmark({ updateBookmark, updateBmShowing, hide, props }) {
       <Fragment>
         <div className="modal auth">
           <header className="modal_header">
-            <h1>Update Bookmark</h1>
+            <h1>Edit Bookmark</h1>
           </header>
           <section className="modal_content">
             <form className="form" onSubmit={e => onSubmit(e)}>

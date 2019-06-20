@@ -24,6 +24,10 @@ export default class extends Document {
           `
             }}
           /> */}
+          <link
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet"
+          />
         </Head>
         <body>
           <Main />

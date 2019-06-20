@@ -24,7 +24,7 @@ const AccountBookmarks = ({
     localStorage.setItem("list", JSON.stringify(listMode));
   }, [listMode]);
 
-  const [showMenu, setShowMenu] = useState(false);
+  // const [showMenu, setShowMenu] = useState(false);
 
   function getInitialMode() {
     const savedMode = JSON.parse(localStorage.getItem("list"));
@@ -62,63 +62,38 @@ const AccountBookmarks = ({
 
   const menu = (id, title, url) => (
     <div className="menu">
-      <button className="edit-bm" onClick={() => editBm(id, title, url)}>
-        Edit
-      </button>
-      <button className="del-bm" onClick={() => delBm(id)}>
-        Delete
-      </button>
+      <i className="material-icons edit" onClick={() => editBm(id, title, url)}>
+        notes
+      </i>
+      <i className="material-icons del" onClick={() => delBm(id)}>
+        close
+      </i>
     </div>
   );
-
-  // function menu(id) {
-  //   console.log("hello", id);
-  //   <div>Heya</div>;
-  // }
-
-  // function menu() {
-  //   <div className="menu">
-  //     <button
-  //       className="edit-bm"
-  //       onClick={() => editBm(bookmark.id, bookmark.title, bookmark.url)}
-  //     >
-  //       E
-  //     </button>
-  //     <button className="del-bm" onClick={() => delBm(bookmark.id)}>
-  //       X
-  //     </button>
-  //   </div>;
-  // }
 
   const bms = accountBookmarks.bookmarks.map(bookmark => (
     <div className={listMode ? "" : "grid-rules"} key={bookmark.id}>
       <div className={listMode ? "bm__list" : "bm"}>
+        {listMode ? null : menu(bookmark.id, bookmark.title, bookmark.url)}
         <div> {bookmark.id} </div>
         <img src={bookmark.icon} height={listMode ? "16px" : "32px"} alt="" />
-
-        {/* <div className="menu">
-          <button
-            onClick={() => editBm(bookmark.id, bookmark.title, bookmark.url)}
-          >
-            E
-          </button>
-          <button onClick={() => delBm(bookmark.id)}>X</button>
-        </div> */}
-        {/* {title(bookmark.title, bookmark.url)} */}
         <div className={listMode ? "title__list" : "title"}>
           <Link href={bookmark.url}>
             <a>{bookmark.title}</a>
           </Link>
         </div>
-        {showMenu ? menu(bookmark.id, bookmark.title, bookmark.url) : null}
-        <button
-          className="menu-bar"
-          onClick={() => !setShowMenu(prevMode => !prevMode)}
-        >
-          <div className="bar" />
-          <div className="bar" />
-          <div className="bar" />
-        </button>
+        {listMode ? menu(bookmark.id, bookmark.title, bookmark.url) : null}
+        {/* <div className="menu">
+          <i
+            className="material-icons edit"
+            onClick={() => editBm(bookmark.id, bookmark.title, bookmark.url)}
+          >
+            notes
+          </i>
+          <i className="material-icons del" onClick={() => delBm(bookmark.id)}>
+            close
+          </i>
+        </div> */}
       </div>
     </div>
   ));
@@ -146,10 +121,18 @@ const AccountBookmarks = ({
     session = (
       <div>
         <div className="controls">
-          <h3>{listMode ? "List-View " : "Grid-View "}</h3>
-          <button onClick={() => setListMode(prevMode => !prevMode)}>
-            Toggle
-          </button>
+          <i
+            className={listMode ? "material-icons" : "material-icons selected"}
+            onClick={() => setListMode(false)}
+          >
+            view_comfy
+          </i>
+          <i
+            className={listMode ? "material-icons selected" : "material-icons"}
+            onClick={() => setListMode(true)}
+          >
+            reorder
+          </i>
         </div>
         <div className="sizing">
           <div className={listMode ? "list" : "grid"}>

@@ -19,9 +19,7 @@
 .controls {
   display: -webkit-flex;
   display: flex;
-  text-align: end;
   justify-content: end;
-  height: 30px;
   margin-top: 5px;
 }
 
@@ -47,9 +45,12 @@
   width: 400px;
   height: 30px;
   margin: 5px 10px;
-  border: 2px solid #fca429;
-  border-radius: 5px;
+  /* border-top: 3px solid #fca429;
+  border-left: 3px solid #fca429; */
+  box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.5);
+  /* border-radius: 5px; */
   cursor: pointer;
+  background: #e7e7e7;
 }
 
 .menu-bar {
@@ -68,14 +69,25 @@
   margin: 2px 0;
 }
 
-.title__list {
-  width: 300px;
+.title {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 14px;
+  border-radius: 10px;
+  background: #5c5c5c;
+  color: white;
+  margin-top: 5px;
+  padding: 2px;
 }
 
-.title {
+.title a {
+  color: white;
+  text-decoration: none;
+}
+
+.title__list {
+  width: 300px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -132,6 +144,20 @@
   border-radius: 2px;
   text-align: center;
   cursor: pointer;
+}
+
+.del {
+  color: #b64b4b;
+}
+
+.edit {
+  color: #deb887;
+}
+
+.selected {
+  background-color: #deb887;
+  /* border: 4px solid #deb887; */
+  border-radius: 3px;
 }
 
 .first-bm {
