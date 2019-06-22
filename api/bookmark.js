@@ -71,9 +71,13 @@ router.post("/add-bookmark", (req, res, next) => {
   function fetchTitle(bookmarkId) {
     fs.watchFile(titleFile, function() {
       title = fs.readFileSync(titleFile, "utf8");
-      console.log("url is", url);
-      console.log("title is", title);
       fs.unwatchFile(titleFile);
+      console.log("unwatching");
+      if (title.length <= 1) {
+        const findRoot = new URL(url);
+        title = findRoot.hostname;
+        fs.unwatchFile(titleFile);
+      }
       return BookmarkTable.storeTitle({ title, bookmarkId });
     });
   }

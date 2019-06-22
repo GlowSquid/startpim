@@ -1,10 +1,10 @@
 # To Do
 
-## Phase 1
+## Phase 1 | Connecting Tools
 
 ~~Integrate Next.js, Express, Node, PostgreSQL, Redux~~
 
-## Phase 2 - Create MVP
+## Phase 2 | Create MVP
 
 - ~~register+login~~
 - ~~loggedIn Checker~~
@@ -21,16 +21,16 @@
 - autofetch favicon
 - ~~autofetch title~~
 - ~~Grid/List view toggle~~
-- Dark/light theme ☾☽☀️
 - finish styling
 - cool landing page
 - ~~404 page~~
 - SEO favicon sitemap ogp
 
-## Phase 3+ - Possible Features
+## Phase 3+ | Possible Features
 
 - attach bookmarks to folder/tags
 - Find & Display bigger favicons
+- Dark/light theme ☾☽☀️
 - Drag 'n Drop functionality
 - sorting bookmarks by date/alphabetically
 - email/password change

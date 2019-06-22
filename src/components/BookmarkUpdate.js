@@ -2,6 +2,7 @@ import { Fragment, useState } from "react";
 import { connect } from "react-redux";
 import { updateBookmark } from "../actions/bookmark";
 import ReactDOM from "react-dom";
+import Backdrop from "./Backdrop";
 
 import "../styles/Form.css";
 import "../styles/Modal.css";
@@ -30,6 +31,7 @@ function UpdateBookmark({ updateBookmark, updateBmShowing, hide, props }) {
 
     return ReactDOM.createPortal(
       <Fragment>
+        <Backdrop />
         <div className="modal auth">
           <header className="modal_header">
             <h1>Edit Bookmark</h1>

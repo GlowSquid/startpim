@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { addBookmark } from "../actions/bookmark";
 import ReactDOM from "react-dom";
 import { fetchAccountBookmarks } from "../actions/accountBookmarks";
+import Backdrop from "./Backdrop";
 
 import "../styles/Form.css";
 import "../styles/Modal.css";
@@ -28,6 +29,7 @@ const AddBookmark = ({ addBookmark, addBmShowing, hide }) => {
 
     return ReactDOM.createPortal(
       <Fragment>
+        <Backdrop />
         <div className="modal auth">
           <header className="modal_header">
             <h1>Add Bookmark</h1>

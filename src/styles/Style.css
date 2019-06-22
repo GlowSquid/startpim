@@ -28,7 +28,8 @@ body {
 .page {
   display: block;
   margin: 0 auto;
-  width: 600px;
+  /* width: 600px; */
+  width: 80%;
 }
 
 .dev-bar {

@@ -1,7 +1,6 @@
 import { connect } from "react-redux";
 import { fetchAccountBookmarks } from "../actions/accountBookmarks";
 import Link from "next/link";
-// import { useEffect } from "react";
 import { useState, useEffect } from "react";
 import Spinner from "./Spinner";
 import { dropBookmark } from "../actions/bookmark";
@@ -23,8 +22,6 @@ const AccountBookmarks = ({
   useEffect(() => {
     localStorage.setItem("list", JSON.stringify(listMode));
   }, [listMode]);
-
-  // const [showMenu, setShowMenu] = useState(false);
 
   function getInitialMode() {
     const savedMode = JSON.parse(localStorage.getItem("list"));
@@ -57,9 +54,6 @@ const AccountBookmarks = ({
     fetchAccountBookmarks(accountBookmarks);
   }
 
-  // const menu = bookmark(id => {
-  // });
-
   const menu = (id, title, url) => (
     <div className="menu">
       <i className="material-icons edit" onClick={() => editBm(id, title, url)}>
@@ -71,30 +65,26 @@ const AccountBookmarks = ({
     </div>
   );
 
+  const title = (url, title) => (
+    <div className={listMode ? "title__list" : "title"}>
+      <Link href={url}>
+        <a target="_blank" rel="noopener noreferrer">
+          {title}
+        </a>
+      </Link>
+    </div>
+  );
+
   const bms = accountBookmarks.bookmarks.map(bookmark => (
     <div className={listMode ? "" : "grid-rules"} key={bookmark.id}>
       <div className={listMode ? "bm__list" : "bm"}>
         {listMode ? null : menu(bookmark.id, bookmark.title, bookmark.url)}
         <div> {bookmark.id} </div>
         <img src={bookmark.icon} height={listMode ? "16px" : "32px"} alt="" />
-        <div className={listMode ? "title__list" : "title"}>
-          <Link href={bookmark.url}>
-            <a>{bookmark.title}</a>
-          </Link>
-        </div>
+        {listMode ? title(bookmark.url, bookmark.title) : null}
         {listMode ? menu(bookmark.id, bookmark.title, bookmark.url) : null}
-        {/* <div className="menu">
-          <i
-            className="material-icons edit"
-            onClick={() => editBm(bookmark.id, bookmark.title, bookmark.url)}
-          >
-            notes
-          </i>
-          <i className="material-icons del" onClick={() => delBm(bookmark.id)}>
-            close
-          </i>
-        </div> */}
       </div>
+      {listMode ? null : title(bookmark.url, bookmark.title)}
     </div>
   ));
 
@@ -104,7 +94,6 @@ const AccountBookmarks = ({
     accountBookmarks.bookmarks.length === 0 &&
     accountBookmarks.status === "success"
   ) {
-    // setListMode("grid");
     session = (
       <div className="page">
         <h1 className="new-bm">Add your first bookmark</h1>
@@ -141,12 +130,11 @@ const AccountBookmarks = ({
               className={listMode ? "add-bm__list" : "add-bm"}
               onClick={toggle}
             >
-              {listMode ? "+  Add Bookmark" : "+"}
+              {listMode ? "Add Bookmark" : "+"}
             </div>
             <AddBookmark addBmShowing={addBmShowing} hide={toggle} />
             <UpdateBookmark
               {...bookmark}
-              // key={bookmark}
               props={bookmark}
               updateBmShowing={updateBmShowing}
               hide={taggle}
