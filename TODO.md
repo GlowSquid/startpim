@@ -43,4 +43,3 @@
 
 - trigger-happy authentication checker
 - auto-refresh after title is found
-- Bookmarks doesn't always sort by ID

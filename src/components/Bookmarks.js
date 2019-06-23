@@ -17,15 +17,22 @@ const AccountBookmarks = ({
   dropBookmark,
   bookmark
 }) => {
-  const [listMode, setListMode] = useState(getInitialMode());
+  const [listMode, setListMode] = useState(getMode());
+  const [descending, setDescending] = useState(getDirection());
 
   useEffect(() => {
     localStorage.setItem("list", JSON.stringify(listMode));
-  }, [listMode]);
+    localStorage.setItem("desc", JSON.stringify(descending));
+  }, [listMode, descending]);
 
-  function getInitialMode() {
+  function getMode() {
     const savedMode = JSON.parse(localStorage.getItem("list"));
     return savedMode || false;
+  }
+
+  function getDirection() {
+    const savedDirection = JSON.parse(localStorage.getItem("desc"));
+    return savedDirection || false;
   }
 
   const { addBmShowing, toggle } = UseModal();
@@ -55,7 +62,7 @@ const AccountBookmarks = ({
   }
 
   const menu = (id, title, url) => (
-    <div className="menu">
+    <div className="bm-options">
       <i className="material-icons edit" onClick={() => editBm(id, title, url)}>
         notes
       </i>
@@ -75,18 +82,27 @@ const AccountBookmarks = ({
     </div>
   );
 
-  const bms = accountBookmarks.bookmarks.map(bookmark => (
-    <div className={listMode ? "" : "grid-rules"} key={bookmark.id}>
-      <div className={listMode ? "bm__list" : "bm"}>
-        {listMode ? null : menu(bookmark.id, bookmark.title, bookmark.url)}
-        <div> {bookmark.id} </div>
-        <img src={bookmark.icon} height={listMode ? "16px" : "32px"} alt="" />
-        {listMode ? title(bookmark.url, bookmark.title) : null}
-        {listMode ? menu(bookmark.id, bookmark.title, bookmark.url) : null}
+  function direction() {
+    if (descending === false) {
+      return (a, b) => a.id > b.id;
+    }
+    return (b, a) => a.id > b.id;
+  }
+
+  const bms = accountBookmarks.bookmarks
+    .sort(direction())
+    .map((bookmark, i) => (
+      <div className={listMode ? "" : "grid-rules"} key={i}>
+        <div className={listMode ? "bm__list" : "bm"}>
+          {listMode ? null : menu(bookmark.id, bookmark.title, bookmark.url)}
+          <div> {bookmark.id} </div>
+          <img src={bookmark.icon} height={listMode ? "16px" : "32px"} alt="" />
+          {listMode ? title(bookmark.url, bookmark.title) : null}
+          {listMode ? menu(bookmark.id, bookmark.title, bookmark.url) : null}
+        </div>
+        {listMode ? null : title(bookmark.url, bookmark.title)}
       </div>
-      {listMode ? null : title(bookmark.url, bookmark.title)}
-    </div>
-  ));
+    ));
 
   let session;
 
@@ -110,19 +126,51 @@ const AccountBookmarks = ({
     session = (
       <div>
         <div className="controls">
-          <i
-            className={listMode ? "material-icons" : "material-icons selected"}
-            onClick={() => setListMode(false)}
-          >
-            view_comfy
-          </i>
-          <i
-            className={listMode ? "material-icons selected" : "material-icons"}
-            onClick={() => setListMode(true)}
-          >
-            reorder
-          </i>
+          <div>{/* <p>Sort by title, date</p> */}</div>
+          <div>
+            <i
+              className={
+                descending
+                  ? "material-icons highlighted icons"
+                  : "material-icons icons"
+              }
+              onClick={() => setDescending(true)}
+            >
+              keyboard_arrow_up
+            </i>
+            <i
+              className={
+                descending
+                  ? "material-icons icons"
+                  : "material-icons highlighted icons"
+              }
+              onClick={() => setDescending(false)}
+            >
+              keyboard_arrow_down
+            </i>
+            <i
+              className={
+                listMode
+                  ? "material-icons icons"
+                  : "material-icons highlighted icons"
+              }
+              onClick={() => setListMode(false)}
+            >
+              view_comfy
+            </i>
+            <i
+              className={
+                listMode
+                  ? "material-icons highlighted icons"
+                  : "material-icons icons"
+              }
+              onClick={() => setListMode(true)}
+            >
+              reorder
+            </i>
+          </div>
         </div>
+
         <div className="sizing">
           <div className={listMode ? "list" : "grid"}>
             {bms}

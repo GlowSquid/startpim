@@ -37,7 +37,7 @@ const AddBookmark = ({ addBookmark, addBmShowing, hide }) => {
           <section className="modal_content">
             <form className="form" onSubmit={e => onSubmit(e)}>
               <input
-                type="text"
+                type="url"
                 placeholder="URL"
                 name="url"
                 value={url}

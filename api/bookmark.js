@@ -6,7 +6,6 @@ const { authenticatedAccount } = require("./helper");
 // const bookmarkValidate = require("../validation/bookmark");
 const fs = require("fs");
 const { exec } = require("child_process");
-const extractor = require("unfluff");
 
 const router = new Router();
 
@@ -58,15 +57,15 @@ router.post("/add-bookmark", (req, res, next) => {
   const findRoot = new URL(url);
   let title = findRoot.hostname;
 
-  const dota = extractor.lazy(url);
+  // const dota = extractor.lazy(url);
 
-  async function fetchIcon() {
-    console.log("fetching icon");
-    icon = await dota.favicon(url, function() {
-      console.log("icon is ", icon);
-    });
-    return icon;
-  }
+  // async function fetchIcon() {
+  //   console.log("fetching icon");
+  //   icon = await dota.favicon(url, function() {
+  //     console.log("icon is ", icon);
+  //   });
+  //   return icon;
+  // }
 
   function fetchTitle(bookmarkId) {
     fs.watchFile(titleFile, function() {
@@ -110,7 +109,7 @@ router.post("/add-bookmark", (req, res, next) => {
       console.log("bookmarkId is", bookmarkId);
 
       fetchTitle(bookmarkId);
-      fetchIcon();
+      // fetchIcon();
       return AccountBookmarkTable.storeAccountBookmark({
         accountId,
         bookmarkId

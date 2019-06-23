@@ -19,7 +19,7 @@
 .controls {
   display: -webkit-flex;
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
   margin-top: 5px;
 }
 
@@ -32,9 +32,10 @@
   width: 100px;
   height: 94px;
   /* margin: 20px 10px; */
-  border: 4px solid #fca429;
+  border: 3px solid #fca429;
   border-radius: 20%;
   cursor: pointer;
+  box-shadow: 1px 2px 4px #fca42940;
 }
 
 .bm__list {
@@ -48,22 +49,23 @@
   box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
   cursor: pointer;
-  background: #e7e7e7;
+  background: #e6c79f;
 }
 
-.menu-bar {
+.bm-options {
   background: none;
-  margin-right: 5px;
-  /* background-color: #fff; */
-  background: none;
-  border: none;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: end;
+  margin-right: 2px;
+  margin-top: 2px;
 }
 
 .bar {
   width: 15px;
   height: 2px;
   /* color: #000; */
-  background-color: #000;
+  background-color: #4d384b;
   margin: 2px 0;
 }
 
@@ -71,16 +73,16 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: 14px;
-  border-radius: 10px;
-  background: #5c5c5c;
-  color: white;
+  font-size: 13px;
+  border-radius: 5px;
+  background: #deb887;
+  color: #4d384b;
   margin-top: 5px;
   padding: 2px;
 }
 
 .title a {
-  color: white;
+  color: black;
   text-decoration: none;
 }
 
@@ -95,7 +97,7 @@
   white-space: unset;
   overflow: visible;
   text-overflow: unset;
-  z-index: 100;
+  /* z-index: 100; */
 }
 
 .new-bm {
@@ -123,7 +125,7 @@
   border: 2px dashed #fca429;
   border-radius: 5px;
   color: #fca429;
-  /* font-size: 20px; */
+  font-weight: 600;
   cursor: pointer;
 }
 
@@ -132,13 +134,17 @@
 }
 
 .edit {
-  color: #deb887;
+  color: #fca429;
 }
 
-.selected {
+.highlighted {
   background-color: #deb887;
   /* border: 4px solid #deb887; */
   border-radius: 3px;
+}
+
+.icons {
+  margin-left: 4px;
 }
 
 .first-bm {
