@@ -4,6 +4,7 @@ const BookmarkTable = require("../bookmark/table");
 const AccountBookmarkTable = require("../accountBookmark/table");
 const { authenticatedAccount } = require("./helper");
 // const bookmarkValidate = require("../validation/bookmark");
+const ogs = require("open-graph-scraper");
 const fs = require("fs");
 const { exec } = require("child_process");
 
@@ -53,30 +54,21 @@ router.post("/add-bookmark", (req, res, next) => {
   let accountId, bookmark;
   const { url } = req.body;
   let titleFile = "bin/title/title.txt";
-  let icon;
+  let icon = `https://www.google.com/s2/favicons?domain=${url}`;
+  let image;
   const findRoot = new URL(url);
   let title = findRoot.hostname;
-
-  // const dota = extractor.lazy(url);
-
-  // async function fetchIcon() {
-  //   console.log("fetching icon");
-  //   icon = await dota.favicon(url, function() {
-  //     console.log("icon is ", icon);
-  //   });
-  //   return icon;
-  // }
 
   function fetchTitle(bookmarkId) {
     fs.watchFile(titleFile, function() {
       title = fs.readFileSync(titleFile, "utf8");
-      fs.unwatchFile(titleFile);
-      console.log("unwatching");
       if (title.length <= 1) {
         const findRoot = new URL(url);
         title = findRoot.hostname;
-        fs.unwatchFile(titleFile);
+        // fs.unwatchFile(titleFile);
       }
+      fs.unwatchFile(titleFile);
+      console.log("unwatching");
       return BookmarkTable.storeTitle({ title, bookmarkId });
     });
   }
@@ -87,6 +79,19 @@ router.post("/add-bookmark", (req, res, next) => {
       console.log(err);
     }
   });
+
+  const ogsOptions = { url: url, onlyGetOpenGraphInfo: true, timeout: 5000 };
+
+  ogs(ogsOptions)
+    .then(function(result) {
+      console.log("Result: ", result.data.ogImage.url);
+    })
+    .catch(function(error) {
+      console.log("ogs error: ", error);
+      const findRoot = new URL(url);
+      image = findRoot.hostname[0];
+      console.log("solution:", image);
+    });
 
   authenticatedAccount({ sessionString: req.cookies.sessionString })
     .then(({ account }) => {

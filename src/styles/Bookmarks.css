@@ -36,6 +36,7 @@
   border-radius: 20%;
   cursor: pointer;
   box-shadow: 1px 2px 4px #fca42940;
+  background: #fcfbed;
 }
 
 .bm__list {
@@ -95,7 +96,7 @@
 
 .title:hover {
   white-space: unset;
-  overflow: visible;
+  overflow: auto;
   text-overflow: unset;
   /* z-index: 100; */
 }
@@ -145,6 +146,16 @@
 
 .icons {
   margin-left: 4px;
+}
+
+.favicon {
+  margin-left: 30px;
+  margin-top: 4px;
+}
+
+.favicon__list {
+  margin-top: 2px;
+  margin-left: 2px;
 }
 
 .first-bm {

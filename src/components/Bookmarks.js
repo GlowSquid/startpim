@@ -95,8 +95,13 @@ const AccountBookmarks = ({
       <div className={listMode ? "" : "grid-rules"} key={i}>
         <div className={listMode ? "bm__list" : "bm"}>
           {listMode ? null : menu(bookmark.id, bookmark.title, bookmark.url)}
-          <div> {bookmark.id} </div>
-          <img src={bookmark.icon} height={listMode ? "16px" : "32px"} alt="" />
+          {/* <div> {bookmark.id} </div> */}
+          <img
+            className={listMode ? "favicon__list" : "favicon"}
+            src={bookmark.icon}
+            height={listMode ? "24px" : "32px"}
+            alt=""
+          />
           {listMode ? title(bookmark.url, bookmark.title) : null}
           {listMode ? menu(bookmark.id, bookmark.title, bookmark.url) : null}
         </div>
