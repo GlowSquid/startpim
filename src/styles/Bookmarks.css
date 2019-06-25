@@ -29,14 +29,24 @@
 }
 
 .bm {
+  position: relative;
   width: 100px;
   height: 94px;
+  overflow: auto;
+  overflow: -moz-hidden-unscrollable;
   /* margin: 20px 10px; */
-  border: 3px solid #fca429;
+  /* border: 3px solid #fca429; */
+  border: 3px solid #deb887;
   border-radius: 20%;
   cursor: pointer;
   box-shadow: 1px 2px 4px #fca42940;
   background: #fcfbed;
+}
+
+.bm:hover .bm-options {
+  background-color: #fcfbed;
+  /* display: block; */
+  visibility: visible;
 }
 
 .bm__list {
@@ -54,12 +64,18 @@
 }
 
 .bm-options {
-  background: none;
-  display: -webkit-flex;
+  /* display: -webkit-flex;
   display: flex;
   justify-content: end;
   margin-right: 2px;
-  margin-top: 2px;
+  margin-top: 2px; */
+
+  position: absolute;
+  top: 1%;
+  right: 6%;
+  height: 1.8rem;
+  /* display: none; */
+  visibility: hidden;
 }
 
 .bar {
@@ -131,10 +147,15 @@
 }
 
 .del {
+  position: relative;
   color: #b64b4b;
+  z-index: 10;
+  top: 1%;
+  left: 2%;
 }
 
 .edit {
+  position: relative;
   color: #fca429;
 }
 
@@ -148,9 +169,16 @@
   margin-left: 4px;
 }
 
-.favicon {
-  margin-left: 30px;
-  margin-top: 4px;
+.image {
+  position: relative;
+  margin: 0 auto;
+}
+
+.text-image {
+  background: #009ede;
+  font-size: 60px;
+  text-align: center;
+  font-family: "lato";
 }
 
 .favicon__list {

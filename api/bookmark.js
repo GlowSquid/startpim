@@ -80,18 +80,31 @@ router.post("/add-bookmark", (req, res, next) => {
     }
   });
 
-  const ogsOptions = { url: url, onlyGetOpenGraphInfo: true, timeout: 5000 };
-
-  ogs(ogsOptions)
-    .then(function(result) {
-      console.log("Result: ", result.data.ogImage.url);
-    })
-    .catch(function(error) {
-      console.log("ogs error: ", error);
-      const findRoot = new URL(url);
-      image = findRoot.hostname[0];
-      console.log("solution:", image);
-    });
+  function fetchImage(bookmarkId) {
+    const ogsOptions = { url: url, onlyGetOpenGraphInfo: true, timeout: 5000 };
+    ogs(ogsOptions)
+      .then(function(result) {
+        console.log("Result: ", result.data.ogImage.url);
+        image = result.data.ogImage.url;
+        if (image.startsWith("http" || "www")) {
+          return BookmarkTable.storeImage({ image, bookmarkId });
+        } else {
+          image = url + result.data.ogImage.url;
+          return BookmarkTable.storeImage({ image, bookmarkId });
+        }
+      })
+      .catch(function(error) {
+        console.log("ogs error: ", error);
+        const findRoot = new URL(url);
+        if (findRoot.hostname.startsWith("www.")) {
+          image = findRoot.hostname[4];
+        } else {
+          image = findRoot.hostname[0];
+        }
+        console.log("solution:", image);
+        return BookmarkTable.storeImage({ image, bookmarkId });
+      });
+  }
 
   authenticatedAccount({ sessionString: req.cookies.sessionString })
     .then(({ account }) => {
@@ -114,7 +127,7 @@ router.post("/add-bookmark", (req, res, next) => {
       console.log("bookmarkId is", bookmarkId);
 
       fetchTitle(bookmarkId);
-      // fetchIcon();
+      fetchImage(bookmarkId);
       return AccountBookmarkTable.storeAccountBookmark({
         accountId,
         bookmarkId

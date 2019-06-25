@@ -34,10 +34,9 @@ body {
 
 .dev-bar {
   display: flex;
-  margin-top: 80px;
+  padding-top: 78px;
   text-align: center;
   justify-content: space-between;
-  padding: 5px;
   background: #fca429;
 }
 

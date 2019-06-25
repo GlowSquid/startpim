@@ -18,7 +18,7 @@
 - ~~backend validation~~
 - frontend validation
 - ~~spinner while authenticating~~
-- autofetch favicon
+- ~~autofetch favicon~~
 - ~~autofetch title~~
 - ~~Grid/List view toggle~~
 - finish styling

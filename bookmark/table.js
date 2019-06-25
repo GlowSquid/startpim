@@ -53,6 +53,21 @@ class BookmarkTable {
     });
   }
 
+  // attach ogp image if present
+  static storeImage(bookmark) {
+    const { image, bookmarkId } = bookmark;
+    return new Promise((resolve, reject) => {
+      pool.query(
+        `UPDATE bookmark SET image = $1 WHERE bookmark.id = $2`,
+        [image, bookmarkId],
+        (error, response) => {
+          if (error) return reject(error);
+          resolve();
+        }
+      );
+    });
+  }
+
   // verify bm
   static getBookmark({ url }) {
     return new Promise((resolve, reject) => {
@@ -72,7 +87,7 @@ class BookmarkTable {
   static readBookmark({ bookmarkId }) {
     return new Promise((resolve, reject) => {
       pool.query(
-        "SELECT url, title, icon, id FROM bookmark WHERE bookmark.id = $1",
+        "SELECT url, title, icon, image, id FROM bookmark WHERE bookmark.id = $1",
         [bookmarkId],
         (error, response) => {
           if (error) return reject(error);
@@ -98,8 +113,6 @@ class BookmarkTable {
       );
     });
   }
-
-  // update bm
 }
 
 module.exports = BookmarkTable;

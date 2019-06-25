@@ -89,19 +89,35 @@ const AccountBookmarks = ({
     return (b, a) => a.id > b.id;
   }
 
+  function checkImage(image) {
+    // let img = image.toString();
+    if (image && image.length === 1) {
+      console.log(image.length);
+      return <p className="text-image">{image}</p>;
+    } else {
+      return <img className="image" src={image} width="100px" alt="" />;
+      // console.log(image);
+    }
+  }
+
   const bms = accountBookmarks.bookmarks
     .sort(direction())
     .map((bookmark, i) => (
       <div className={listMode ? "" : "grid-rules"} key={i}>
         <div className={listMode ? "bm__list" : "bm"}>
-          {listMode ? null : menu(bookmark.id, bookmark.title, bookmark.url)}
           {/* <div> {bookmark.id} </div> */}
-          <img
-            className={listMode ? "favicon__list" : "favicon"}
-            src={bookmark.icon}
-            height={listMode ? "24px" : "32px"}
-            alt=""
-          />
+          {listMode ? (
+            <img
+              className="favicon__list"
+              src={bookmark.icon}
+              height="24px"
+              width="24px"
+              alt=""
+            />
+          ) : (
+            <div>{checkImage(bookmark.image)}</div>
+          )}
+          {listMode ? null : menu(bookmark.id, bookmark.title, bookmark.url)}
           {listMode ? title(bookmark.url, bookmark.title) : null}
           {listMode ? menu(bookmark.id, bookmark.title, bookmark.url) : null}
         </div>
