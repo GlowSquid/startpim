@@ -1,0 +1,95 @@
+.section {
+  position: relative;
+  /* display: block; */
+  /* margin: 0% 20%; */
+  /* padding: 5% 10%; */
+  background: #4d384b;
+  /* border-radius: 20px; */
+  /* justify-content: center; */
+  /* text-align: center; */
+  box-shadow: 3px 3px 6px #00000080;
+  height: 60vh;
+}
+
+.section-2 {
+  height: 40vh;
+  background-color: rgb(23, 29, 41);
+}
+
+.brand {
+  padding-top: 60px;
+  text-decoration: none;
+  /* height: inherit; */
+  /* line-height: inherit; */
+  color: #deb887;
+  padding-left: 10%;
+  font-size: 48px;
+}
+
+.brand span {
+  color: #fca429;
+}
+
+.brand__tag {
+  color: #deb887;
+  padding-left: 12%;
+  font-size: 32px;
+}
+
+.github {
+  position: absolute;
+  top: 0%;
+  right: 0%;
+}
+
+.card {
+  position: relative;
+  display: -webkit-flex;
+  display: flex;
+  /* justify-content: space-between; */
+  /* align-items: center; */
+  /* box-sizing: border-box; */
+}
+
+#card-1 {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  width: 35%;
+  height: 35%;
+  background-color: #cecece;
+  border: 3px solid #000;
+}
+#card-2 {
+  position: absolute;
+  top: 80%;
+  left: 15%;
+  width: 35%;
+  height: 35%;
+  background-color: #afafaf;
+  border: 3px solid #000;
+}
+#card-3 {
+  position: absolute;
+  top: 110%;
+  left: 25%;
+  width: 35%;
+  height: 35%;
+  background-color: #cecece;
+  border: 3px solid #000;
+}
+
+.auth-card {
+  position: absolute;
+  /* display: block; */
+  top: 15%;
+  right: 7%;
+  height: 100%;
+  width: 25%;
+  background-color: #cecece;
+  border: 3px solid #000;
+}
+
+/* @media (min-width: 768px) {
+  
+} */

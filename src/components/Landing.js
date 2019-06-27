@@ -1,8 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import Layout from "./Layout";
-import Link from "next/link";
-import "../styles/Start.css";
+import Auth from "./Auth";
+import Footer from "./Footer";
+// import Link from "next/link";
+import "../styles/Landing.css";
 
 function Index() {
   // if (account.loggedIn === true) {
@@ -10,30 +11,38 @@ function Index() {
   // }
 
   return (
-    <Layout>
-      <div className="bumper">
-        <div className="section">
-          <h1>Landing Page</h1>
-          <div className="menu">
-            <p>
-              <Link href="/bookmarks">
-                <a>Bookmarks</a>
-              </Link>
-            </p>
-            <p>
-              <Link href="/register">
-                <a>Register</a>
-              </Link>
-            </p>
-            <p>
-              <Link href="/login">
-                <a>Login</a>
-              </Link>
-            </p>
-          </div>
+    <div>
+      <div className="section">
+        <div className="github">
+          <a href="https://github.com/GlowSquid/startpim">
+            <img
+              width="149"
+              height="149"
+              className="attachment-full size-full"
+              src="https://github.blog/wp-content/uploads/2008/12/forkme_right_orange_ff7600.png?resize=149%2C149"
+              alt="Fork me on Github"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-recalc-dims="1"
+            />
+          </a>
         </div>
+        <h1 className="brand">
+          Start<span>PIM</span>
+        </h1>
+        <p className="brand__tag">Free & Secure online bookmarker!</p>
+        <div className="auth-card">
+          <Auth />
+        </div>
+        {/* <div className="card"> */}
+        <div id="card-1">One</div>
+        <div id="card-2">Two</div>
+        <div id="card-3">Three</div>
+        {/* </div> */}
       </div>
-    </Layout>
+      <div className="section-2">hoho</div>
+      <Footer />
+    </div>
   );
 }
 

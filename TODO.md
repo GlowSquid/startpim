@@ -29,7 +29,7 @@
 ## Phase 3+ | Possible Features
 
 - attach bookmarks to folder/tags
-- Find & Display bigger favicons
+- ~~Find & Display og-images~~
 - Dark/light theme ☾☽☀️
 - Drag 'n Drop functionality
 - sorting bookmarks by date/alphabetically
