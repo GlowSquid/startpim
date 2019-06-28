@@ -53,30 +53,37 @@
 
 #card-1 {
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 5%;
   width: 35%;
-  height: 35%;
+  height: 33%;
   background-color: #cecece;
   border: 3px solid #000;
 }
 #card-2 {
   position: absolute;
-  top: 80%;
+  top: 67%;
   left: 15%;
   width: 35%;
-  height: 35%;
+  height: 33%;
   background-color: #afafaf;
   border: 3px solid #000;
 }
 #card-3 {
   position: absolute;
-  top: 110%;
+  top: 94%;
   left: 25%;
   width: 35%;
-  height: 35%;
+  height: 33%;
   background-color: #cecece;
   border: 3px solid #000;
+}
+
+#card-1:hover {
+  z-index: 10;
+}
+#card-2:hover {
+  z-index: 10;
 }
 
 .auth-card {
@@ -84,10 +91,11 @@
   /* display: block; */
   top: 15%;
   right: 7%;
-  height: 100%;
+  height: 35rem;
   width: 25%;
-  background-color: #cecece;
-  border: 3px solid #000;
+  background-color: #afafaf;
+  border: 1px solid #000;
+  box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* @media (min-width: 768px) {

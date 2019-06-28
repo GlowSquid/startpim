@@ -1,20 +1,22 @@
 import { useState } from "react";
 import Router from "next/router";
-import Link from "next/link";
+// import Link from "next/link";
 import { connect } from "react-redux";
 import { register } from "../actions/account";
-// import fetchStates from "../reducers/fetchStates";
+import { login } from "../actions/account";
 
 import "../styles/Form.css";
 
 let clicked = false;
 
-const Auth = ({ register, account }) => {
+const Auth = ({ register, login, account }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
     password2: ""
   });
+
+  const [showLogin, setShowLogin] = useState(false);
 
   const [showData, setShowData] = useState();
 
@@ -27,12 +29,18 @@ const Auth = ({ register, account }) => {
 
   const onSubmit = async e => {
     e.preventDefault();
-    if (password !== password2) {
-      setShowData("Passwords doesn't match");
-    } else {
-      register(formData);
+    if (!showLogin) {
+      if (password !== password2) {
+        setShowData("Passwords doesn't match");
+      } else {
+        console.log("atemptimng to sign in");
+        register(formData);
 
-      clicked = true;
+        clicked = true;
+      }
+    } else {
+      console.log("atemptimng to log in");
+      login(formData);
     }
   };
 
@@ -57,23 +65,37 @@ const Auth = ({ register, account }) => {
   return (
     <div className="auth">
       <header className="auth-header">
-        <h1 className="center">Sign Up</h1>
+        <button
+          onClick={() => setShowLogin(false)}
+          className={showLogin ? "btn-inactive" : "btn-active"}
+        >
+          Sign Up
+        </button>
+        <button
+          onClick={() => setShowLogin(true)}
+          className={
+            showLogin ? "btn-active btn-active__login" : "btn-inactive"
+          }
+        >
+          Login
+        </button>
       </header>
-      <p>Create your account</p>
+      <h2 className="center">
+        {showLogin ? "Already registered? Login" : "Sign Up for Free"}
+      </h2>
       <form className="form" onSubmit={e => onSubmit(e)}>
         <input
           type="text"
           name="email"
-          placeholder="Email"
+          placeholder="Email*"
           value={email}
           onChange={e => onChange(e)}
-          // error={error.email}
           className="input"
           required
         />
         <input
           type="password"
-          placeholder="Password"
+          placeholder="Password*"
           name="password"
           value={password}
           onChange={e => onChange(e)}
@@ -82,28 +104,29 @@ const Auth = ({ register, account }) => {
         />
         <input
           type="password"
-          placeholder="Confirm Password"
+          placeholder="Confirm Password*"
           name="password2"
           value={password2}
           onChange={e => onChange(e)}
-          className="input"
+          className={showLogin ? "input__hidden" : "input"}
           required
         />
-        <p className="error">{showData}</p>
+
+        <p className="error center">{showData}</p>
         <br />
-        <input type="submit" className="btn" value="Register" />
+        <input
+          type="submit"
+          className={
+            showLogin ? "btn-landing btn-landing__login" : "btn-landing"
+          }
+          value={showLogin ? "Login" : "Register"}
+        />
       </form>
-      <p>
-        Already a registered user?{" "}
-        <Link href="/login">
-          <a>Login</a>
-        </Link>
-      </p>
     </div>
   );
 };
 
 export default connect(
   ({ account }) => ({ account }),
-  { register }
+  { register, login }
 )(Auth);
