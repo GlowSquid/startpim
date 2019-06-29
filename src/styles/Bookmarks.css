@@ -170,8 +170,14 @@
 }
 
 .image {
-  position: relative;
+  /* position: absolute; */
+  height: 50px;
+  width: 50px;
+  display: inline-block;
   margin: 0 auto;
+  text-align: center;
+  justify-content: center;
+  vertical-align: middle;
 }
 
 .text-image {

@@ -3,7 +3,7 @@ const BookmarkTable = require("../bookmark/table");
 // const AccountTable = require("../account/table");
 const AccountBookmarkTable = require("../accountBookmark/table");
 const { authenticatedAccount } = require("./helper");
-// const bookmarkValidate = require("../validation/bookmark");
+const bookmarkValidate = require("../validation/bookmark");
 const ogs = require("open-graph-scraper");
 const fs = require("fs");
 const { exec } = require("child_process");
@@ -59,6 +59,14 @@ router.post("/add-bookmark", (req, res, next) => {
   const findRoot = new URL(url);
   let title = findRoot.hostname;
 
+  const { errors, isValid } = bookmarkValidate(req.body);
+  if (!isValid) {
+    const error = new Error(JSON.stringify(errors));
+    // let error = new Error(errors);
+    error.statusCode = 400;
+    throw error;
+  }
+
   function fetchTitle(bookmarkId) {
     fs.watchFile(titleFile, function() {
       title = fs.readFileSync(titleFile, "utf8");
@@ -84,14 +92,27 @@ router.post("/add-bookmark", (req, res, next) => {
     const ogsOptions = { url: url, onlyGetOpenGraphInfo: true, timeout: 5000 };
     ogs(ogsOptions)
       .then(function(result) {
-        console.log("Result: ", result.data.ogImage.url);
-        image = result.data.ogImage.url;
-        if (image.startsWith("http" || "www")) {
-          return BookmarkTable.storeImage({ image, bookmarkId });
+        // console.log("Result: ", result.data.ogImage.url);
+        // console.log("More info: ", result.data);
+        console.log("title lang     : ", result.data.ogTitle);
+        console.log("ogSiteName:    ", result.data.ogSiteName);
+        if (result.data.ogTitle) {
+          title = result.data.ogTitle;
+          console.log("title is ogTitle", title);
+        } else if (result.data.ogSiteName) {
+          title = result.data.ogSiteName;
+          console.log("title is ogSiteName", title);
         } else {
-          image = url + result.data.ogImage.url;
-          return BookmarkTable.storeImage({ image, bookmarkId });
+          console.log("time to use lynx");
+          // fetchTitle(bookmarkId);
         }
+        image = result.data.ogImage.url;
+        if (!image.startsWith("http" || "www")) {
+          image = url + result.data.ogImage.url;
+          // return BookmarkTable.storeImage({ image, title, bookmarkId });
+        }
+        return BookmarkTable.storeImage({ image, title, bookmarkId });
+        // }
       })
       .catch(function(error) {
         console.log("ogs error: ", error);
@@ -102,7 +123,9 @@ router.post("/add-bookmark", (req, res, next) => {
           image = findRoot.hostname[0];
         }
         console.log("solution:", image);
-        return BookmarkTable.storeImage({ image, bookmarkId });
+        title = findRoot.hostname;
+        fetchTitle(bookmarkId);
+        return BookmarkTable.storeImage({ image, title, bookmarkId });
       });
   }
 
@@ -113,20 +136,10 @@ router.post("/add-bookmark", (req, res, next) => {
       bookmark = { url, title, icon };
       return BookmarkTable.storeBookmark(bookmark);
     })
-    // .then(({ bookmark }) => {
-    //   if (!bookmark) {
-    //     return BookmarkTable.storeBookmark(bookmark);
-    //   } else {
-    //     const error = new Error("This URL is already stored");
-    //     error.statusCode = 409;
-    //     throw error;
-    //   }
-    // })
     .then(({ bookmarkId }) => {
       bookmark.bookmarkId = bookmarkId;
       console.log("bookmarkId is", bookmarkId);
-
-      fetchTitle(bookmarkId);
+      // fetchTitle(bookmarkId);
       fetchImage(bookmarkId);
       return AccountBookmarkTable.storeAccountBookmark({
         accountId,

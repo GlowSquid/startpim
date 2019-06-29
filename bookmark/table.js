@@ -45,9 +45,6 @@ class BookmarkTable {
         (error, response) => {
           if (error) return reject(error);
           resolve();
-          // const bookmarkId = response.rows[0].id;
-          // resolve({ bookmarkId });
-          // resolve({ id: bookmarkId });
         }
       );
     });
@@ -55,11 +52,11 @@ class BookmarkTable {
 
   // attach ogp image if present
   static storeImage(bookmark) {
-    const { image, bookmarkId } = bookmark;
+    const { image, title, bookmarkId } = bookmark;
     return new Promise((resolve, reject) => {
       pool.query(
-        `UPDATE bookmark SET image = $1 WHERE bookmark.id = $2`,
-        [image, bookmarkId],
+        `UPDATE bookmark SET image = $1, title = $2 WHERE bookmark.id = $3`,
+        [image, title, bookmarkId],
         (error, response) => {
           if (error) return reject(error);
           resolve();

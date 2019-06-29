@@ -33,28 +33,22 @@ const Auth = ({ register, login, account }) => {
       if (password !== password2) {
         setShowData("Passwords doesn't match");
       } else {
-        console.log("atemptimng to sign in");
         register(formData);
-
         clicked = true;
       }
     } else {
-      console.log("atemptimng to log in");
       login(formData);
+      clicked = true;
     }
   };
 
   if (
     clicked === true &&
-    account.message !== null &&
+    (account.message !== null ||
+      account.message === "Incorrect email or password") &&
     account.status === "error"
   ) {
     setShowData(account.message);
-    console.log(account);
-    console.log(account.type);
-    console.log(account.status);
-    console.log(account.error);
-    console.log(account.message);
     clicked = false;
   }
 
@@ -109,7 +103,6 @@ const Auth = ({ register, login, account }) => {
           value={password2}
           onChange={e => onChange(e)}
           className={showLogin ? "input__hidden" : "input"}
-          required
         />
 
         <p className="error center">{showData}</p>

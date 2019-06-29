@@ -30,7 +30,7 @@ function Index() {
         <h1 className="brand">
           Start<span>PIM</span>
         </h1>
-        <p className="brand__tag">Free & Secure online bookmarker!</p>
+        <p className="brand__tag">Free & secure online bookmarker!</p>
         <div className="auth-card">
           <Auth />
         </div>

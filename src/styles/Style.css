@@ -32,6 +32,17 @@ body {
   width: 80%;
 }
 
+.auth-card {
+  /* position: absolute; */
+  margin: 0 auto;
+  display: block;
+  height: 35rem;
+  width: 30rem;
+  background-color: #afafaf;
+  border: 1px solid #000;
+  box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.5);
+}
+
 .dev-bar {
   display: flex;
   padding-top: 78px;
