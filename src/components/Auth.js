@@ -84,7 +84,7 @@ const Auth = ({ register, login, account }) => {
           placeholder="Email*"
           value={email}
           onChange={e => onChange(e)}
-          className="input"
+          className="input__auth"
           required
         />
         <input
@@ -93,7 +93,7 @@ const Auth = ({ register, login, account }) => {
           name="password"
           value={password}
           onChange={e => onChange(e)}
-          className="input"
+          className="input__auth"
           required
         />
         <input
@@ -102,7 +102,7 @@ const Auth = ({ register, login, account }) => {
           name="password2"
           value={password2}
           onChange={e => onChange(e)}
-          className={showLogin ? "input__hidden" : "input"}
+          className={showLogin ? "input__hidden" : "input__auth"}
         />
 
         <p className="error center">{showData}</p>

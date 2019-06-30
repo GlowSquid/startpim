@@ -95,7 +95,7 @@ const AccountBookmarks = ({
       console.log(image.length);
       return <p className="text-image">{image}</p>;
     } else {
-      return <img className="image" src={image} width="100px" alt="" />;
+      return <img className="image" src={image} alt="" />;
       // console.log(image);
     }
   }
@@ -115,7 +115,7 @@ const AccountBookmarks = ({
               alt=""
             />
           ) : (
-            <div>{checkImage(bookmark.image)}</div>
+            <div className="image-div">{checkImage(bookmark.image)}</div>
           )}
           {listMode ? null : menu(bookmark.id, bookmark.title, bookmark.url)}
           {listMode ? title(bookmark.url, bookmark.title) : null}

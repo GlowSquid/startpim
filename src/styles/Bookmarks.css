@@ -39,6 +39,7 @@
   border: 3px solid #deb887;
   border-radius: 20%;
   cursor: pointer;
+  margin: 0 auto;
   box-shadow: 1px 2px 4px #fca42940;
   background: #fcfbed;
 }
@@ -50,6 +51,7 @@
 }
 
 .bm__list {
+  position: relative;
   display: -webkit-flex;
   display: flex;
   /* justify-content: space-between; */
@@ -61,6 +63,12 @@
   border-radius: 5px;
   cursor: pointer;
   background: #cecece;
+}
+
+.bm__list:hover .bm-options {
+  background-color: #fcfbed;
+  /* display: block; */
+  visibility: visible;
 }
 
 .bm-options {
@@ -169,15 +177,27 @@
   margin-left: 4px;
 }
 
-.image {
-  /* position: absolute; */
-  height: 50px;
-  width: 50px;
-  display: inline-block;
-  margin: 0 auto;
+.image-div {
+  height: 100%;
+  width: 100%;
+
+  /* display: flex; */
   text-align: center;
   justify-content: center;
+  /* vertical-align: middle; */
+  /* margin: 0 auto; */
+  /* background: red; */
+  margin: auto;
   vertical-align: middle;
+  overflow: hidden;
+}
+.image {
+  min-height: 50%;
+  max-height: 100%;
+  width: 100%;
+  margin: auto;
+  /* min-width: 10%; */
+  /* max-width: 120%; */
 }
 
 .text-image {
@@ -185,6 +205,12 @@
   font-size: 60px;
   text-align: center;
   font-family: "lato";
+  /* overflow: hidden; */
+  /* overflow: -webkit-overflow-scrolling; */
+  /* overflow: auto; */
+  /* overflow: -moz-hidden-unscrollable; */
+  /* overflow: auto; */
+  /* margin-bottom: 30px; */
 }
 
 .favicon__list {

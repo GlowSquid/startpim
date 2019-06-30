@@ -58,7 +58,7 @@ function UpdateBookmark({ updateBookmark, updateBmShowing, hide, props }) {
                 required
               />
               <br />
-              <input type="submit" className="btn" value="Submit" />
+              <input type="submit" className="btn center" value="Submit" />
             </form>
           </section>
           <section className="modal_actions">
