@@ -1,5 +1,4 @@
 import Layout from "./Layout";
-import AlertBar from "./AlertBar";
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchAccountBookmarks } from "../actions/accountBookmarks";
@@ -13,10 +12,7 @@ const Start = ({ fetchAccountBookmarks, accountBookmarks }) => {
 
   return (
     <Layout>
-      <AlertBar />
-      <div className="page">
-        <Bookmarks />
-      </div>
+      <Bookmarks />
     </Layout>
   );
 };

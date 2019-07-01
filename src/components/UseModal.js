@@ -4,19 +4,19 @@ const UseModal = () => {
   const [addBmShowing, setIsShowing] = useState(false);
   const [updateBmShowing, setUpdateBmShowing] = useState(false);
 
-  function toggle() {
+  function addToggler() {
     setIsShowing(!addBmShowing);
   }
 
-  function taggle() {
+  function updateToggler() {
     setUpdateBmShowing(!updateBmShowing);
   }
 
   return {
     addBmShowing,
     updateBmShowing,
-    toggle,
-    taggle
+    addToggler,
+    updateToggler
   };
 };
 

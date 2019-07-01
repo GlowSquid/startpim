@@ -24,7 +24,7 @@ module.exports = function bookmarkValidate(data) {
   }
 
   if (!Validator.isLength(data.url, { min: 11, max: 255 })) {
-    errors.password = "URL is too long";
+    errors.url = "URL is too long";
   }
 
   // if (Validator.isEmpty(data.title)) {
@@ -32,7 +32,7 @@ module.exports = function bookmarkValidate(data) {
   // }
 
   // if (!Validator.isLength(data.title, { min: 1, max: 255 })) {
-  //   errors.password = "Title is too long";
+  //   errors.url = "Title is too long";
   // }
 
   return {

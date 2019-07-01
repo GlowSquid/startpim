@@ -35,9 +35,9 @@ const AccountBookmarks = ({
     return savedDirection || false;
   }
 
-  const { addBmShowing, toggle } = UseModal();
+  const { addBmShowing, addToggler } = UseModal();
 
-  const { updateBmShowing, taggle } = UseModal();
+  const { updateBmShowing, updateToggler } = UseModal();
 
   const delBm = id => {
     dropBookmark(id).then(() => {
@@ -50,15 +50,20 @@ const AccountBookmarks = ({
     bookmark.url = url;
     bookmark.id = id;
 
-    taggle();
+    updateToggler();
   };
 
   if (antiSpam === true && bookmark.status === "fetching") {
     antiSpam = false;
+    // console.log("hmm", bookmark.message);
   } else if (antiSpam === false && bookmark.status === "success") {
     antiSpam = true;
-    console.log("updating");
+    console.log("updating", bookmark.message);
     fetchAccountBookmarks(accountBookmarks);
+  } else if (antiSpam === false && bookmark.status === "error") {
+    antiSpam = true;
+    console.log(bookmark.message);
+    // fetchAccountBookmarks(accountBookmarks);
   }
 
   const menu = (id, title, url) => (
@@ -92,7 +97,7 @@ const AccountBookmarks = ({
   function checkImage(image) {
     // let img = image.toString();
     if (image && image.length === 1) {
-      console.log(image.length);
+      // console.log(image.length);
       return <p className="text-image">{image}</p>;
     } else {
       return <img className="image" src={image} alt="" />;
@@ -132,12 +137,12 @@ const AccountBookmarks = ({
     accountBookmarks.status === "success"
   ) {
     session = (
-      <div className="page">
+      <div className="page bumper">
         <h1 className="new-bm">Add your first bookmark</h1>
-        <div className="add-bm first-bm" onClick={toggle}>
+        <div className="add-bm first-bm" onClick={addToggler}>
           +
         </div>
-        <AddBookmark addBmShowing={addBmShowing} hide={toggle} />
+        <AddBookmark addBmShowing={addBmShowing} hide={addToggler} />
       </div>
     );
   } else if (
@@ -145,9 +150,11 @@ const AccountBookmarks = ({
     accountBookmarks.status === "success"
   ) {
     session = (
-      <div>
+      <div className="bumper__mini">
         <div className="controls">
-          <div>{/* <p>Sort by title, date</p> */}</div>
+          <div>
+            <p>Errors go here</p>
+          </div>
           <div>
             <i
               className={
@@ -192,21 +199,21 @@ const AccountBookmarks = ({
           </div>
         </div>
 
-        <div className="sizing">
+        <div className="page sizing">
           <div className={listMode ? "list" : "grid"}>
             {bms}
             <div
               className={listMode ? "add-bm__list" : "add-bm"}
-              onClick={toggle}
+              onClick={addToggler}
             >
               {listMode ? "Add Bookmark" : "+"}
             </div>
-            <AddBookmark addBmShowing={addBmShowing} hide={toggle} />
+            <AddBookmark addBmShowing={addBmShowing} hide={addToggler} />
             <UpdateBookmark
               {...bookmark}
               props={bookmark}
               updateBmShowing={updateBmShowing}
-              hide={taggle}
+              hide={updateToggler}
             />
           </div>
         </div>
@@ -216,7 +223,7 @@ const AccountBookmarks = ({
     session = <Spinner />;
   }
 
-  return <div className="page">{session}</div>;
+  return <div>{session}</div>;
 };
 
 export default connect(

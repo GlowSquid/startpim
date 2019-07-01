@@ -4,6 +4,7 @@ const BookmarkTable = require("../bookmark/table");
 const AccountBookmarkTable = require("../accountBookmark/table");
 const { authenticatedAccount } = require("./helper");
 const bookmarkValidate = require("../validation/bookmark");
+const bookmarkUpdateValidate = require("../validation/bookmarkUpdate");
 const ogs = require("open-graph-scraper");
 const fs = require("fs");
 const { exec } = require("child_process");
@@ -41,6 +42,15 @@ router.put("/update-bookmark", (req, res, next) => {
       console.log("New URL: ", url);
       console.log("Same ID: ", id);
       bookmark = { url, title, id };
+
+      const { errors, isValid } = bookmarkUpdateValidate(req.body);
+      if (!isValid) {
+        const error = new Error(JSON.stringify(errors));
+        // let error = new Error(errors);
+        error.statusCode = 400;
+        throw error;
+      }
+
       return BookmarkTable.updateBookmark(bookmark);
     })
     .then(() => {

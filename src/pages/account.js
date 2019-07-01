@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import AccountDelete from "../components/AccountDelete";
 import AccountInfo from "../components/AccountInfo";
 import Loader from "../components/Loader";
-import Login from "./login";
+import Authenticate from "./authenticate";
 
 function Account({ account }) {
   const content = (
@@ -21,10 +21,10 @@ function Account({ account }) {
   } else if (account.loggedIn === true) {
     return content;
   } else {
-    return <Login />;
+    return <Authenticate />;
   }
 
-  // return account.loggedIn ? content : <Login />;
+  // return account.loggedIn ? content : <Authenticate />;
 }
 
 export default connect(
