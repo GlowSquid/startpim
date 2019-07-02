@@ -25,6 +25,19 @@
   /* border-bottom: 3px solid #4d384b; */
 }
 
+.danger-card {
+  /* position: relative; */
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  /* height: 25rem; */
+  width: 25rem;
+  padding: 10px;
+  background-color: #afafaf;
+  border: 1px solid #000;
+  box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.5);
+}
+
 .btn-active {
   font: inherit;
   background: #fca429;

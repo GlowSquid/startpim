@@ -140,7 +140,7 @@ const AccountBookmarks = ({
       <div className="page bumper">
         <h1 className="new-bm">Add your first bookmark</h1>
         <div className="add-bm first-bm" onClick={addToggler}>
-          +
+          <i className="material-icons icon__large">add</i>
         </div>
         <AddBookmark addBmShowing={addBmShowing} hide={addToggler} />
       </div>
@@ -206,7 +206,11 @@ const AccountBookmarks = ({
               className={listMode ? "add-bm__list" : "add-bm"}
               onClick={addToggler}
             >
-              {listMode ? "Add Bookmark" : "+"}
+              {listMode ? (
+                "Add Bookmark"
+              ) : (
+                <i className="material-icons icon__large">add</i>
+              )}
             </div>
             <AddBookmark addBmShowing={addBmShowing} hide={addToggler} />
             <UpdateBookmark
@@ -223,7 +227,7 @@ const AccountBookmarks = ({
     session = <Spinner />;
   }
 
-  return <div>{session}</div>;
+  return <div className="bookmarks">{session}</div>;
 };
 
 export default connect(

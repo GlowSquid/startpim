@@ -35,37 +35,41 @@ const AccountDelete = ({ drop, account }) => {
 
   return (
     <Fragment>
-      <h1 className="bumper">Danger Zone</h1>
-      <p>Confirm deleting your account and all your bookmarks forever</p>
-      <p>
-        <strong className="error">This action is irreversible!</strong>
-      </p>
-      <form className="form" onSubmit={e => onSubmit(e)}>
-        <input
-          type="text"
-          name="email"
-          placeholder="Email"
-          value={email}
-          onChange={e => onChange(e)}
-          className="input"
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          name="password"
-          value={password}
-          onChange={e => onChange(e)}
-          className="input"
-          required
-        />
-        <input
-          type="submit"
-          className="btn btn-danger"
-          value="Confirm Delete"
-        />
-        <div className="bumper" />
-      </form>
+      <div className="danger-card">
+        <h1>Danger Zone</h1>
+        <p>Confirm deleting your account and all your bookmarks forever</p>
+        <p>
+          <strong className="error">This action is irreversible!</strong>
+        </p>
+        {/* <div className="danger-card"> */}
+        <form className="form" onSubmit={e => onSubmit(e)}>
+          <input
+            type="text"
+            name="email"
+            placeholder="Email"
+            value={email}
+            onChange={e => onChange(e)}
+            className="input"
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            name="password"
+            value={password}
+            onChange={e => onChange(e)}
+            className="input"
+            required
+          />
+          <input
+            type="submit"
+            className="btn btn-danger"
+            value="Confirm Delete"
+          />
+          <div className="bumper" />
+        </form>
+        {/* </div> */}
+      </div>
     </Fragment>
   );
 };

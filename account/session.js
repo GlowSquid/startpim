@@ -24,6 +24,7 @@ class Session {
 
   static parse(sessionString) {
     const sessionData = sessionString.split(SEPARATOR);
+    // console.log(sessionString.split(SEPARATOR));
 
     return {
       email: sessionData[0],

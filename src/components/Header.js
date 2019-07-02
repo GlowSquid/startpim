@@ -32,13 +32,8 @@ const Header = ({ logout, account }) => {
     showLinks = (
       <>
         <li>
-          <Link href="/login">
-            <a>Login</a>
-          </Link>
-        </li>
-        <li>
-          <Link href="/register">
-            <a>Sign Up</a>
+          <Link href="/authenticate">
+            <a>Account</a>
           </Link>
         </li>
       </>
