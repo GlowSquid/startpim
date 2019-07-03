@@ -45,7 +45,8 @@ router.put("/update-bookmark", (req, res, next) => {
 
       const { errors, isValid } = bookmarkUpdateValidate(req.body);
       if (!isValid) {
-        const error = new Error(JSON.stringify(errors));
+        // const error = new Error(JSON.stringify(errors));
+        const error = new Error(errors);
         // let error = new Error(errors);
         error.statusCode = 400;
         throw error;
@@ -55,7 +56,7 @@ router.put("/update-bookmark", (req, res, next) => {
     })
     .then(() => {
       res.json({ message: "Bookmark Updated" });
-      console.log("bookimarkee uptidated", title);
+      // console.log("bookimarkee uptidated", title);
     })
     .catch(error => next(error));
 });

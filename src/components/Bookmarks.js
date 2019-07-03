@@ -19,8 +19,12 @@ const AccountBookmarks = ({
 }) => {
   const [listMode, setListMode] = useState(getMode());
   const [descending, setDescending] = useState(getDirection());
+  const [alert, setAlert] = useState(false);
 
   useEffect(() => {
+    // {
+    //   alert ? console.log("its true") : console.log("its false");
+    // }
     localStorage.setItem("list", JSON.stringify(listMode));
     localStorage.setItem("desc", JSON.stringify(descending));
   }, [listMode, descending]);
@@ -38,6 +42,25 @@ const AccountBookmarks = ({
   const { addBmShowing, addToggler } = UseModal();
 
   const { updateBmShowing, updateToggler } = UseModal();
+
+  // useEffect(() => {
+  //   if (bookmark.message) {
+  //     // setAlert(true);
+
+  //     const alerter = setTimeout(() => {
+  //       setAlert(false);
+  //     }, 2500);
+  //     return () => clearTimeout(alerter);
+  //   } else {
+  //     // setAlert(false);
+  //     console.log("no errs");
+  //   }
+  // }, []);
+
+  // const alerter = setTimeout(() => {
+  //   setAlert(true);
+  // }, 5000);
+  // return () => clearTimeout(alerter);
 
   const delBm = id => {
     dropBookmark(id).then(() => {
@@ -63,6 +86,10 @@ const AccountBookmarks = ({
   } else if (antiSpam === false && bookmark.status === "error") {
     antiSpam = true;
     console.log(bookmark.message);
+    setAlert(true);
+    setTimeout(() => {
+      setAlert(false);
+    }, 2500);
     // fetchAccountBookmarks(accountBookmarks);
   }
 
@@ -151,9 +178,9 @@ const AccountBookmarks = ({
   ) {
     session = (
       <div className="bumper__mini">
-        <div className="controls">
-          <div>
-            <p>Errors go here</p>
+        <div className={alert ? "controls controls__error" : "controls"}>
+          <div className="alerts">
+            <p>{alert ? bookmark.message : "no errors"}</p>
           </div>
           <div>
             <i

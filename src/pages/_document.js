@@ -28,6 +28,15 @@ export default class extends Document {
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
             rel="stylesheet"
           />
+          <link
+            href="https://fonts.googleapis.com/css?family=Lato:400,600,700"
+            rel="stylesheet"
+            type="text/css"
+          />
+          <link
+            href="https://fonts.googleapis.com/css?family=PT+Sans|Open+Sans&display=swap"
+            rel="stylesheet"
+          />
         </Head>
         <body>
           <Main />

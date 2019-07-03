@@ -30,8 +30,13 @@
   line-height: 30px;
 }
 
+.alerts {
+  color: #ddd;
+  /* background-color: #b64b4b; */
+}
+
 .controls__error {
-  background-color: #4d384b;
+  background-color: #ff6600;
 }
 
 .grid-rules {
@@ -109,6 +114,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-family: "PT Sans", sans-serif;
   font-size: 13px;
   border-radius: 5px;
   background: #deb887;

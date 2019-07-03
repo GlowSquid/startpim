@@ -12,8 +12,8 @@ body {
   min-height: 100%;
   position: relative;
   padding-bottom: [footer-height];
-  font-family: "Lato", "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: "Lato", sans-serif, Geneva, Verdana;
+  /* font-family: 'Lato', sans-serif; */
   background: #eee;
   color: #2c2930;
   line-height: 1.6;

@@ -2,13 +2,13 @@ const Validator = require("validator");
 const isEmpty = require("./is-empty");
 
 module.exports = function bookmarkUpdateValidate(data) {
-  let errors = {};
+  let errors;
 
   data.url = !isEmpty(data.url) ? data.url : "";
   data.title = !isEmpty(data.title) ? data.title : "";
 
   if (!Validator.isLength(data.url, { min: 11, max: 255 })) {
-    errors.url = "URL is too long";
+    errors = "Error: URL is too long. Max 255 characters";
   }
 
   if (
@@ -21,15 +21,15 @@ module.exports = function bookmarkUpdateValidate(data) {
   }
 
   if (Validator.isEmpty(data.url)) {
-    errors.url = "URL field can't be empty";
+    errors = "URL field can't be empty";
   }
 
   if (Validator.isEmpty(data.title)) {
-    errors.title = "Please add a title to your bookmark";
+    errors = "Please add a title to your bookmark";
   }
 
   if (!Validator.isLength(data.title, { min: 1, max: 255 })) {
-    errors.title = "Title is too long";
+    errors = "Error: Title is too long. Max 255 characters";
   }
 
   return {
