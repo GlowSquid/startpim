@@ -45,9 +45,7 @@ router.put("/update-bookmark", (req, res, next) => {
 
       const { errors, isValid } = bookmarkUpdateValidate(req.body);
       if (!isValid) {
-        // const error = new Error(JSON.stringify(errors));
         const error = new Error(errors);
-        // let error = new Error(errors);
         error.statusCode = 400;
         throw error;
       }
@@ -72,8 +70,7 @@ router.post("/add-bookmark", (req, res, next) => {
 
   const { errors, isValid } = bookmarkValidate(req.body);
   if (!isValid) {
-    const error = new Error(JSON.stringify(errors));
-    // let error = new Error(errors);
+    const error = new Error(errors);
     error.statusCode = 400;
     throw error;
   }

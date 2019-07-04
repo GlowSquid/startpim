@@ -61,12 +61,17 @@ const AccountDelete = ({ drop, account }) => {
             className="input"
             required
           />
+          <p className="error center">
+            {account.message ? account.message : null}
+          </p>
+
           <input
             type="submit"
             className="btn btn-danger"
             value="Confirm Delete"
           />
-          <div className="bumper" />
+
+          {/* <div className="bumper" /> */}
         </form>
         {/* </div> */}
       </div>

@@ -89,7 +89,7 @@ const AccountBookmarks = ({
     setAlert(true);
     setTimeout(() => {
       setAlert(false);
-    }, 2500);
+    }, 5000);
     // fetchAccountBookmarks(accountBookmarks);
   }
 

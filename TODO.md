@@ -16,7 +16,7 @@
 - ~~update bookmarks~~
 - ~~delete bookmarks~~
 - ~~backend validation~~
-- frontend validation
+- ~~frontend validation~~
 - ~~spinner while authenticating~~
 - ~~autofetch favicon~~
 - ~~autofetch title~~

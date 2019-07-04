@@ -38,7 +38,7 @@ const AddBookmark = ({ addBookmark, addBmShowing, hide }) => {
             <form className="form" onSubmit={e => onSubmit(e)}>
               <input
                 type="url"
-                placeholder="URL"
+                placeholder="https://example.com"
                 name="url"
                 value={url}
                 onChange={e => onChange(e)}

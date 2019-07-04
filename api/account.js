@@ -22,7 +22,6 @@ router.post("/register", (req, res, next) => {
       if (!account) {
         const { errors, isValid } = registerValidate(req.body);
         if (!isValid) {
-          // const error = new Error(JSON.stringify(errors));
           let error = new Error(errors);
           error.statusCode = 400;
           throw error;

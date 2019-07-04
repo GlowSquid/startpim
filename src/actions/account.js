@@ -3,12 +3,6 @@ import { BACKEND } from "../config";
 // import { useState, useEffect } from "react";
 import fetch from "isomorphic-unfetch";
 
-// V register
-// V login
-// V logout
-// delete account
-// ~V check auth
-
 export const fetchFromAccount = ({
   endpoint,
   options,

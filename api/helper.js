@@ -42,11 +42,10 @@ const setSession = ({ email, res, sessionId }) => {
 const authenticatedAccount = ({ sessionString }) => {
   return new Promise((resolve, reject) => {
     if (!sessionString || !Session.verify(sessionString)) {
-      // if (!Session.verify(sessionString)) {
       const error = new Error("Invalid session");
       error.statusCode = 400;
-      // return reject(error);
-      return reject; // less annoying
+      // return reject(error); // Please spam my logs
+      return reject("");
     }
 
     const { email, id } = Session.parse(sessionString);
