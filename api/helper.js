@@ -45,7 +45,9 @@ const authenticatedAccount = ({ sessionString }) => {
       const error = new Error("Invalid session");
       error.statusCode = 400;
       // return reject(error); // Please spam my logs
-      return reject("");
+      // return reject(""); // Please eat my cpu
+      // return reject; // Please cause instability
+      return reject("🤔"); // Working!
     }
 
     const { email, id } = Session.parse(sessionString);

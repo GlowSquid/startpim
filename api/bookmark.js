@@ -123,7 +123,7 @@ router.post("/add-bookmark", (req, res, next) => {
         // }
       })
       .catch(function(error) {
-        console.log("ogs error: ", error);
+        // console.log("ogs error: ", error);
         const findRoot = new URL(url);
         if (findRoot.hostname.startsWith("www.")) {
           image = findRoot.hostname[4];

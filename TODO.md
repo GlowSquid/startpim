@@ -41,5 +41,4 @@
 
 ## Bugs
 
-- trigger-happy authentication checker
 - auto-refresh after title is found

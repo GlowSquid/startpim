@@ -22,9 +22,6 @@ const AccountBookmarks = ({
   const [alert, setAlert] = useState(false);
 
   useEffect(() => {
-    // {
-    //   alert ? console.log("its true") : console.log("its false");
-    // }
     localStorage.setItem("list", JSON.stringify(listMode));
     localStorage.setItem("desc", JSON.stringify(descending));
   }, [listMode, descending]);
@@ -42,25 +39,6 @@ const AccountBookmarks = ({
   const { addBmShowing, addToggler } = UseModal();
 
   const { updateBmShowing, updateToggler } = UseModal();
-
-  // useEffect(() => {
-  //   if (bookmark.message) {
-  //     // setAlert(true);
-
-  //     const alerter = setTimeout(() => {
-  //       setAlert(false);
-  //     }, 2500);
-  //     return () => clearTimeout(alerter);
-  //   } else {
-  //     // setAlert(false);
-  //     console.log("no errs");
-  //   }
-  // }, []);
-
-  // const alerter = setTimeout(() => {
-  //   setAlert(true);
-  // }, 5000);
-  // return () => clearTimeout(alerter);
 
   const delBm = id => {
     dropBookmark(id).then(() => {
@@ -121,14 +99,24 @@ const AccountBookmarks = ({
     return (b, a) => a.id > b.id;
   }
 
-  function checkImage(image) {
+  function checkImage(image, icon) {
     // let img = image.toString();
     if (image && image.length === 1) {
       // console.log(image.length);
-      return <p className="text-image">{image}</p>;
+      return (
+        <p className="text-image">
+          {image}
+          <img
+            className="favicon__image"
+            src={icon}
+            height="24px"
+            width="24px"
+            alt=""
+          />
+        </p>
+      );
     } else {
       return <img className="image" src={image} alt="" />;
-      // console.log(image);
     }
   }
 
@@ -147,7 +135,13 @@ const AccountBookmarks = ({
               alt=""
             />
           ) : (
-            <div className="image-div">{checkImage(bookmark.image)}</div>
+            <Link href={bookmark.url}>
+              <a target="_blank" rel="noopener noreferrer">
+                <div className="image-div">
+                  {checkImage(bookmark.image, bookmark.icon)}
+                </div>
+              </a>
+            </Link>
           )}
           {listMode ? null : menu(bookmark.id, bookmark.title, bookmark.url)}
           {listMode ? title(bookmark.url, bookmark.title) : null}
@@ -180,7 +174,7 @@ const AccountBookmarks = ({
       <div className="bumper__mini">
         <div className={alert ? "controls controls__error" : "controls"}>
           <div className="alerts">
-            <p>{alert ? bookmark.message : "no errors"}</p>
+            <p>{alert ? bookmark.message : null}</p>
           </div>
           <div>
             <i

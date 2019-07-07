@@ -53,7 +53,7 @@
   /* margin: 20px 10px; */
   /* border: 3px solid #fca429; */
   border: 3px solid #deb887;
-  border-radius: 20%;
+  border-radius: 20px;
   cursor: pointer;
   margin: 0 auto;
   box-shadow: 1px 2px 4px #fca42940;
@@ -64,6 +64,8 @@
   background-color: #fcfbed;
   /* display: block; */
   visibility: visible;
+  border-bottom-left-radius: 8px;
+  box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.25);
 }
 
 .bm__list {
@@ -78,28 +80,33 @@
   box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
   cursor: pointer;
-  background: #cecece;
+  background: #fcfbed;
 }
 
 .bm__list:hover .bm-options {
-  background-color: #fcfbed;
+  background-color: #dad8c7;
   /* display: block; */
   visibility: visible;
+  /* top: -1%; */
+  /* right: 0.2%; */
+  border-radius: 5px;
+}
+
+.bm__list:hover {
+  background-color: #dad8c7;
 }
 
 .bm-options {
-  /* display: -webkit-flex;
-  display: flex;
-  justify-content: end;
-  margin-right: 2px;
-  margin-top: 2px; */
-
   position: absolute;
-  top: 1%;
-  right: 6%;
-  height: 1.8rem;
-  /* display: none; */
+  top: 0%;
+  right: 0%;
+  height: 1.7rem;
   visibility: hidden;
+}
+
+.bm a {
+  text-decoration: none;
+  color: #4d384b;
 }
 
 .bar {
@@ -179,9 +186,17 @@
   left: 2%;
 }
 
+.del:hover {
+  text-shadow: 0px 0px 10px #b64b4b;
+}
+
 .edit {
   position: relative;
   color: #fca429;
+}
+
+.edit:hover {
+  text-shadow: 0px 0px 10px #fca429;
 }
 
 .icons {
@@ -230,22 +245,21 @@
   /* vertical-align: middle; */
   overflow: hidden;
 }
+
 .image {
   min-height: 50%;
   max-height: 100%;
   width: 100%;
   margin: 0 auto;
   vertical-align: middle;
-  /* position: absolute; */
-  /* top: 25%; */
-  /* right: 0%; */
-  /* transform: scale(2, 2); */
-  /* min-width: 10%; */
-  /* max-width: 120%; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .text-image {
-  background: #009ede;
+  background: #fcfbed;
   font-size: 60px;
   text-align: center;
   font-family: "lato";
@@ -256,10 +270,19 @@
   /* overflow: auto; */
   /* margin-bottom: 30px; */
 }
+.text-image p {
+  color: red;
+}
 
 .favicon__list {
   margin-top: 2px;
   margin-left: 2px;
+}
+
+.favicon__image {
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
 }
 
 .first-bm {
