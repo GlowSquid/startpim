@@ -112,18 +112,17 @@ router.post("/add-bookmark", (req, res, next) => {
           console.log("title is ogSiteName", title);
         } else {
           console.log("time to use lynx");
-          // fetchTitle(bookmarkId);
+          fetchTitle(bookmarkId);
         }
         image = result.data.ogImage.url;
         if (!image.startsWith("http" || "www")) {
           image = url + result.data.ogImage.url;
           // return BookmarkTable.storeImage({ image, title, bookmarkId });
         }
+
         return BookmarkTable.storeImage({ image, title, bookmarkId });
-        // }
       })
       .catch(function(error) {
-        // console.log("ogs error: ", error);
         const findRoot = new URL(url);
         if (findRoot.hostname.startsWith("www.")) {
           image = findRoot.hostname[4];
@@ -132,8 +131,12 @@ router.post("/add-bookmark", (req, res, next) => {
         }
         console.log("solution:", image);
         title = findRoot.hostname;
-        fetchTitle(bookmarkId);
+        // fetchTitle(bookmarkId);
         return BookmarkTable.storeImage({ image, title, bookmarkId });
+      })
+      .then(() => {
+        res.json({ message: "Bookmark Added" });
+        console.log("bookmark added", title);
       });
   }
 
@@ -154,11 +157,11 @@ router.post("/add-bookmark", (req, res, next) => {
         bookmarkId
       });
     })
-    .then(() => {
-      // res.json({ bm });
-      res.json({ message: "Bookmark Added" });
-      console.log("bookmark added", title);
-    })
+    // .then(() => {
+    //   // res.json({ bm });
+    //   // res.json({ message: "Bookmark Added" });
+    //   console.log("bookmark added", title);
+    // })
     .catch(error => next(error));
 });
 

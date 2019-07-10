@@ -37,3 +37,9 @@
     left: calc((100% - 30rem) / 2);
   }
 }
+
+@media (max-width: 640px) {
+  .modal_actions {
+    font-size: 14px;
+  }
+}

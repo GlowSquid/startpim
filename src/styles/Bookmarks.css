@@ -73,7 +73,7 @@
   display: -webkit-flex;
   display: flex;
   /* justify-content: space-between; */
-  width: 30rem;
+  width: 25rem;
   height: 30px;
   margin: 5px 10px;
   border: 1px solid #80808080;
@@ -156,7 +156,7 @@
 .add-bm {
   width: 100px;
   height: 94px;
-  margin: 20px 10px;
+  margin: 10px 10px;
   border: 4px dashed #fca429;
   border-radius: 20%;
   color: #fca429;
@@ -167,7 +167,7 @@
 
 .add-bm__list {
   /* width: 100%; */
-  width: 30rem;
+  width: 25rem;
   padding-left: 10px;
   height: 30px;
   margin: 5px 10px;
@@ -287,4 +287,15 @@
 
 .first-bm {
   margin: 0 auto;
+}
+
+@media (max-width: 1049px) {
+  .bm__list {
+    width: 80vw;
+  }
+
+  .add-bm__list {
+    width: 80vw;
+    margin: 5px 0;
+  }
 }

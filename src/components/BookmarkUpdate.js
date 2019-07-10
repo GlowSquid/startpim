@@ -62,9 +62,12 @@ function UpdateBookmark({ updateBookmark, updateBmShowing, hide, props }) {
             </form>
           </section>
           <section className="modal_actions">
-            <button className="btn btn-cancel" onClick={hide}>
-              Cancel
-            </button>
+            <input
+              type="button"
+              className="btn btn-cancel"
+              value="Cancel"
+              onClick={hide}
+            />
           </section>
         </div>
       </Fragment>,

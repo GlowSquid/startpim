@@ -8,6 +8,10 @@ import Index from "../components/Landing";
 function Root({ account }) {
   if (account.loggedIn === true) {
     return <Start />;
+  } else if (account.status === "fetching" && account.loggedIn === false) {
+    return <index />;
+  } else if (account.status === "fetching" && account.loggedIn === true) {
+    return <Start />;
   } else if (account.status === "fetching") {
     return <Loader />;
     // return <Index />; // Æ temp
