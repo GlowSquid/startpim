@@ -42,46 +42,54 @@
   right: 0%;
 }
 
-.card {
-  position: relative;
-  display: -webkit-flex;
-  display: flex;
-  /* justify-content: space-between; */
-  /* align-items: center; */
-  /* box-sizing: border-box; */
-}
-
 #card-1 {
   position: absolute;
   top: 15rem;
-  left: 3rem;
-  width: 700px;
-  height: 141px;
-  background-color: #cecece;
-  border: 3px solid #000;
+  /* left: 3rem; */
+  left: 5%;
+  /* width: 700px;
+  height: 141px; */
+  width: 50%;
+  /* background-color: #cecece; */
+  /* border: 3px solid #000; */
 }
 #card-1 img {
   width: 100%;
+  box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.5);
+}
+#card-1 p {
+  position: inherit;
+  font-size: 20px;
+  top: 9rem;
+  color: #deb887;
 }
 
 #card-2 {
   position: absolute;
-  top: 25rem;
-  left: 8rem;
-  width: 700px;
-  height: 141px;
-  background-color: #afafaf;
-  border: 3px solid #000;
+  top: 28rem;
+  /* left: 8rem; */
+  left: 12%;
+  /* width: 700px;
+  height: 141px; */
+  width: 50%;
+  /* background-color: #afafaf; */
+  /* border: 3px solid #000; */
 }
 #card-2 img {
   width: 100%;
-  /* height: 100%; */
+  box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.5);
+}
+#card-2 p {
+  position: inherit;
+  font-size: 20px;
+  top: 9rem;
+  color: #deb887;
 }
 
 #card-3 {
   position: absolute;
-  top: 19rem;
-  left: 54rem;
+  top: 29rem;
+  left: 10%;
   width: 250px;
   height: 429px;
   background-color: #cecece;
@@ -110,6 +118,45 @@
   box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* @media (min-width: 768px) {
-  
-} */
+@media (max-width: 1200px) {
+  .auth-card {
+    height: 30rem;
+  }
+}
+
+@media (max-width: 950px) {
+  .section {
+    position: unset;
+    display: block;
+    height: 100%;
+  }
+
+  .section-2 {
+    display: none;
+  }
+
+  #card-1 {
+    position: unset;
+    display: block;
+    margin: 0 auto;
+    width: 60%;
+    padding-bottom: 10px;
+  }
+
+  #card-2 {
+    position: unset;
+    display: block;
+    margin: 0 auto;
+    width: 60%;
+  }
+
+  .auth-card {
+    position: unset;
+    display: block;
+    height: 30rem;
+    margin-top: 20px;
+    /* padding-bottom: 20px; */
+    margin-bottom: 20px;
+    width: 60%;
+  }
+}

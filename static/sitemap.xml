@@ -3,12 +3,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://startpim.com/</loc>
-    <lastmod>2019-04-27T13:15:10+00:00</lastmod>
+    <lastmod>2019-07-14T01:19:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
-  <url>
+  <!-- <url>
     <loc>https://startpim.com/about</loc>
     <lastmod>2019-04-27T13:15:10+00:00</lastmod>
-</url>
+  </url> -->
 </urlset> 

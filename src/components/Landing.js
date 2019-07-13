@@ -4,9 +4,9 @@ import Auth from "./Auth";
 import Footer from "./Footer";
 // import Link from "next/link";
 import "../styles/Landing.css";
-import grid from "../../static/img/grid2.png";
-import list from "../../static/img/list2.png";
-import resp from "../../static/img/resp.png";
+import grid from "../../static/img/grid.png";
+import list from "../../static/img/list.png";
+// import resp from "../../static/img/resp.png";
 
 function Index() {
   // if (account.loggedIn === true) {
@@ -40,16 +40,18 @@ function Index() {
         {/* <div className="card"> */}
         <div id="card-1">
           <img src={grid} alt="" />
+          {/* <p>Grid-View</p> */}
         </div>
         <div id="card-2">
           <img src={list} alt="" />
+          {/* <p>List-View</p> */}
         </div>
-        <div id="card-3">
+        {/* <div id="card-3">
           <img src={resp} alt="" />
-        </div>
+        </div> */}
         {/* </div> */}
       </div>
-      <div className="section-2">hoho</div>
+      <div className="section-2">{/* <div className="about">Hoho</div> */}</div>
       <Footer />
     </div>
   );

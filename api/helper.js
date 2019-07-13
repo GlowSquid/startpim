@@ -5,7 +5,8 @@ const { hash } = require("../account/helper");
 const setSessionCookie = ({ sessionString, res }) => {
   res.cookie("sessionString", sessionString, {
     expire: Date.now() + 3600000,
-    httpOnly: true
+    httpOnly: true,
+    secure: true
     // secure: process.env.NODE_ENV === 'PROD'
     // secure: true on prod
   });

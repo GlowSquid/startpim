@@ -1,3 +1,4 @@
 User-agent: *
-Disallow: /api/
-Disallow: /account/
+Disallow: *
+#Disallow: /api/
+#Disallow: /account/
