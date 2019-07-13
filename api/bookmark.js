@@ -102,8 +102,8 @@ router.post("/add-bookmark", (req, res, next) => {
       .then(function(result) {
         // console.log("Result: ", result.data.ogImage.url);
         // console.log("More info: ", result.data);
-        console.log("title lang     : ", result.data.ogTitle);
-        console.log("ogSiteName:    ", result.data.ogSiteName);
+        console.log("title          :", result.data.ogTitle);
+        console.log("ogSiteName     :", result.data.ogSiteName);
         if (result.data.ogTitle) {
           title = result.data.ogTitle;
           console.log("title is ogTitle", title);
@@ -123,6 +123,7 @@ router.post("/add-bookmark", (req, res, next) => {
         return BookmarkTable.storeImage({ image, title, bookmarkId });
       })
       .catch(function(error) {
+        console.log("was here");
         const findRoot = new URL(url);
         if (findRoot.hostname.startsWith("www.")) {
           image = findRoot.hostname[4];
@@ -130,7 +131,11 @@ router.post("/add-bookmark", (req, res, next) => {
           image = findRoot.hostname[0];
         }
         console.log("solution:", image);
-        title = findRoot.hostname;
+        if (title) {
+          console.log("has title");
+        } else {
+          title = findRoot.hostname;
+        }
         // fetchTitle(bookmarkId);
         return BookmarkTable.storeImage({ image, title, bookmarkId });
       })

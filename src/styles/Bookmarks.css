@@ -131,7 +131,7 @@
 }
 
 .title a {
-  color: black;
+  color: #111;
   text-decoration: none;
 }
 
@@ -140,6 +140,13 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-family: "PT Sans", sans-serif;
+  /* font-size: 15px; */
+}
+
+.title__list a {
+  text-decoration: none;
+  color: #111;
 }
 
 .title:hover {
