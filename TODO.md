@@ -21,8 +21,8 @@
 - ~~autofetch favicon~~
 - ~~autofetch title~~
 - ~~Grid/List view toggle~~
-- ~~finish styling~~/mobile responsive
-- cool landing page
+- ~~finish styling/mobile responsive~~
+- ~~cool landing page~~
 - ~~404 page~~
 - SEO favicon sitemap ogp
 

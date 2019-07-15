@@ -10,24 +10,13 @@ function Authenticate({ account }) {
     <Fragment>
       <Layout>
         <div className="bumper">
-          <div className="auth-card">
+          <div className="a-card">
             <Auth />
           </div>
         </div>
       </Layout>
     </Fragment>
   );
-
-  // if (account.status === "fetching") {
-  // return <Loader />;
-  // return content;
-  // } else if (account.loggedIn === false) {
-  // return content;
-  // } else {
-  // return <Login />;
-  // }
-
-  // return account.loggedIn ? content : <Login />;
 
   return content;
 }

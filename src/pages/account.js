@@ -8,10 +8,12 @@ import Authenticate from "./authenticate";
 function Account({ account }) {
   const content = (
     <Layout>
-      <div className="page">
+      <div className="page border">
         <h1 className="bumper">Account Page</h1>
-        <AccountInfo />
-        <AccountDelete />
+        <div className="account">
+          <AccountInfo />
+          <AccountDelete />
+        </div>
       </div>
     </Layout>
   );

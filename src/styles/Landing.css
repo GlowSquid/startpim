@@ -1,19 +1,19 @@
 .section {
   position: relative;
-  /* display: block; */
-  /* margin: 0% 20%; */
-  /* padding: 5% 10%; */
   background: #4d384b;
-  /* border-radius: 20px; */
-  /* justify-content: center; */
-  /* text-align: center; */
   box-shadow: 3px 3px 6px #00000080;
-  height: 60vh;
+  padding-bottom: 80px;
 }
 
 .section-2 {
-  height: 40vh;
-  background-color: rgb(23, 29, 41);
+  background-color: #171d29;
+  min-height: 70vh;
+}
+
+.section-2 h3 {
+  color: #deb887;
+  text-align: center;
+  padding-top: 50px;
 }
 
 .brand {
@@ -33,7 +33,7 @@
 .brand__tag {
   color: #deb887;
   padding-left: 12%;
-  font-size: 32px;
+  font-size: 26px;
 }
 
 .github {
@@ -42,61 +42,97 @@
   right: 0%;
 }
 
+.bullets {
+  display: -webkit-flex;
+  display: flex;
+  /* flex-wrap: wrap; */
+  flex-direction: column;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  margin-left: 10%;
+  padding-right: 2%;
+  /* border: 4px solid #171d29; */
+  background-color: #171d29;
+  /* width: 45%; */
+  width: max-content;
+  height: 290px;
+  -webkit-clip-path: polygon(0% 2%, 90% 0%, 100% 98%, 2% 100%);
+  clip-path: polygon(0% 2%, 90% 0%, 100% 98%, 2% 100%);
+}
+
+.bullets p {
+  color: #dad8c7;
+  font-size: 24px;
+  padding-left: 25px;
+  /* margin: 5px; */
+  text-decoration: yellow;
+}
+
+.screenshots {
+  padding-top: 50px;
+}
+
+.screenshots h3 {
+  font-size: 24px;
+}
+
+.cards {
+  display: -webkit-flex;
+  display: flex;
+  padding-bottom: 50px;
+  justify-content: space-between;
+}
+
+.cards__left {
+  padding-left: 10%;
+}
+
+.cards__right {
+  padding-right: 10%;
+}
+
 #card-1 {
-  position: absolute;
-  top: 15rem;
-  /* left: 3rem; */
-  left: 5%;
-  /* width: 700px;
-  height: 141px; */
-  width: 50%;
-  /* background-color: #cecece; */
-  /* border: 3px solid #000; */
+  width: 90%;
 }
 #card-1 img {
   width: 100%;
   box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.5);
 }
 #card-1 p {
-  position: inherit;
+  padding-top: 20px;
   font-size: 20px;
-  top: 9rem;
   color: #deb887;
+  white-space: nowrap;
 }
 
 #card-2 {
-  position: absolute;
-  top: 28rem;
-  /* left: 8rem; */
-  left: 12%;
-  /* width: 700px;
-  height: 141px; */
-  width: 50%;
-  /* background-color: #afafaf; */
-  /* border: 3px solid #000; */
+  width: 90%;
 }
 #card-2 img {
   width: 100%;
   box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.5);
 }
 #card-2 p {
-  position: inherit;
+  padding-top: 20px;
   font-size: 20px;
-  top: 9rem;
   color: #deb887;
+  white-space: nowrap;
 }
 
 #card-3 {
-  position: absolute;
-  top: 29rem;
-  left: 10%;
-  width: 250px;
-  height: 429px;
-  background-color: #cecece;
-  border: 3px solid #000;
+  width: 100%;
+  /* margin: 0 auto; */
 }
 #card-3 img {
-  height: 100%;
+  width: 100%;
+  /* margin: 0 auto; */
+  box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.5);
+}
+#card-3 p {
+  padding-top: 20px;
+  font-size: 20px;
+  color: #deb887;
+  white-space: nowrap;
 }
 
 #card-1:hover {
@@ -113,14 +149,22 @@
   right: 7%;
   height: 35rem;
   width: 25%;
-  background-color: #afafaf;
-  border: 1px solid #000;
+  background-color: #dad8c7;
+  /* border: 1px solid #000; */
   box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.5);
 }
 
 @media (max-width: 1200px) {
   .auth-card {
     height: 30rem;
+  }
+
+  .bullets {
+    height: 240px;
+  }
+
+  .bullets p {
+    font-size: 20px;
   }
 }
 
@@ -132,31 +176,44 @@
   }
 
   .section-2 {
-    display: none;
+    height: 100%;
+  }
+
+  .bullets {
+    flex-direction: column;
+    margin: 0 auto;
+    margin-top: 70px;
+    width: 70%;
+    padding: 15px;
+    padding-right: 4%;
+    height: auto;
+  }
+
+  .bullets p {
+    padding-left: 5px;
   }
 
   #card-1 {
-    position: unset;
-    display: block;
     margin: 0 auto;
-    width: 60%;
+    width: 80%;
     padding-bottom: 10px;
   }
 
   #card-2 {
-    position: unset;
-    display: block;
     margin: 0 auto;
-    width: 60%;
+    width: 80%;
+  }
+
+  #card-3 {
+    margin: 0 auto;
+    width: 80%;
   }
 
   .auth-card {
     position: unset;
     display: block;
     height: 30rem;
-    margin-top: 20px;
-    /* padding-bottom: 20px; */
-    margin-bottom: 20px;
-    width: 60%;
+    margin: 20px auto;
+    width: 80%;
   }
 }

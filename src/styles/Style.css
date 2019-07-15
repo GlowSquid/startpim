@@ -16,6 +16,7 @@ body {
   /* font-family: 'Lato', sans-serif; */
   background: #eee;
   color: #2c2930;
+  /* background: red; */
   line-height: 1.6;
 }
 
@@ -32,14 +33,24 @@ body {
   width: 80%;
 }
 
-.auth-card {
+.border {
+  position: relative;
+  margin: 0 auto;
+  max-width: 1900px;
+}
+
+.account {
+  display: flex;
+  justify-content: space-between;
+}
+
+.a-card {
   /* position: absolute; */
   margin: 0 auto;
   display: block;
   height: 35rem;
   width: 30rem;
-  background-color: #afafaf;
-  border: 1px solid #000;
+  background-color: #dad8c7;
   box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.5);
 }
 
@@ -57,9 +68,15 @@ body {
   border-top: 1px solid #2e222d67;
   color: #deb887;
   position: absolute;
-  /* padding-right: 10px; */
   left: 0;
   right: 0;
   bottom: 0;
   height: [footer-height];
+}
+
+@media (max-width: 500px) {
+  .a-card {
+    width: 80%;
+    height: 30rem;
+  }
 }

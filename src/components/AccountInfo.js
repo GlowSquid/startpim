@@ -9,7 +9,7 @@ const AccountInfo = ({ fetchAccountInfo, accountInfo }) => {
 
   return (
     <div className="account-info">
-      <p>Email: {accountInfo.email}</p>
+      <p>Logged in as: {accountInfo.email}</p>
     </div>
   );
 };

@@ -141,7 +141,6 @@
   overflow: hidden;
   text-overflow: ellipsis;
   font-family: "PT Sans", sans-serif;
-  /* font-size: 15px; */
 }
 
 .title__list a {
