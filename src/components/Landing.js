@@ -8,7 +8,7 @@ import grid from "../../static/img/grid.png";
 import list from "../../static/img/list.png";
 import resp from "../../static/img/resp.png";
 
-function Index() {
+function Landing() {
   // if (account.loggedIn === true) {
   //   Router.push("/start");
   // }
@@ -78,4 +78,4 @@ function Index() {
   );
 }
 
-export default connect()(Index);
+export default connect()(Landing);

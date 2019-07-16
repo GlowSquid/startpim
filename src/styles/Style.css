@@ -42,6 +42,8 @@ body {
 .account {
   display: flex;
   justify-content: space-between;
+  margin: 0 auto;
+  width: 80%;
 }
 
 .a-card {
@@ -72,6 +74,15 @@ body {
   right: 0;
   bottom: 0;
   height: [footer-height];
+}
+
+@media (max-width: 850px) {
+  .account {
+    display: block;
+    justify-content: unset;
+    margin: 0 auto;
+    width: 50%;
+  }
 }
 
 @media (max-width: 500px) {

@@ -37,9 +37,6 @@ router.post("/register", (req, res, next) => {
       return setSession({ email, res });
     })
     .then(({ message }) => res.json({ message }))
-    .then(() => {
-      // res.json({ message: error });
-    })
     .catch(error => next(error));
 });
 
@@ -139,6 +136,14 @@ router.get("/info", (req, res, next) => {
   authenticatedAccount({ sessionString: req.cookies.sessionString })
     .then(({ email }) => {
       res.json({ info: { email } });
+    })
+    .catch(error => next(error));
+});
+
+router.get("/stats", (req, res, next) => {
+  AccountTable.getStats()
+    .then(({ acc, bms }) => {
+      res.json({ numAccounts: acc, numBookmarks: bms });
     })
     .catch(error => next(error));
 });

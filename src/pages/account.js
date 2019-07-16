@@ -9,8 +9,7 @@ function Account({ account }) {
   const content = (
     <Layout>
       <div className="page border">
-        <h1 className="bumper">Account Page</h1>
-        <div className="account">
+        <div className="account bumper">
           <AccountInfo />
           <AccountDelete />
         </div>

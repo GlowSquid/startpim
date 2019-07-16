@@ -161,10 +161,6 @@
 @media (max-width: 1200px) {
   .auth-header {
     padding: 0.8rem;
-    /* justify-content: space-between; */
-    /* background: #fca429; */
-    /* color: #4d384b; */
-    /* border-bottom: 3px solid #4d384b; */
   }
 
   .btn-landing__login {
@@ -175,5 +171,12 @@
 @media (max-width: 950px) {
   .btn-landing__login {
     margin-top: 5.1rem;
+  }
+}
+
+@media (max-width: 850px) {
+  .danger-card {
+    margin-top: 50px;
+    width: 90%;
   }
 }

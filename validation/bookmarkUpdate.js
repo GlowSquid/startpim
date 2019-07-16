@@ -8,7 +8,7 @@ module.exports = function bookmarkUpdateValidate(data) {
   data.title = !isEmpty(data.title) ? data.title : "";
 
   if (!Validator.isLength(data.url, { min: 11, max: 255 })) {
-    errors = "Error: URL is too long. Max 255 characters allowed";
+    errors = "Error: URL is too long";
   }
 
   if (
@@ -29,7 +29,7 @@ module.exports = function bookmarkUpdateValidate(data) {
   }
 
   if (!Validator.isLength(data.title, { min: 1, max: 255 })) {
-    errors = "Error: Title is too long. Max 255 characters allowed";
+    errors = "Error: Title is too long";
   }
 
   return {

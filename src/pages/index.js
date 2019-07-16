@@ -3,21 +3,21 @@ import { connect } from "react-redux";
 
 import Loader from "../components/Loader";
 import Start from "../components/Start";
-import Index from "../components/Landing";
+import Landing from "../components/Landing";
 
 function Root({ account }) {
   if (account.loggedIn === true) {
     return <Start />;
     // } else if (account.status === "fetching" && account.loggedIn === false) {
-    //   return <Index />;
+    //   return <Landing />;
     // } else if (account.status === "fetching" && account.loggedIn === true) {
     //   return <Start />;
   } else if (account.status === "fetching") {
     return <Loader />;
   } else {
-    return <Index />;
+    return <Landing />;
   }
-  // return account.loggedIn ? <Start /> : <Index />;
+  // return account.loggedIn ? <Start /> : <Landing />;
 }
 
 export default connect(

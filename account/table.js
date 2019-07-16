@@ -59,6 +59,19 @@ class AccountTable {
       );
     });
   }
+
+  // Count total users & bookmarks
+  static getStats() {
+    return new Promise((resolve, reject) => {
+      pool.query(
+        "SELECT (SELECT COUNT(*) FROM account) AS acc, (SELECT COUNT(*) FROM bookmark) AS bms",
+        (error, response) => {
+          if (error) return reject(error);
+          resolve(response.rows[0]);
+        }
+      );
+    });
+  }
 }
 
 module.exports = AccountTable;

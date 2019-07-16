@@ -22,7 +22,6 @@ router.delete("/drop-bookmark", (req, res, next) => {
       });
     })
     .then(({ id }) => {
-      // console.log(id);
       return BookmarkTable.dropBookmark(id);
     })
     .then(() => {
@@ -34,13 +33,9 @@ router.delete("/drop-bookmark", (req, res, next) => {
 router.put("/update-bookmark", (req, res, next) => {
   let bookmark;
   const { url, title, id } = req.body;
-  console.log("Need the ID: ", id);
 
   authenticatedAccount({ sessionString: req.cookies.sessionString })
     .then(() => {
-      console.log("New title: ", title);
-      console.log("New URL: ", url);
-      console.log("Same ID: ", id);
       bookmark = { url, title, id };
 
       const { errors, isValid } = bookmarkUpdateValidate(req.body);
@@ -54,7 +49,6 @@ router.put("/update-bookmark", (req, res, next) => {
     })
     .then(() => {
       res.json({ message: "Bookmark Updated" });
-      // console.log("bookimarkee uptidated", title);
     })
     .catch(error => next(error));
 });
@@ -84,7 +78,7 @@ router.post("/add-bookmark", (req, res, next) => {
         // fs.unwatchFile(titleFile);
       }
       fs.unwatchFile(titleFile);
-      console.log("unwatching");
+      // console.log("unwatching");
       return BookmarkTable.storeTitle({ title, bookmarkId });
     });
   }
@@ -102,16 +96,16 @@ router.post("/add-bookmark", (req, res, next) => {
       .then(function(result) {
         // console.log("Result: ", result.data.ogImage.url);
         // console.log("More info: ", result.data);
-        console.log("title          :", result.data.ogTitle);
-        console.log("ogSiteName     :", result.data.ogSiteName);
+        // console.log("title          :", result.data.ogTitle);
+        // console.log("ogSiteName     :", result.data.ogSiteName);
         if (result.data.ogTitle) {
           title = result.data.ogTitle;
-          console.log("title is ogTitle", title);
+          console.log("title is ogTitle");
         } else if (result.data.ogSiteName) {
           title = result.data.ogSiteName;
-          console.log("title is ogSiteName", title);
+          console.log("title is ogSiteName");
         } else {
-          console.log("time to use lynx");
+          console.log("Using Lynx");
           fetchTitle(bookmarkId);
         }
         image = result.data.ogImage.url;
@@ -123,14 +117,12 @@ router.post("/add-bookmark", (req, res, next) => {
         return BookmarkTable.storeImage({ image, title, bookmarkId });
       })
       .catch(function(error) {
-        console.log("was here");
         const findRoot = new URL(url);
         if (findRoot.hostname.startsWith("www.")) {
           image = findRoot.hostname[4];
         } else {
           image = findRoot.hostname[0];
         }
-        console.log("solution:", image);
         if (title) {
           console.log("has title");
         } else {
@@ -154,7 +146,7 @@ router.post("/add-bookmark", (req, res, next) => {
     })
     .then(({ bookmarkId }) => {
       bookmark.bookmarkId = bookmarkId;
-      console.log("bookmarkId is", bookmarkId);
+      // console.log("bookmarkId is", bookmarkId);
       // fetchTitle(bookmarkId);
       fetchImage(bookmarkId);
       return AccountBookmarkTable.storeAccountBookmark({

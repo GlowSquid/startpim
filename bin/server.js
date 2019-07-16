@@ -24,12 +24,6 @@ app
     server.use("/api", accountRouter);
     server.use("/api/bookmark", bookmarkRouter);
 
-    // server.get("/p/:id", (req, res) => {
-    //   const actualPage = "/post";
-    //   const queryParams = { title: req.params.id };
-    //   app.render(req, res, actualPage, queryParams);
-    // });
-
     const faviconOptions = {
       root: join(__dirname, "../static")
     };

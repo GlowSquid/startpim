@@ -36,7 +36,7 @@ const AccountDelete = ({ drop, account }) => {
   return (
     <Fragment>
       <div className="danger-card">
-        <h1>Danger Zone</h1>
+        <h2>Delete Account?</h2>
         <p>Confirm deleting your account and all your bookmarks forever</p>
         <p>
           <strong className="error">This action is irreversible!</strong>
