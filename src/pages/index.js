@@ -6,14 +6,14 @@ import Start from "../components/Start";
 import Landing from "../components/Landing";
 
 function Root({ account }) {
-  if (account.loggedIn === true) {
-    return <Start />;
+  if (account.status === "fetching") {
+    return <Loader />;
     // } else if (account.status === "fetching" && account.loggedIn === false) {
     //   return <Landing />;
     // } else if (account.status === "fetching" && account.loggedIn === true) {
     //   return <Start />;
-  } else if (account.status === "fetching") {
-    return <Loader />;
+  } else if (account.loggedIn === true) {
+    return <Start />;
   } else {
     return <Landing />;
   }

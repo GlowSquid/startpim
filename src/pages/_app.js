@@ -5,9 +5,11 @@ import { Provider } from "react-redux";
 import { fetchAuthenticated } from "../actions/account";
 // import Root from "./index";
 
-const MyApp = ({ Component, pageProps, reduxStore }) => {
-  // function MyApp({ Component, pageProps, reduxStore }) {
-  reduxStore.dispatch(fetchAuthenticated());
+// const MyApp = ({ Component, pageProps, reduxStore }) => {
+function MyApp({ Component, pageProps, reduxStore }) {
+  reduxStore.dispatch(fetchAuthenticated()).then(() => {
+    console.log("jfjf");
+  });
 
   return (
     <Container>
@@ -18,6 +20,6 @@ const MyApp = ({ Component, pageProps, reduxStore }) => {
       </Provider>
     </Container>
   );
-};
+}
 
 export default withReduxStore(MyApp);

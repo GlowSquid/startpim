@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import Auth from "./Auth";
+import Head from "./Head";
 import Footer from "./Footer";
 // import Link from "next/link";
 import "../styles/Landing.css";
@@ -15,6 +16,7 @@ function Landing() {
 
   return (
     <div>
+      <Head />
       <div className="section">
         <div className="github">
           <a href="https://github.com/GlowSquid/startpim">

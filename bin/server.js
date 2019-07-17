@@ -11,7 +11,7 @@ const cookieParser = require("cookie-parser");
 const accountRouter = require("../api/account");
 const bookmarkRouter = require("../api/bookmark");
 
-const PORT = parseInt(process.env.PORT, 10) || 4000;
+const PORT = parseInt(process.env.PORT, 10) || 5002;
 
 app
   .prepare()
