@@ -7,9 +7,7 @@ import { fetchAuthenticated } from "../actions/account";
 
 // const MyApp = ({ Component, pageProps, reduxStore }) => {
 function MyApp({ Component, pageProps, reduxStore }) {
-  reduxStore.dispatch(fetchAuthenticated()).then(() => {
-    console.log("jfjf");
-  });
+  reduxStore.dispatch(fetchAuthenticated());
 
   return (
     <Container>

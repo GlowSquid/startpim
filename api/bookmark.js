@@ -110,7 +110,15 @@ router.post("/add-bookmark", (req, res, next) => {
         }
         image = result.data.ogImage.url;
         if (!image.startsWith("http" || "www")) {
-          image = url + result.data.ogImage.url;
+          const findRoot = new URL(url);
+          image =
+            findRoot.protocol +
+            "//" +
+            findRoot.hostname +
+            "/" +
+            result.data.ogImage.url;
+          console.log("img is", image);
+          // image = url + result.data.ogImage.url;
           // return BookmarkTable.storeImage({ image, title, bookmarkId });
         }
 

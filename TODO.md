@@ -24,7 +24,7 @@
 - ~~finish styling/mobile responsive~~
 - ~~cool landing page~~
 - ~~404 page~~
-- SEO favicon sitemap ogp
+- ~~SEO favicon sitemap ogp~~
 
 ## Phase 3+ | Possible Features
 
@@ -38,7 +38,3 @@
 - admin page displaying server & user stats
 - hash everything else in db
 - User handle for personalization
-
-## Bugs
-
-- auto-refresh after title is found

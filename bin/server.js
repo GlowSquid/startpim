@@ -24,11 +24,46 @@ app
     server.use("/api", accountRouter);
     server.use("/api/bookmark", bookmarkRouter);
 
+    const robotsOptions = {
+      root: join(__dirname, "../static"),
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8"
+      }
+    };
+
+    server.get("/robots.txt", (req, res) => {
+      res.status(200).sendFile("robots.txt", robotsOptions);
+    });
+
+    const sitemapOptions = {
+      root: join(__dirname, "../static"),
+      headers: {
+        "Content-Type": "text/xml;charset=UTF-8"
+      }
+    };
+    server.get("/sitemap.xml", (req, res) =>
+      res.status(200).sendFile("sitemap.xml", sitemapOptions)
+    );
+
     const faviconOptions = {
       root: join(__dirname, "../static")
     };
     server.get("/favicon.ico", (req, res) =>
       res.status(200).sendFile("favicon.ico", faviconOptions)
+    );
+
+    const manifestOptions = {
+      root: join(__dirname, "../static")
+    };
+    server.get("/manifest.json", (req, res) =>
+      res.status(200).sendFile("manifest.json", manifestOptions)
+    );
+
+    const ogpOptions = {
+      root: join(__dirname, "../static")
+    };
+    server.get("/ogp.png", (req, res) =>
+      res.status(200).sendFile("ogp.png", ogpOptions)
     );
 
     server.get("*", (req, res) => {
