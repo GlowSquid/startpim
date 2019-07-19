@@ -78,7 +78,6 @@ router.post("/add-bookmark", (req, res, next) => {
         // fs.unwatchFile(titleFile);
       }
       fs.unwatchFile(titleFile);
-      // console.log("unwatching");
       return BookmarkTable.storeTitle({ title, bookmarkId });
     });
   }

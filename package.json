@@ -25,13 +25,12 @@
     "isomorphic-unfetch": "^3.0.0",
     "next": "^8.1.0",
     "next-images": "^1.1.2",
-    "open-graph-scraper": "^3.6.1",
+    "open-graph-scraper": "^3.6.2",
     "pg": "^7.11.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
     "redux": "^4.0.1",
-    "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
     "uuid": "^3.3.2",
     "validator": "^10.11.0"
@@ -41,6 +40,7 @@
     "eslint-config-react": "^1.1.7",
     "eslint-config-recommended": "^4.0.0",
     "eslint-plugin-react": "^7.14.2",
-    "nodemon": "^1.19.1"
+    "nodemon": "^1.19.1",
+    "redux-devtools-extension": "^2.13.8"
   }
 }

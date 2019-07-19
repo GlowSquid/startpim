@@ -4,6 +4,4 @@ node_modules/
 package-lock.json
 dbconfig.js
 bin/configure_db.sh
-bin/title/title.txt
 config/dbConfig.js
-config/index.js

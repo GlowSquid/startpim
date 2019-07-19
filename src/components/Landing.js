@@ -68,7 +68,7 @@ function Landing() {
             </div>
             <div className="cards__right">
               <div id="card-3">
-                <p>Mobile View</p>
+                <p>Mobile Responsive</p>
                 <img src={resp} alt="" />
               </div>
             </div>
