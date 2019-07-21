@@ -48,7 +48,7 @@ const authenticatedAccount = ({ sessionString }) => {
       // return reject(error); // Please spam my logs
       // return reject(""); // Please eat my cpu
       // return reject; // Please cause instability
-      return reject("🤔"); // Working!
+      return reject("🧙‍"); // Working!
     }
 
     const { email, id } = Session.parse(sessionString);

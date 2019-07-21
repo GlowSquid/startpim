@@ -77,7 +77,7 @@ app
 
     server.use((err, req, res, next) => {
       const statusCode = err.statusCode || 500;
-      console.error("Logged Error", err);
+      console.error("Log", err);
       res.status(statusCode).json({
         type: "error",
         message: err.message

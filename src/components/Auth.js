@@ -74,9 +74,9 @@ const Auth = ({ register, login, account }) => {
           Login
         </button>
       </header>
-      <h2 className="center">
+      <h3 className="center">
         {showLogin ? "Already registered? Login" : "Sign Up for Free"}
-      </h2>
+      </h3>
       <form className="form" onSubmit={e => onSubmit(e)}>
         <input
           type="text"
@@ -85,7 +85,7 @@ const Auth = ({ register, login, account }) => {
           value={email}
           onChange={e => onChange(e)}
           className="input__auth"
-          required
+          // required
         />
         <input
           type="password"
@@ -94,7 +94,7 @@ const Auth = ({ register, login, account }) => {
           value={password}
           onChange={e => onChange(e)}
           className="input__auth"
-          required
+          // required
         />
         <input
           type="password"
@@ -102,7 +102,7 @@ const Auth = ({ register, login, account }) => {
           name="password2"
           value={password2}
           onChange={e => onChange(e)}
-          className={showLogin ? "input__hidden" : "input__auth"}
+          className={showLogin ? "input__hidden input__auth" : "input__auth"}
         />
 
         <p className="error center">{showData}</p>

@@ -50,6 +50,7 @@
   width: 100px;
   height: 94px;
   /* overflow: auto; */
+  overflow: hidden;
   overflow: -moz-hidden-unscrollable;
   /* margin: 20px 10px; */
   /* border: 3px solid #fca429; */
@@ -237,20 +238,6 @@
   line-height: 24px;
   border-radius: 3px;
   box-shadow: -1px -2px -4px #000;
-}
-
-.image-div {
-  height: 100%;
-  width: 100%;
-  /* display: flex; */
-  text-align: center;
-  justify-content: center;
-  /* vertical-align: middle; */
-  /* margin: 0 auto; */
-  /* background: red; */
-  margin: 0 auto;
-  /* vertical-align: middle; */
-  overflow: hidden;
 }
 
 .image {

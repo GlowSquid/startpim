@@ -50,7 +50,7 @@ body {
   /* position: absolute; */
   margin: 0 auto;
   display: block;
-  height: 35rem;
+  height: 33rem;
   width: 30rem;
   background-color: #dad8c7;
   box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.5);
@@ -76,6 +76,13 @@ body {
   height: [footer-height];
 }
 
+@media (max-width: 1200px) {
+  .a-card {
+    /* width: 80%; */
+    height: 28rem;
+  }
+}
+
 @media (max-width: 850px) {
   .account {
     display: block;
@@ -88,6 +95,6 @@ body {
 @media (max-width: 500px) {
   .a-card {
     width: 80%;
-    height: 30rem;
+    height: 26rem;
   }
 }

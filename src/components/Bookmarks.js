@@ -93,10 +93,13 @@ const AccountBookmarks = ({
   );
 
   function direction() {
+    console.log("sorting");
     if (descending === false) {
-      return (a, b) => a.id > b.id;
+      console.log("ascend");
+      return (a, b) => a.id - b.id;
     }
-    return (b, a) => a.id > b.id;
+    console.log("descend");
+    return (b, a) => a.id - b.id;
   }
 
   function checkImage(image, icon) {
@@ -137,9 +140,7 @@ const AccountBookmarks = ({
           ) : (
             <Link href={bookmark.url}>
               <a target="_blank" rel="noopener noreferrer">
-                <div className="image-div">
-                  {checkImage(bookmark.image, bookmark.icon)}
-                </div>
+                <div>{checkImage(bookmark.image, bookmark.icon)}</div>
               </a>
             </Link>
           )}
