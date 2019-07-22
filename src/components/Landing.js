@@ -3,11 +3,15 @@ import { connect } from "react-redux";
 import Auth from "./Auth";
 import Head from "./Head";
 import Footer from "./Footer";
-// import Link from "next/link";
 import "../styles/Landing.css";
-import grid from "../../static/img/grid.png";
-import list from "../../static/img/list.png";
-import resp from "../../static/img/resp.png";
+
+import grid from "../../static/img/grid.webp";
+import list from "../../static/img/list.webp";
+import resp from "../../static/img/resp.webp";
+
+import gridP from "../../static/img/grid.png";
+import listP from "../../static/img/list.png";
+import respP from "../../static/img/resp.png";
 
 function Landing() {
   // if (account.loggedIn === true) {
@@ -59,17 +63,26 @@ function Landing() {
             <div className="cards__left">
               <div id="card-1">
                 <p>Grid-View</p>
-                <img src={grid} alt="" />
+                <picture>
+                  <source type="image/webp" srcSet={grid} />
+                  <img src={gridP} alt="" />
+                </picture>
               </div>
               <div id="card-2">
                 <p>List-View</p>
-                <img src={list} alt="" />
+                <picture>
+                  <source type="image/webp" srcSet={list} />
+                  <img src={listP} alt="" />
+                </picture>
               </div>
             </div>
             <div className="cards__right">
               <div id="card-3">
                 <p>Mobile Responsive</p>
-                <img src={resp} alt="" />
+                <picture>
+                  <source type="image/webp" srcSet={resp} />
+                  <img src={respP} alt="" />
+                </picture>
               </div>
             </div>
           </div>

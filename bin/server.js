@@ -1,5 +1,6 @@
 const express = require("express");
 const next = require("next");
+// const compression = require("compression");
 const { join } = require("path");
 
 const dev = process.env.NODE_ENV !== "production";
@@ -18,6 +19,7 @@ app
   .then(() => {
     const server = express();
 
+    // server.use(compression());
     server.use(bodyParser.json());
     server.use(cookieParser());
 

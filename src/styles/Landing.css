@@ -43,10 +43,7 @@
 }
 
 .bullets {
-  display: -webkit-flex;
-  display: flex;
-  /* flex-wrap: wrap; */
-  flex-direction: column;
+  display: block;
   margin-top: 2rem;
   padding-top: 1.5rem;
   margin-left: 10%;
@@ -147,7 +144,7 @@
   /* display: block; */
   top: 15%;
   right: 7%;
-  height: 35rem;
+  height: 33rem;
   width: 25%;
   background-color: #dad8c7;
   /* border: 1px solid #000; */
@@ -156,7 +153,7 @@
 
 @media (max-width: 1200px) {
   .auth-card {
-    height: 30rem;
+    height: 28rem;
     right: 8.5%;
   }
 
@@ -181,7 +178,6 @@
   }
 
   .bullets {
-    flex-direction: column;
     margin: 0 auto;
     margin-top: 70px;
     width: 70%;
@@ -191,12 +187,12 @@
   }
 
   .bullets p {
-    padding-left: 5px;
+    padding: 0 15px;
   }
 
   .cards {
     display: block;
-    width: 50%;
+    width: 60%;
     justify-content: unset;
     margin: 0 auto;
   }
@@ -239,22 +235,23 @@
   .auth-card {
     position: unset;
     display: block;
-    height: 30rem;
+    height: 28rem;
     margin: 20px auto;
     width: 80%;
   }
 }
 
-/* 
-.cards {
-  display: -webkit-flex;
-  display: flex;
-  padding-bottom: 50px;
-  justify-content: space-between;
+@media (max-width: 500px) {
+  .auth-card {
+    position: unset;
+    display: block;
+    height: 27rem;
+    margin: 20px auto;
+    width: 80%;
+  }
+
+  .cards {
+    display: block;
+    width: 80%;
+  }
 }
-
-
-
-.cards__right {
-  padding-right: 10%;
-} */
