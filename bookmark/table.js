@@ -1,7 +1,7 @@
 const pool = require("../dbPool");
 
 class BookmarkTable {
-  // saving bm
+  // Saving Bookmark
   static storeBookmark(bookmark) {
     const { url, title, icon } = bookmark;
     return new Promise((resolve, reject) => {
@@ -11,7 +11,6 @@ class BookmarkTable {
         [url, title, icon],
         (error, response) => {
           if (error) return reject(error);
-          // resolve();
           const bookmarkId = response.rows[0].id;
           resolve({ bookmarkId });
           // resolve({ id: bookmarkId });
@@ -20,7 +19,7 @@ class BookmarkTable {
     });
   }
 
-  // update bookmark
+  // Update Bookmark
   static updateBookmark(bookmark) {
     const { url, title, id } = bookmark;
     return new Promise((resolve, reject) => {
@@ -35,7 +34,7 @@ class BookmarkTable {
     });
   }
 
-  // give title to existing bm
+  // Give Title to Existing Bookmark
   static storeTitle(bookmark) {
     const { title, bookmarkId } = bookmark;
     return new Promise((resolve, reject) => {
@@ -50,7 +49,7 @@ class BookmarkTable {
     });
   }
 
-  // attach ogp image if present
+  // Attach ogImage to Bookmark
   static storeImage(bookmark) {
     const { image, title, bookmarkId } = bookmark;
     return new Promise((resolve, reject) => {
@@ -65,7 +64,7 @@ class BookmarkTable {
     });
   }
 
-  // verify bm
+  // Verify Bookmark
   static getBookmark({ url }) {
     return new Promise((resolve, reject) => {
       pool.query(
@@ -80,7 +79,7 @@ class BookmarkTable {
     });
   }
 
-  // read & display bookmark
+  // Read & Display Bookmark
   static readBookmark({ bookmarkId }) {
     return new Promise((resolve, reject) => {
       pool.query(
@@ -97,7 +96,7 @@ class BookmarkTable {
     });
   }
 
-  // delete bookmark
+  // Delete Bookmark
   static dropBookmark(id) {
     return new Promise((resolve, reject) => {
       pool.query(

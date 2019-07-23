@@ -30,6 +30,7 @@ router.delete("/drop-bookmark", (req, res, next) => {
     .catch(error => next(error));
 });
 
+// Update Bookmark
 router.put("/update-bookmark", (req, res, next) => {
   let bookmark;
   const { url, title, id } = req.body;
@@ -37,14 +38,12 @@ router.put("/update-bookmark", (req, res, next) => {
   authenticatedAccount({ sessionString: req.cookies.sessionString })
     .then(() => {
       bookmark = { url, title, id };
-
       const { errors, isValid } = bookmarkUpdateValidate(req.body);
       if (!isValid) {
         const error = new Error(errors);
         error.statusCode = 400;
         throw error;
       }
-
       return BookmarkTable.updateBookmark(bookmark);
     })
     .then(() => {
@@ -53,6 +52,7 @@ router.put("/update-bookmark", (req, res, next) => {
     .catch(error => next(error));
 });
 
+// Create Bookmark
 router.post("/add-bookmark", (req, res, next) => {
   let accountId, bookmark;
   const { url } = req.body;
@@ -69,6 +69,7 @@ router.post("/add-bookmark", (req, res, next) => {
     throw error;
   }
 
+  // Fetching Title using Lynx
   function fetchTitle(bookmarkId) {
     fs.watchFile(titleFile, function() {
       title = fs.readFileSync(titleFile, "utf8");
@@ -89,22 +90,23 @@ router.post("/add-bookmark", (req, res, next) => {
     }
   });
 
+  // Fetching Image & Title using ogs
   function fetchImage(bookmarkId) {
     const ogsOptions = { url: url, onlyGetOpenGraphInfo: true, timeout: 5000 };
     ogs(ogsOptions)
       .then(function(result) {
         // console.log("Result: ", result.data.ogImage.url);
-        // console.log("More info: ", result.data);
         // console.log("title          :", result.data.ogTitle);
         // console.log("ogSiteName     :", result.data.ogSiteName);
+        // console.log("More info: ", result.data);
         if (result.data.ogTitle) {
           title = result.data.ogTitle;
-          console.log("title is ogTitle");
+          // console.log("title is ogTitle");
         } else if (result.data.ogSiteName) {
           title = result.data.ogSiteName;
-          console.log("title is ogSiteName");
+          // console.log("title is ogSiteName");
         } else {
-          console.log("Using Lynx");
+          // console.log("Using Lynx");
           fetchTitle(bookmarkId);
         }
         image = result.data.ogImage.url;
@@ -116,9 +118,7 @@ router.post("/add-bookmark", (req, res, next) => {
             findRoot.hostname +
             "/" +
             result.data.ogImage.url;
-          console.log("img is", image);
-          // image = url + result.data.ogImage.url;
-          // return BookmarkTable.storeImage({ image, title, bookmarkId });
+          // console.log("img is", image);
         }
 
         return BookmarkTable.storeImage({ image, title, bookmarkId });
@@ -131,11 +131,10 @@ router.post("/add-bookmark", (req, res, next) => {
           image = findRoot.hostname[0];
         }
         if (title) {
-          console.log("has title");
+          // console.log("has title");
         } else {
           title = findRoot.hostname;
         }
-        // fetchTitle(bookmarkId);
         return BookmarkTable.storeImage({ image, title, bookmarkId });
       })
       .then(() => {
@@ -147,13 +146,12 @@ router.post("/add-bookmark", (req, res, next) => {
   authenticatedAccount({ sessionString: req.cookies.sessionString })
     .then(({ account }) => {
       accountId = account.id;
-      console.log("Showing title: ", title);
+      // console.log("Showing title: ", title);
       bookmark = { url, title, icon };
       return BookmarkTable.storeBookmark(bookmark);
     })
     .then(({ bookmarkId }) => {
       bookmark.bookmarkId = bookmarkId;
-      // console.log("bookmarkId is", bookmarkId);
       // fetchTitle(bookmarkId);
       fetchImage(bookmarkId);
       return AccountBookmarkTable.storeAccountBookmark({
@@ -161,11 +159,6 @@ router.post("/add-bookmark", (req, res, next) => {
         bookmarkId
       });
     })
-    // .then(() => {
-    //   // res.json({ bm });
-    //   // res.json({ message: "Bookmark Added" });
-    //   console.log("bookmark added", title);
-    // })
     .catch(error => next(error));
 });
 

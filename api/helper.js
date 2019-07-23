@@ -6,9 +6,7 @@ const setSessionCookie = ({ sessionString, res }) => {
   res.cookie("sessionString", sessionString, {
     expire: Date.now() + 3600000,
     httpOnly: true,
-    // secure: true
     secure: process.env.NODE_ENV === "PROD"
-    // secure: true on prod
   });
 };
 
@@ -18,9 +16,7 @@ const setSession = ({ email, res, sessionId }) => {
   return new Promise((resolve, reject) => {
     if (sessionId) {
       sessionString = Session.sessionString({ email, id: sessionId });
-
       setSessionCookie({ sessionString, res });
-
       resolve({ message: "session restored" });
     } else {
       session = new Session({ email });
@@ -32,7 +28,6 @@ const setSession = ({ email, res, sessionId }) => {
       })
         .then(() => {
           setSessionCookie({ sessionString, res });
-
           resolve({ message: "session created" });
         })
         .catch(error => reject(error));
@@ -48,7 +43,7 @@ const authenticatedAccount = ({ sessionString }) => {
       // return reject(error); // Please spam my logs
       // return reject(""); // Please eat my cpu
       // return reject; // Please cause instability
-      return reject("🧙‍"); // Working!
+      return reject("🧙‍"); // Works!
     }
 
     const { email, id } = Session.parse(sessionString);

@@ -11,15 +11,12 @@
   display: -webkit-flex;
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: center; */
 }
 
 .list {
   display: -webkit-flex;
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: center; */
-  /* margin: 0 auto; */
 }
 
 .controls {
@@ -33,7 +30,6 @@
 
 .alerts {
   color: #ddd;
-  /* background-color: #b64b4b; */
 }
 
 .controls__error {
@@ -52,8 +48,6 @@
   /* overflow: auto; */
   overflow: hidden;
   overflow: -moz-hidden-unscrollable;
-  /* margin: 20px 10px; */
-  /* border: 3px solid #fca429; */
   border: 3px solid #deb887;
   border-radius: 20px;
   cursor: pointer;
@@ -64,7 +58,6 @@
 
 .bm:hover .bm-options {
   background-color: #fcfbed;
-  /* display: block; */
   visibility: visible;
   border-bottom-left-radius: 8px;
   box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.25);
@@ -74,7 +67,6 @@
   position: relative;
   display: -webkit-flex;
   display: flex;
-  /* justify-content: space-between; */
   width: 22rem;
   height: 30px;
   margin: 5px 10px;
@@ -87,10 +79,7 @@
 
 .bm__list:hover .bm-options {
   background-color: #dad8c7;
-  /* display: block; */
   visibility: visible;
-  /* top: -1%; */
-  /* right: 0.2%; */
   border-radius: 5px;
 }
 
@@ -114,7 +103,6 @@
 .bar {
   width: 15px;
   height: 2px;
-  /* color: #000; */
   background-color: #4d384b;
   margin: 2px 0;
 }
@@ -154,7 +142,6 @@
   white-space: unset;
   overflow: auto;
   text-overflow: unset;
-  /* z-index: 100; */
 }
 
 .new-bm {
@@ -174,7 +161,6 @@
 }
 
 .add-bm__list {
-  /* width: 100%; */
   width: 22rem;
   padding-left: 10px;
   height: 30px;
@@ -210,21 +196,16 @@
 .icons {
   margin-left: 4px;
   line-height: inherit;
-  /* margin: 0 1rem; */
-  /* margin: 0 auto; */
   cursor: pointer;
-  /* border: 1px solid #fca429; */
 }
 
 .icons:hover {
-  /* border: 1px solid #deb887; */
   background-color: #e79726;
   line-height: 24px;
 }
 
 .material-icons {
   vertical-align: middle;
-  /* line-height: inherit; */
 }
 
 .material-icons.icon__large {
@@ -234,7 +215,6 @@
 
 .highlighted {
   background-color: #e7cfaf;
-  /* border: 4px solid #deb887; */
   line-height: 24px;
   border-radius: 3px;
   box-shadow: -1px -2px -4px #000;
@@ -257,12 +237,6 @@
   font-size: 60px;
   text-align: center;
   font-family: "lato";
-  /* overflow: hidden; */
-  /* overflow: -webkit-overflow-scrolling; */
-  /* overflow: auto; */
-  /* overflow: -moz-hidden-unscrollable; */
-  /* overflow: auto; */
-  /* margin-bottom: 30px; */
 }
 .text-image p {
   color: red;

@@ -7,7 +7,7 @@ const Error = () => {
       <div className="page">
         <h1 className="bumper">404 - Page Not Found</h1>
         <p>
-          Try going back to the{" "}
+          Go back to the{" "}
           <Link href="/">
             <a>main page</a>
           </Link>{" "}

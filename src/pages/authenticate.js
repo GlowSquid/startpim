@@ -1,7 +1,6 @@
 import { Fragment } from "react";
 import { connect } from "react-redux";
 import Layout from "../components/Layout";
-// import Loader from "../components/Loader";
 import Auth from "../components/Auth";
 import "../styles/Style.css";
 

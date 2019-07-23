@@ -10,7 +10,7 @@ const Header = ({ logout, account }) => {
 
   const pushOut = e => {
     logout();
-    Router.push("/"); // æ Did this crash?
+    Router.push("/");
   };
 
   if (account.status === "fetching") {
@@ -60,8 +60,6 @@ const Header = ({ logout, account }) => {
     </header>
   );
 };
-
-// export default Header;
 
 export default connect(
   ({ account }) => ({ account }),

@@ -9,7 +9,6 @@ class AccountTable {
         [emailHash, passwordHash],
         (error, response) => {
           if (error) return reject(error);
-
           resolve();
         }
       );
@@ -39,7 +38,6 @@ class AccountTable {
         [emailHash],
         (error, response) => {
           if (error) return reject(error);
-
           resolve({ account: response.rows[0] });
         }
       );
@@ -64,7 +62,8 @@ class AccountTable {
   static getStats() {
     return new Promise((resolve, reject) => {
       pool.query(
-        "SELECT (SELECT COUNT(*) FROM account) AS acc, (SELECT COUNT(*) FROM bookmark) AS bms",
+        `SELECT (SELECT COUNT(*) FROM account WHERE "emailHash" IS NOT NULL) AS acc,
+        (SELECT COUNT(*) FROM accountBookmark) AS bms`,
         (error, response) => {
           if (error) return reject(error);
           resolve(response.rows[0]);

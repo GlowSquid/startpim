@@ -56,14 +56,11 @@ const AccountBookmarks = ({
 
   if (antiSpam === true && bookmark.status === "fetching") {
     antiSpam = false;
-    // console.log("hmm", bookmark.message);
   } else if (antiSpam === false && bookmark.status === "success") {
     antiSpam = true;
-    console.log("updating", bookmark.message);
     fetchAccountBookmarks(accountBookmarks);
   } else if (antiSpam === false && bookmark.status === "error") {
     antiSpam = true;
-    console.log(bookmark.message);
     setAlert(true);
     setTimeout(() => {
       setAlert(false);
@@ -93,19 +90,14 @@ const AccountBookmarks = ({
   );
 
   function direction() {
-    console.log("sorting");
     if (descending === false) {
-      console.log("ascend");
       return (a, b) => a.id - b.id;
     }
-    console.log("descend");
     return (b, a) => a.id - b.id;
   }
 
   function checkImage(image, icon) {
-    // let img = image.toString();
     if (image && image.length === 1) {
-      // console.log(image.length);
       return (
         <p className="text-image">
           {image}

@@ -2,7 +2,6 @@
   display: block;
   margin: 0 auto;
   width: 100%;
-  /* position: relative; */
 }
 
 .form {
@@ -20,18 +19,12 @@
 
 .auth-header {
   padding: 2.8rem;
-  /* justify-content: space-between; */
-  /* background: #fca429; */
-  /* color: #4d384b; */
-  /* border-bottom: 3px solid #4d384b; */
 }
 
 .danger-card {
-  /* position: relative; */
   display: -webkit-flex;
   display: flex;
   flex-direction: column;
-  /* height: 25rem; */
   width: 25rem;
   padding: 10px;
   background-color: #afafaf;
@@ -50,7 +43,6 @@
   border: 1px solid #dd9023;
   box-shadow: 1px 2px 1px rgba(64, 32, 8, 0.5);
   white-space: nowrap;
-  /* margin: 1rem auto; */
 }
 
 .btn-active__login {
@@ -58,7 +50,6 @@
 }
 
 .btn-inactive {
-  /* padding: 1rem; */
   font: inherit;
   background: #4d384b;
   color: rgb(165, 165, 165);
@@ -69,7 +60,6 @@
   border: 1px solid #4d384b;
   box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.5);
   white-space: nowrap;
-  /* margin: 1rem auto; */
 }
 
 .input {
@@ -80,7 +70,6 @@
   align-content: center;
   justify-content: center;
   width: 80%;
-  /* height: 30px; */
   background: #fff;
   color: #464646;
   border: 1px solid #fff;
@@ -88,7 +77,6 @@
   box-shadow: 1px 2px 1px rgba(0, 64, 0, 0.5);
   padding: 5px;
   margin-top: 5px;
-  /* margin-top: 30px; */
 }
 
 .input__auth {
@@ -110,7 +98,6 @@
 
 .input__hidden {
   visibility: hidden;
-  /* visibility: unset; */
 }
 
 .btn {
@@ -120,7 +107,6 @@
   color: #fff;
   width: 80%;
   padding: 5px;
-  /* font-size: 16px; */
   border: 1px solid #fca429;
   box-shadow: 1px 2px 1px rgba(0, 64, 0, 0.5);
   margin-top: 1rem;

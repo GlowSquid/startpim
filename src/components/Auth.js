@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Router from "next/router";
-// import Link from "next/link";
 import { connect } from "react-redux";
 import { register } from "../actions/account";
 import { login } from "../actions/account";

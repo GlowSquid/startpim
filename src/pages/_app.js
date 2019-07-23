@@ -3,9 +3,8 @@ import withReduxStore from "../lib/with-redux-store";
 import { Provider } from "react-redux";
 
 import { fetchAuthenticated } from "../actions/account";
-// import Root from "./index";
+// import Index from "./index";
 
-// const MyApp = ({ Component, pageProps, reduxStore }) => {
 function MyApp({ Component, pageProps, reduxStore }) {
   reduxStore.dispatch(fetchAuthenticated());
 
@@ -13,8 +12,7 @@ function MyApp({ Component, pageProps, reduxStore }) {
     <Container>
       <Provider store={reduxStore}>
         <Component {...pageProps} />
-        {/* <Route exact path='/' component={Root} /> */}
-        {/* <Root /> */}
+        {/* <Index /> */}
       </Provider>
     </Container>
   );

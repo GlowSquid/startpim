@@ -14,7 +14,6 @@ function UpdateBookmark({ updateBookmark, updateBmShowing, hide, props }) {
       title: props.title,
       id: props.id
     });
-    // console.log("props is ", props);
 
     const { title, url } = formData;
 

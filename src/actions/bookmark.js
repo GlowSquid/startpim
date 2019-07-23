@@ -1,5 +1,5 @@
 import { BOOKMARK } from "./types";
-import { BACKEND } from "../config";
+import { BACKEND } from "../utils/config";
 import fetch from "isomorphic-unfetch";
 
 export const fetchFromBookmark = ({
@@ -42,7 +42,7 @@ export const addBookmark = ({ title, url }) =>
     endpoint: "add-bookmark",
     options: {
       method: "POST",
-      credentials: "include", // æ
+      credentials: "include",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ title, url })
     },
@@ -59,8 +59,6 @@ export const dropBookmark = id =>
       credentials: "include",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id })
-      // body: JSON.stringify(id)
-      // body: id
     },
     FETCH_TYPE: BOOKMARK.FETCH,
     ERROR_TYPE: BOOKMARK.FETCH_ERROR,

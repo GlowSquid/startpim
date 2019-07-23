@@ -1,6 +1,5 @@
 import { ACCOUNT } from "./types";
-import { BACKEND } from "../config";
-// import { useState, useEffect } from "react";
+import { BACKEND } from "../utils/config";
 import fetch from "isomorphic-unfetch";
 
 export const fetchFromAccount = ({

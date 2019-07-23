@@ -13,10 +13,8 @@ body {
   position: relative;
   padding-bottom: [footer-height];
   font-family: "Lato", sans-serif, Geneva, Verdana;
-  /* font-family: 'Lato', sans-serif; */
   background: #eee;
   color: #2c2930;
-  /* background: red; */
   line-height: 1.6;
 }
 
@@ -29,7 +27,6 @@ body {
 .page {
   display: block;
   margin: 0 auto;
-  /* width: 600px; */
   width: 80%;
 }
 
@@ -47,7 +44,6 @@ body {
 }
 
 .a-card {
-  /* position: absolute; */
   margin: 0 auto;
   display: block;
   height: 33rem;
@@ -78,7 +74,6 @@ body {
 
 @media (max-width: 1200px) {
   .a-card {
-    /* width: 80%; */
     height: 28rem;
   }
 }

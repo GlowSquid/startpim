@@ -5,7 +5,7 @@ import { fetchAccountBookmarks } from "../actions/accountBookmarks";
 import Bookmarks from "./Bookmarks";
 import "../styles/Bookmarks.css";
 
-const Start = ({ fetchAccountBookmarks, accountBookmarks }) => {
+const Start = ({ fetchAccountBookmarks }) => {
   useEffect(() => {
     fetchAccountBookmarks();
   }, [fetchAccountBookmarks]);

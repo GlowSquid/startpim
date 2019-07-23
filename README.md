@@ -1,6 +1,6 @@
 # StartPIM
 
-**StartPIM** is a free online bookmark-manager written using Postgres, Express, React (Next.js + Redux), Node.
+**StartPIM** is a free online bookmark-manager written using React (Next.js + Redux), Node+Express & PostgreSQL.
 
 [Live Site](https://startpim.com/)
 
@@ -23,3 +23,5 @@
 To use the Lynx-browser as a backup title-fetcher, append this line at the bottom of `/etc/lynx.cfg`:
 
 `PRINTER:P:printenv LYNX_PRINT_TITLE>/path/to/startpim/bin/title/title.txt:TRUE:1000`
+
+[Todo](https://github.com/GlowSquid/startpim/blob/master/TODO.md)

@@ -58,11 +58,9 @@
   color: #eee;
   cursor: pointer;
   white-space: nowrap;
-  /* text-shadow: 0px 0px 10px #d7d5f3; */
 }
 
 .navbar ul li a:hover {
-  /* color: #fca429; */
   color: #deb887;
   text-shadow: 0px 5px 10px #fca429;
 }
@@ -70,7 +68,6 @@
 @media (max-width: 768px) {
   .navbar-brand {
     padding-left: 10%;
-    /* font-size: 26px; */
   }
 
   .navbar ul li {

@@ -29,12 +29,11 @@
 ## Phase 3+ | Possible Features
 
 - attach bookmarks to folder/tags
-- ~~Find & Display og-images~~
-- Dark/light theme ☾☽☀️
-- Drag 'n Drop functionality
-- sorting bookmarks by date/alphabetically
+- ~~find & display og-images~~
+- dark/light theme ☾☽☀️
+- drag 'n drop functionality
+- display & sort bookmarks by title/date/folder
 - email/password change
 - email verification & password reset
-- admin page displaying server & user stats
 - hash everything else in db
 - User handle for personalization

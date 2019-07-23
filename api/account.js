@@ -4,12 +4,14 @@ const Session = require("../account/session");
 const { setSession, authenticatedAccount } = require("./helper");
 const AccountTable = require("../account/table");
 const AccountBookmarkTable = require("../accountBookmark/table");
+// const BookmarkTable = require("../bookmark/table");
 const registerValidate = require("../validation/register");
 const loginValidate = require("../validation/login");
 const { readBookmark } = require("../bookmark/table");
 
 const router = new Router();
 
+// Register Account
 router.post("/register", (req, res, next) => {
   const { email, password } = req.body;
 
@@ -40,19 +42,25 @@ router.post("/register", (req, res, next) => {
     .catch(error => next(error));
 });
 
-// delete account
+// Delete Account
 router.delete("/delete", (req, res, next) => {
   const { email, password } = req.body;
   const emailHash = hash(email);
+
   AccountTable.getAccount({ emailHash: hash(email) })
     .then(({ account }) => {
       if (account && account.passwordHash === hash(password)) {
-        return AccountTable.dropAccount({ emailHash });
+        return AccountBookmarkTable.purgeAccountBookmark({
+          accountId: account.id
+        });
       } else {
         const error = new Error("Invalid account credentials");
         error.statusCode = 409;
         throw error;
       }
+    })
+    .then(() => {
+      return AccountTable.dropAccount({ emailHash });
     })
     .then(() => {
       res.clearCookie("sessionString");
@@ -61,11 +69,13 @@ router.delete("/delete", (req, res, next) => {
     .catch(error => next(error));
 });
 
+// Login Account
 router.post("/login", (req, res, next) => {
   const { email, password } = req.body;
-  const { error, isValid } = loginValidate(req.body);
+  const { errors, isValid } = loginValidate(req.body);
 
   if (!isValid) {
+    let error = new Error(errors);
     error.statusCode = 400;
     throw error;
   }
@@ -88,6 +98,7 @@ router.post("/login", (req, res, next) => {
     .catch(error => next(error));
 });
 
+// Log Out from Account
 router.get("/logout", (req, res, next) => {
   const { email } = Session.parse(req.cookies.sessionString);
 
@@ -102,6 +113,7 @@ router.get("/logout", (req, res, next) => {
     .catch(error => next(error));
 });
 
+// Check if Logged In
 router.get("/authenticated", (req, res, next) => {
   authenticatedAccount({ sessionString: req.cookies.sessionString })
     .then(({ authenticated }) => {
@@ -110,6 +122,7 @@ router.get("/authenticated", (req, res, next) => {
     .catch(error => next(error));
 });
 
+// Show Bookmarks of Account
 router.get("/bookmarks", (req, res, next) => {
   authenticatedAccount({ sessionString: req.cookies.sessionString })
     .then(({ account }) => {
@@ -132,6 +145,7 @@ router.get("/bookmarks", (req, res, next) => {
     .catch(error => next(error));
 });
 
+// Show Email of Authenticated Account
 router.get("/info", (req, res, next) => {
   authenticatedAccount({ sessionString: req.cookies.sessionString })
     .then(({ email }) => {
@@ -140,6 +154,7 @@ router.get("/info", (req, res, next) => {
     .catch(error => next(error));
 });
 
+// Public Stats
 router.get("/stats", (req, res, next) => {
   AccountTable.getStats()
     .then(({ acc, bms }) => {

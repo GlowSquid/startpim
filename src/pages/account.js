@@ -24,8 +24,6 @@ function Account({ account }) {
   } else {
     return <Authenticate />;
   }
-
-  // return account.loggedIn ? content : <Authenticate />;
 }
 
 export default connect(

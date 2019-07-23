@@ -89,11 +89,4 @@ class AccountBookmarkTable {
   }
 }
 
-// AccountBookmarkTable.storeAccountBookmark({
-//   accountId: 1,
-//   bookmarkId: 1
-// })
-//   .then(() => console.log("Success"))
-//   .catch(error => console.log(error));
-
 module.exports = AccountBookmarkTable;

@@ -14,10 +14,6 @@ import listP from "../../static/img/list.png";
 import respP from "../../static/img/resp.png";
 
 function Landing() {
-  // if (account.loggedIn === true) {
-  //   Router.push("/start");
-  // }
-
   return (
     <div>
       <Head />
@@ -45,11 +41,11 @@ function Landing() {
             <Auth />
           </div>
           <div className="bullets">
+            <p>* View your bookmarks from any device</p>
             <p>* Automatically fetch page title & icons</p>
             <p>* Switch between list- or grid-mode</p>
-            <p>* Login from any device on any OS</p>
             <p>* No advertisement, no bullshit</p>
-            <p>* Delete your account and all bookmarks any time</p>
+            <p>* Delete your account and bookmarks any time</p>
             <p>* Completely free and open source</p>
           </div>
         </div>
