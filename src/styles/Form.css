@@ -65,9 +65,9 @@
 .input {
   margin: 0 auto;
   font: inherit;
-  box-sizing: border-box;
+  /* box-sizing: border-box;
   align-items: center;
-  align-content: center;
+  align-content: center; */
   justify-content: center;
   width: 80%;
   background: #fff;
@@ -82,10 +82,8 @@
 .input__auth {
   margin: 0 auto;
   font: inherit;
-  box-sizing: border-box;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
+  /* box-sizing: border-box; */
+  /* justify-content: center; */
   width: 80%;
   background: #fff;
   color: #464646;

@@ -105,7 +105,6 @@ const Auth = ({ register, login, account }) => {
         />
 
         <p className="error center">{showData}</p>
-        <br />
         <input
           type="submit"
           className={

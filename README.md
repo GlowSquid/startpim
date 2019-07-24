@@ -24,4 +24,4 @@ To use the Lynx-browser as a backup title-fetcher, append this line at the botto
 
 `PRINTER:P:printenv LYNX_PRINT_TITLE>/path/to/startpim/bin/title/title.txt:TRUE:1000`
 
-[Todo](https://github.com/GlowSquid/startpim/blob/master/TODO.md)
+[Todo-list](https://github.com/GlowSquid/startpim/blob/master/TODO.md)

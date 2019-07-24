@@ -72,6 +72,12 @@ body {
   height: [footer-height];
 }
 
+.footer a {
+  text-decoration: none;
+  cursor: pointer;
+  color: #deb887;
+}
+
 @media (max-width: 1200px) {
   .a-card {
     height: 28rem;
